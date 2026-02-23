@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Александр — Frontend разработчик</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="#hero" class="nav-logo">Александр</a>
+      <ul class="nav-links">
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#skills">Навыки</a></li>
+        <li><a href="#portfolio">Портфолио</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo" role="img" aria-label="Фото Александра">
+            <img src="images/avatar.jpg" alt="Александр" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="hero-photo-placeholder">А</span>
+          </div>
+        </div>
+        <p class="hero-greeting">Привет, я</p>
+        <h1 class="hero-title">Александр</h1>
+        <p class="hero-subtitle">Frontend-разработчик из Краснодара. Самоучка, 18 лет. Пишу интерфейсы и мечтаю вырасти до fullstack.</p>
+        <a href="#portfolio" class="btn btn-primary">Смотреть работы</a>
+      </div>
+      <div class="hero-visual">
+        <div class="mac-window">
+          <div class="mac-titlebar">
+            <div class="mac-dots">
+              <span class="mac-dot mac-dot-red"></span>
+              <span class="mac-dot mac-dot-yellow"></span>
+              <span class="mac-dot mac-dot-green"></span>
+            </div>
+            <span class="mac-title">developer.js</span>
+          </div>
+          <div class="code-block">
+            <span class="code-line"><span class="code-keyword">const</span> developer = {</span>
+            <span class="code-line">  name: <span class="code-string">"Александр"</span>,</span>
+            <span class="code-line">  stack: <span class="code-string">"Frontend"</span>,</span>
+            <span class="code-line">  goal: <span class="code-string">"Fullstack"</span></span>
+            <span class="code-line">};</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2 class="section-title">Обо мне</h2>
+        <p class="section-subtitle">Кто я и чем занимаюсь</p>
+        <div class="about-grid">
+          <div class="about-card">
+            <span class="about-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h3>Краснодар</h3>
+            <p>Живу и учусь здесь. Открыт к удалёнке и релокации.</p>
+            <p>Закончил 9 классов. На данный момент обучаюсь на 2 курсе по специальности РПО (разработчик программного обеспечения) в Московском колледже IT TOP ACADEMY.</p>
+          </div>
+          <div class="about-card">
+            <span class="about-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </span>
+            <h3>Самоучка</h3>
+            <p>Осваиваю веб-разработку сам: курсы, документация, практика.</p>
+          </div>
+          <div class="about-card">
+            <span class="about-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12 12 0 0 1 22 2c0 2.72-.78 7.5-6 11a22 22 0 0 1-3.95 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+            </span>
+            <h3>Планы</h3>
+            <p>Сейчас фокус на фронте, дальше — бэкенд и fullstack.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2 class="section-title">Навыки</h2>
+        <p class="section-subtitle">Технологии и инструменты</p>
+        <div class="skills-grid">
+          <div class="skill-category-card">
+            <div class="skill-category">
+              <h3><span class="skill-category-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Frontend</h3>
+              <ul class="skill-tags">
+                <li><span class="skill-level-bar" style="--level: 0.95"></span>HTML5</li>
+                <li><span class="skill-level-bar" style="--level: 0.9"></span>CSS3</li>
+                <li><span class="skill-level-bar" style="--level: 0.85"></span>JavaScript</li>
+                <li><span class="skill-level-bar" style="--level: 0.8"></span>React</li>
+                <li><span class="skill-level-bar" style="--level: 0.5"></span>TypeScript (начальный уровень)</li>
+                <li><span class="skill-level-bar" style="--level: 0.9"></span>Адаптивная вёрстка</li>
+                <li><span class="skill-level-bar" style="--level: 0.8"></span>Vite</li>
+                <li><span class="skill-level-bar" style="--level: 0.75"></span>Git</li>
+                <li><span class="skill-level-bar" style="--level: 0.7"></span>SASS / Figma</li>
+              </ul>
+            </div>
+          </div>
+          <div class="skill-category-card">
+            <div class="skill-category">
+              <h3><span class="skill-category-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/><line x1="18" y1="6" x2="18.01" y2="6"/><line x1="18" y1="18" x2="18.01" y2="18"/></svg></span>Бэкенд & инструменты</h3>
+              <ul class="skill-tags">
+                <li><span class="skill-level-bar" style="--level: 0.7"></span>REST API</li>
+                <li><span class="skill-level-bar" style="--level: 0.6"></span>Firebase / Supabase (понимание)</li>
+                <li><span class="skill-level-bar" style="--level: 0.55"></span>PHP (базово)</li>
+                <li><span class="skill-level-bar" style="--level: 0.5"></span>MySQL (понимание)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <h2 class="section-title">Портфолио</h2>
+        <p class="portfolio-intro">Ключевые проекты и технологии.</p>
+        <div class="portfolio-grid" id="portfolio-grid">
+          <article class="portfolio-item portfolio-item--featured">
+            <span class="portfolio-item-flame" aria-hidden="true">
+              <span class="portfolio-item-flame-icon">🔥</span>
+              <span class="portfolio-item-flame-text">Главный проект</span>
+            </span>
+            <div class="portfolio-item-head">
+              <h3 class="portfolio-item-title">yoom.pro</h3>
+              <p class="portfolio-item-tagline">Лендинг агентства недвижимости (новостройки Сочи)</p>
+            </div>
+            <div class="portfolio-item-body">
+              <p class="portfolio-item-desc">
+                <strong>Реализовано:</strong> лендинг агентства недвижимости с каталогом ЖК, личным кабинетом, авторизацией (логин/пароль), избранным, ипотечным калькулятором, заявками и защищённой админкой. Адаптивная вёрстка, REST API на PHP, MySQL, чистые URL, загрузка аватаров, rate limiting, CORS.
+              </p>
+              <p class="portfolio-item-desc">
+                <strong>Технологии и навыки:</strong> HTML5, CSS3 (Flexbox, Grid, адаптив, медиа-запросы), ванильный JavaScript (ES5/ES6), Fetch API, PHP 7+, MySQL, Apache (.htaccess, mod_rewrite), REST API, аутентификация по токену, хеширование паролей (bcrypt), загрузка файлов, безопасность (CORS, подготовленные запросы, защита админки по хешу). iOS/Safari-совместимость (tap-highlight, безопасные зоны, плейсхолдеры для Face ID).
+              </p>
+            </div>
+            <div class="portfolio-item-actions">
+              <a href="https://yoom.pro" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
+              <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal">Подробнее</button>
+            </div>
+          </article>
+
+          <article class="portfolio-item">
+            <div class="portfolio-item-head">
+              <h3 class="portfolio-item-title">Погода</h3>
+              <p class="portfolio-item-tagline">Одностраничное приложение на React</p>
+            </div>
+            <div class="portfolio-item-body">
+              <p class="portfolio-item-desc">
+                Текущая погода по геолокации, детали (ощущается, влажность, ветер, давление, УФ, восход/закат), прогноз на 7 дней и график температуры. Фон и анимации зависят от времени суток и погоды (солнце, облака, дождь, снег, ночь со звёздами). Стек: React, Vite, Open-Meteo API, Recharts; адаптивная вёрстка, стеклянный UI. Деплой на GitHub Pages.
+              </p>
+            </div>
+            <div class="portfolio-item-actions">
+              <a href="https://scalevillain13.github.io/weather-app/" class="btn btn-primary" target="_blank" rel="noopener">Открыть приложение</a>
+              <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-weather">Подробнее</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div id="portfolio-detail-modal" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title">
+      <div class="portfolio-modal-backdrop"></div>
+      <div class="portfolio-modal-box">
+        <div class="portfolio-modal-header">
+          <h2 id="portfolio-detail-title" class="portfolio-modal-title">yoom.pro</h2>
+          <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="portfolio-modal-body">
+          <p class="portfolio-detail-lead">Сайт агентства недвижимости (новостройки Сочи): презентация компании, каталог жилых комплексов с фильтрами и картой, карточки ЖК и квартир, личный кабинет пользователя, приём заявок и защищённая админ-панель для просмотра заявок и пользователей.</p>
+
+          <section class="portfolio-detail-section">
+            <h3>Фронтенд</h3>
+            <p><strong>Вёрстка:</strong> семантический HTML5 (header, section, main, aside, nav, footer). Многостраничная структура: главная, каталог, карточка комплекса, квартиры, личный кабинет, вход/регистрация, админ-панель.</p>
+            <p><strong>Стили:</strong> CSS3, каскад из нескольких файлов (styles.css, tablet.css, mobile.css, login.css, safari-fixes.css, critical.css). Flexbox и Grid, CSS-переменные, медиа-запросы для планшета (768px) и телефона (576px). Отдельный файл с фиксами для iOS/Safari (safe-area, tap-highlight, 100vh/dvh).</p>
+            <p><strong>Интерактивность:</strong> ванильный JavaScript без фреймворков. Обработка событий, делегирование. Работа с DOM, историей браузера (history.replaceState) и URL (URLSearchParams). Запросы к API через Fetch с заголовками (Content-Type, X-Auth-Token, X-Admin-Hash).</p>
+            <p><strong>Функциональные блоки:</strong> слайдер баннера на главной, быстрый поиск по количеству комнат, фильтры каталога (район, застройщик, цена, комнаты), сортировка, поиск по названию/адресу в шапке, карта каталога (Yandex Maps API), избранное, ипотечный калькулятор (первоначальный взнос, срок, расчёт платежа и переплаты), форма заявки с отправкой в API, модальные окна, мобильное меню (оверлей + боковая панель), редирект неавторизованных при переходе в кабинет и при добавлении в избранное.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Авторизация и личный кабинет</h3>
+            <p><strong>Регистрация и вход:</strong> форма с вкладками «Вход» и «Регистрация». Логин и пароль, валидация на клиенте и сервере. Поля с autocomplete для сохранения паролей и Face ID/Touch ID в Safari/iOS. После регистрации — опциональный шаг «Профиль» (имя, фамилия, телефон, email, аватар) с возможностью пропустить.</p>
+            <p><strong>Сохранение сессии:</strong> токен и объект пользователя в localStorage, отправка токена в заголовке X-Auth-Token. Выход — вызов API logout и очистка localStorage.</p>
+            <p><strong>Личный кабинет:</strong> избранные комплексы (список с картинкой, названием, ссылкой «Подробнее» и кнопкой «Удалить»), список заявок пользователя, раздел «Настройки» (аватар, имя, фамилия, телефон, email) с сохранением через API. Для неавторизованных кнопка «Выйти» заменяется на «Войти или зарегистрироваться» с редиректом на страницу входа.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Бэкенд (API)</h3>
+            <p><strong>Среда:</strong> PHP 7+, MySQL (mysqli), единая точка входа через init.php (конфиг, CORS-заголовки, соединение с БД, функции jsonOut, getAuthToken, getUserIdByToken).</p>
+            <p><strong>Аутентификация:</strong> api/auth/register.php (POST: логин, пароль → проверка формата и уникальности, bcrypt-хеш, создание пользователя и сессии, возврат token и user). api/auth/login.php (POST: проверка пароля через password_verify, создание сессии). api/auth/logout.php (POST: инвалидация сессии по токену).</p>
+            <p><strong>Профиль и аватар:</strong> api/user/profile.php (GET — данные профиля по X-Auth-Token; POST — обновление имени, фамилии, email, телефона, avatar_url). api/user/avatar-upload.php (POST, multipart: загрузка файла в uploads/avatars/, проверка типа и размера).</p>
+            <p><strong>Избранное:</strong> api/favorites.php (GET — список избранного; POST — добавление по item_id, name, link, image; DELETE по item_id). Привязка к user_id по токену.</p>
+            <p><strong>Заявки:</strong> api/requests.php (POST: создание заявки с полями имени, телефона, email, комментария). api/admin/requests.php (GET — список заявок для админки; PUT/POST — смена статуса). Защита заголовком X-Admin-Hash.</p>
+            <p><strong>Безопасность:</strong> подготовленные запросы (prepare/bind_param) против SQL-инъекций; rate limiting по IP; проверка origin для CORS; хранение паролей в виде bcrypt-хеша; админ-эндпоинты доступны только при совпадении хеша из конфига.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Инфраструктура и деплой</h3>
+            <p>Чистые URL через Apache mod_rewrite (.htaccess): редирект с .html на URL без расширения (301), маршрутизация запросов к соответствующим .html-файлам, сохранение query-строки (QSA).</p>
+            <p>База данных: таблицы users, sessions, favorites, requests, rate_limit. При необходимости в register/login выполняется ALTER TABLE для добавления полей login и password_hash.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Адаптив и UX</h3>
+            <p>Три брейкпоинта: десктоп, планшет (768px), мобильный (576px). На мобильном: компактный хедер, поиск по центру, скрытие кнопки «Избранное» в шапке и блока «Быстрый поиск», мобильное меню с перехватом перехода в «Личный кабинет» для неавторизованных. Кнопки избранного для неавторизованных ведут на страницу входа с return-url.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Навыки, которые демонстрирует проект</h3>
+            <p>Вёрстка и адаптив (HTML/CSS), работа с DOM и событиями (JavaScript), проектирование и потребление REST API (Fetch), серверная логика и БД (PHP, MySQL), аутентификация и авторизация (токены, сессии, хеширование паролей), загрузка файлов, безопасность (CORS, prepared statements, rate limit, разделение прав), конфигурация веб-сервера (Apache, .htaccess), учёт особенностей мобильных браузеров (Safari/iOS).</p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div id="portfolio-detail-modal-weather" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title-weather">
+      <div class="portfolio-modal-backdrop"></div>
+      <div class="portfolio-modal-box">
+        <div class="portfolio-modal-header">
+          <h2 id="portfolio-detail-title-weather" class="portfolio-modal-title">Погода</h2>
+          <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="portfolio-modal-body">
+          <p class="portfolio-detail-lead">Одностраничное приложение для портфолио: пользователь видит текущую погоду по своему местоположению, подробные показатели, восход/закат и прогноз на неделю с графиком температур.</p>
+
+          <section class="portfolio-detail-section">
+            <h3>Данные</h3>
+            <p>Используется бесплатный API Open-Meteo (без ключа). Погода подставляется по геолокации браузера; при отказе или ошибке подставляется Москва.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Интерфейс</h3>
+            <p><strong>Блок «Сейчас»:</strong> температура, описание (ясно / облачно / дождь и т.д.), «Ощущается как … °C».</p>
+            <p><strong>Блок «Детали»:</strong> сетка плиток — ощущается, влажность, ветер, давление, видимость, УФ-индекс, при осадках — текущие осадки (мм).</p>
+            <p><strong>Блок «Световой день»:</strong> время восхода и заката для текущего дня.</p>
+            <p><strong>Прогноз на 7 дней:</strong> список дней (сегодня / название дня и дата), иконка погоды, макс/мин температура, осадки при наличии.</p>
+            <p><strong>График температуры на неделю:</strong> две линии (макс/мин) с заливкой, тултип по дням (Recharts).</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Визуал и анимации</h3>
+            <p>Фон и сцена меняются от времени суток и типа погоды: день — голубое небо, солнце или облака; дождь — серый фон и анимация капель; гроза — те же эффекты плюс вспышки «молнии»; снег — холодные тона и падающие снежинки; ночь при ясной погоде — тёмный градиент, луна и мерцающие звёзды; ночью при дожде/грозе — тёмный фон с дождём и молнией. Карточки и блоки оформлены в стиле стекла (полупрозрачный фон, размытие, границы).</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Стек и деплой</h3>
+            <p>React 18, Vite, Open-Meteo API, Recharts (график), CSS (анимации, адаптив). Адаптивная вёрстка под мобильные (отступы, сетки, типографика до ~480px), учтены safe-area для вырезов экрана.</p>
+            <p>Сборка через GitHub Actions, выкладка на GitHub Pages. Ссылка: <a href="https://scalevillain13.github.io/weather-app/" target="_blank" rel="noopener">scalevillain13.github.io/weather-app</a></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">Контакты</h2>
+        <p class="contact-intro">Пиши, если хочешь обсудить проект или просто поздороваться.</p>
+      </div>
+      <div class="contact-links-wrap">
+        <div class="contact-links">
+          <a href="mailto:tka4ev2301@mail.ru" class="contact-link" aria-label="Написать на Email">
+            <span class="contact-link-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </span>
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">tka4ev2301@mail.ru</span>
+          </a>
+          <a href="tel:+79885015484" class="contact-link contact-link--phone" aria-label="Позвонить">
+            <span class="contact-link-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span class="contact-link-label">Телефон</span>
+            <span class="contact-link-value">+7 988 501-54-84</span>
+          </a>
+          <a href="https://t.me/vanlaviks" class="contact-link" target="_blank" rel="noopener" aria-label="Telegram">
+            <span class="contact-link-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </span>
+            <span class="contact-link-label">Telegram</span>
+            <span class="contact-link-value">@vanlaviks</span>
+          </a>
+          <a href="https://github.com/scalevillain13" class="contact-link" target="_blank" rel="noopener" aria-label="GitHub">
+            <span class="contact-link-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </span>
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">scalevillain13</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Александр. Frontend → Fullstack.</p>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/footer.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/code-typing.js"></script>
+  <script src="js/portfolio-modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+/* Главный файл стилей — подключает все части по смыслу */
+@import "variables.css";
+@import "base.css";
+@import "layout.css";
+@import "scrollbar.css";
+@import "header.css";
+@import "hero.css";
+@import "components.css";
+@import "animations.css";
+@import "sections.css";

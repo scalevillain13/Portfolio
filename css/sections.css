@@ -1,0 +1,987 @@
+/* Секции: Обо мне, Навыки, Портфолио, Контакты */
+
+/* --- About: декоративная линия под заголовком --- */
+.about {
+  background: var(--bg-elevated);
+  overflow: hidden;
+  position: relative;
+}
+
+.about .section-title {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.about .section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+/* Заголовок и подзаголовок: анимация по скроллу (без .in-view скрыты) */
+.about .section-title,
+.about .section-subtitle {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.about.in-view .section-title {
+  animation: aboutTitleIn 0.6s ease forwards;
+}
+
+.about.in-view .section-subtitle {
+  animation: aboutTitleIn 0.6s ease 0.05s forwards;
+}
+
+@keyframes aboutTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  perspective: 900px;
+}
+
+.about-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  padding-top: 2.25rem;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    0 10px 40px -10px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px) rotateX(8deg);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.about.in-view .about-card {
+  animation: aboutCardIn 0.5s ease forwards;
+}
+
+.about-card:nth-child(1) { animation-delay: 0.1s; }
+.about-card:nth-child(2) { animation-delay: 0.2s; }
+.about-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes aboutCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(5deg);
+  }
+}
+
+/* Номер карточки */
+.about-card::before {
+  content: counter(about-card);
+  counter-increment: about-card;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.about-grid {
+  counter-reset: about-card;
+}
+
+/* Градиентная рамка при ховере (псевдоэлемент) */
+.about-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent), transparent 40%, transparent 60%, var(--accent));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.about-card:hover::after {
+  opacity: 1;
+}
+
+.about-card:nth-child(1):hover::after {
+  background: linear-gradient(135deg, var(--accent), transparent 40%, transparent 60%, var(--accent));
+}
+
+.about-card:nth-child(2):hover::after {
+  background: linear-gradient(135deg, var(--accent-2), transparent 40%, transparent 60%, var(--accent-2));
+}
+
+.about-card:nth-child(3):hover::after {
+  background: linear-gradient(135deg, var(--accent-3), transparent 40%, transparent 60%, var(--accent-3));
+}
+
+.about-card:hover {
+  transform: translateY(-10px) rotateX(-3deg) rotateY(4deg) scale(1.02);
+  box-shadow:
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35);
+}
+
+.about-card:nth-child(1):hover {
+  box-shadow:
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(232, 168, 74, 0.3),
+    0 15px 45px -10px var(--accent-glow);
+}
+
+.about-card:nth-child(2):hover {
+  box-shadow:
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(107, 191, 158, 0.3),
+    0 15px 45px -10px var(--accent-2-glow);
+}
+
+.about-card:nth-child(3):hover {
+  box-shadow:
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(123, 159, 212, 0.3),
+    0 15px 45px -10px var(--accent-3-glow);
+}
+
+/* Радиальный градиент фона при ховере */
+.about-card:hover {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-soft), var(--bg-card) 60%);
+}
+
+.about-card:nth-child(2):hover {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(107, 191, 158, 0.12), var(--bg-card) 60%);
+}
+
+.about-card:nth-child(3):hover {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123, 159, 212, 0.12), var(--bg-card) 60%);
+}
+
+/* Иконки SVG */
+.about-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  transition: color 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.about-card:hover .about-icon {
+  color: var(--accent);
+  transform: scale(1.1);
+  animation: aboutIconBounce 0.5s ease;
+}
+
+.about-card:nth-child(2):hover .about-icon {
+  color: var(--accent-2);
+}
+
+.about-card:nth-child(3):hover .about-icon {
+  color: var(--accent-3);
+}
+
+@keyframes aboutIconBounce {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.25); }
+}
+
+.about-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.about-card:hover h3 {
+  color: var(--accent);
+}
+
+.about-card:nth-child(2):hover h3 {
+  color: var(--accent-2);
+}
+
+.about-card:nth-child(3):hover h3 {
+  color: var(--accent-3);
+}
+
+.about-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* --- Skills: декоративный фон и подзаголовок --- */
+.skills {
+  overflow: hidden;
+  position: relative;
+}
+
+.skills::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.skills .section-title,
+.skills .section-subtitle {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.skills.in-view .section-title {
+  animation: skillsTitleIn 0.6s ease 0.1s forwards;
+}
+
+.skills.in-view .section-subtitle {
+  animation: skillsTitleIn 0.6s ease 0.15s forwards;
+}
+
+@keyframes skillsTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+  perspective: 900px;
+}
+
+/* Карточка категории — 3D */
+.skill-category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    0 10px 40px -10px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(20px) rotateX(8deg);
+  transform-style: preserve-3d;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skills.in-view .skill-category-card {
+  animation: skillCategoryIn 0.5s ease forwards;
+}
+
+.skill-category-card:nth-child(1) { animation-delay: 0.2s; }
+.skill-category-card:nth-child(2) { animation-delay: 0.35s; }
+
+@keyframes skillCategoryIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(5deg);
+  }
+}
+
+.skill-category-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-10px) rotateX(-3deg) rotateY(4deg) scale(1.02);
+  box-shadow:
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(232, 168, 74, 0.25),
+    0 15px 45px -10px var(--accent-glow);
+}
+
+.skill-category-card:hover .skill-tags li {
+  border-color: rgba(232, 168, 74, 0.3);
+}
+
+.skill-category {
+  position: relative;
+}
+
+.skill-category h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-category-icon {
+  display: inline-flex;
+  color: var(--accent);
+}
+
+.skill-category-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.skill-category h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 1px;
+  transform-origin: left;
+  transition: width 0.3s ease;
+}
+
+.skill-category-card:hover h3::after {
+  width: 56px;
+}
+
+.skill-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tags li {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem 0.6rem;
+  padding-left: 0.85rem;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  opacity: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Разное появление: чётные — scale, нечётные — translateY */
+.skills.in-view .skill-tags li:nth-child(odd) {
+  transform: translateY(12px);
+  animation: skillTagInUp 0.4s ease forwards;
+}
+
+.skills.in-view .skill-tags li:nth-child(even) {
+  transform: scale(0.92);
+  animation: skillTagInScale 0.4s ease forwards;
+}
+
+.skill-tags li:nth-child(1) { animation-delay: 0.28s; }
+.skill-tags li:nth-child(2) { animation-delay: 0.33s; }
+.skill-tags li:nth-child(3) { animation-delay: 0.38s; }
+.skill-tags li:nth-child(4) { animation-delay: 0.43s; }
+.skill-tags li:nth-child(5) { animation-delay: 0.48s; }
+.skill-tags li:nth-child(6) { animation-delay: 0.53s; }
+.skill-tags li:nth-child(7) { animation-delay: 0.58s; }
+.skill-tags li:nth-child(8) { animation-delay: 0.63s; }
+.skill-tags li:nth-child(9) { animation-delay: 0.68s; }
+
+@keyframes skillTagInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skillTagInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Полоска уровня внутри тега */
+.skill-level-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: calc(var(--level, 0.8) * 100%);
+  max-width: 100%;
+  background: var(--accent);
+  border-radius: 0 1px 0 0;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.skill-tags li:hover .skill-level-bar {
+  opacity: 1;
+}
+
+.skill-tags li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .about .section-title,
+  .about .section-subtitle,
+  .about-card,
+  .about-card::after,
+  .about-icon,
+  .skills .section-title,
+  .skills .section-subtitle,
+  .skill-category-card,
+  .skill-tags li {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .about .section-title,
+  .about .section-subtitle,
+  .about-card,
+  .skills .section-title,
+  .skills .section-subtitle,
+  .skill-category-card,
+  .skill-tags li {
+    opacity: 1;
+    transform: none !important;
+  }
+
+  .about.in-view .section-title,
+  .about.in-view .section-subtitle,
+  .about.in-view .about-card,
+  .skills.in-view .section-title,
+  .skills.in-view .section-subtitle,
+  .skills.in-view .skill-category-card,
+  .skills.in-view .skill-tags li {
+    animation: none !important;
+  }
+
+  .about-card:hover {
+    transform: none;
+  }
+
+  .skill-tags li:hover {
+    transform: none;
+  }
+
+  .portfolio .section-title,
+  .portfolio-intro,
+  .portfolio-placeholder,
+  .portfolio-item,
+  .contact .section-title,
+  .contact-intro,
+  .contact-link {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* --- Portfolio --- */
+.portfolio {
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.portfolio .section-title {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.portfolio.in-view .section-title {
+  animation: sectionFadeUp 0.5s ease 0.1s forwards;
+}
+
+.portfolio-intro {
+  color: var(--text-muted);
+  margin: -1rem 0 2rem;
+  max-width: 560px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.portfolio.in-view .portfolio-intro {
+  animation: sectionFadeUp 0.5s ease 0.2s forwards;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Главная карточка проекта */
+.portfolio-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.portfolio.in-view .portfolio-item {
+  animation: sectionFadeUp 0.5s ease 0.3s forwards;
+}
+
+.portfolio.in-view .portfolio-item:nth-child(2) {
+  animation-delay: 0.45s;
+}
+
+.portfolio-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px var(--accent-glow);
+}
+
+.portfolio-item--featured {
+  padding: 0;
+  position: relative;
+}
+
+/* Стикер-огонёк на карточке */
+.portfolio-item-flame {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  background: linear-gradient(135deg, #e85c2a 0%, #e8a84a 100%);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(232, 92, 42, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.portfolio-item-flame-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.portfolio-item-flame-text {
+  line-height: 1;
+}
+
+.portfolio-item:hover .portfolio-item-flame {
+  box-shadow: 0 6px 20px rgba(232, 92, 42, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.portfolio-item-head {
+  padding: 1.5rem 1.75rem 0;
+  padding-top: 2.5rem;
+  padding-right: 10rem;
+}
+
+.portfolio-item:not(.portfolio-item--featured) .portfolio-item-head {
+  padding-top: 1.5rem;
+  padding-right: 1.75rem;
+}
+
+@media (max-width: 480px) {
+  .portfolio-item-flame {
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+  }
+
+  .portfolio-item-flame-icon {
+    font-size: 0.9rem;
+  }
+
+  .portfolio-item-head {
+    padding-right: 1.75rem;
+    padding-top: 2.25rem;
+  }
+}
+
+.portfolio-item-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.portfolio-item-tagline {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.portfolio-item-body {
+  padding: 0 1.75rem 1.25rem;
+}
+
+.portfolio-item-desc {
+  margin: 0 0 0.75rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.portfolio-item-desc:last-child {
+  margin-bottom: 0;
+}
+
+.portfolio-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem 1.5rem;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-placeholder {
+  grid-column: 1 / -1;
+  min-height: 200px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  gap: 0.5rem;
+  background: var(--bg-card);
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.portfolio.in-view .portfolio-placeholder {
+  animation: sectionFadeUp 0.5s ease 0.3s forwards;
+}
+
+@keyframes sectionFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.placeholder-icon {
+  font-size: 2.5rem;
+  opacity: 0.6;
+}
+
+/* Модальное окно «Подробнее» */
+.portfolio-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.portfolio-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.portfolio-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hover);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.portfolio-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.portfolio-modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.portfolio-modal-close {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.portfolio-modal-close:hover {
+  color: var(--text);
+  background: var(--bg-elevated);
+}
+
+.portfolio-modal-body {
+  padding: 1.5rem 1.75rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.portfolio-detail-lead {
+  margin: 0 0 1.5rem;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.portfolio-detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.portfolio-detail-section h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.portfolio-detail-section p {
+  margin: 0 0 0.6rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.portfolio-detail-section p:last-child {
+  margin-bottom: 0;
+}
+
+.portfolio-detail-section strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* --- Contact --- */
+.contact {
+  overflow: hidden;
+}
+
+.contact .section-title {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.contact.in-view .section-title {
+  animation: sectionFadeUp 0.5s ease 0.1s forwards;
+}
+
+.contact-intro {
+  color: var(--text-muted);
+  margin: -1rem 0 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.contact.in-view .contact-intro {
+  animation: sectionFadeUp 0.5s ease 0.18s forwards;
+}
+
+.contact-link {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.contact.in-view .contact-link:nth-child(1) {
+  animation: sectionFadeUp 0.45s ease 0.26s forwards;
+}
+
+.contact.in-view .contact-link:nth-child(2) {
+  animation: sectionFadeUp 0.45s ease 0.32s forwards;
+}
+
+.contact.in-view .contact-link:nth-child(3) {
+  animation: sectionFadeUp 0.45s ease 0.38s forwards;
+}
+
+.contact.in-view .contact-link:nth-child(4) {
+  animation: sectionFadeUp 0.45s ease 0.44s forwards;
+}
+
+.contact-links-wrap {
+  width: 100%;
+  padding: 0 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.25rem;
+  min-height: 130px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-align: center;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--accent-glow);
+}
+
+.contact-link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-link:hover .contact-link-icon {
+  color: var(--accent-dim);
+  transform: scale(1.1);
+}
+
+.contact-link-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.contact-link-label {
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.contact-link-value {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.3;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.contact-link:hover .contact-link-value {
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .contact-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-link {
+    min-height: 100px;
+    padding: 1.25rem 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+  }
+
+  .contact-link-value {
+    width: 100%;
+    text-align: center;
+    order: 3;
+  }
+}
+
+/* --- Footer --- */
+.footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 0;
+}

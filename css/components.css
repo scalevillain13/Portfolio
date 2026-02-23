@@ -1,0 +1,133 @@
+/* Кнопки, окно Mac, код */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #16161a;
+  border: none;
+}
+
+/* Явно фиксируем цвет текста при ховере, чтобы не перебивалось глобальным a:hover */
+a.btn-primary:hover,
+a.btn-primary:focus {
+  color: #16161a;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow);
+  background: var(--accent);
+  color: #16161a;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* Окно в стиле macOS — увеличенное */
+.mac-window {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-hover), 0 0 0 1px var(--border);
+  max-width: 440px;
+  width: 100%;
+}
+
+.mac-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #2e2e36;
+  border-bottom: 1px solid var(--border);
+}
+
+.mac-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.mac-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mac-dot-red {
+  background: #ff5f57;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.mac-dot-yellow {
+  background: #febc2e;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.mac-dot-green {
+  background: #28c840;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.mac-title {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.code-block {
+  background: #18181d;
+  padding: 1.5rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 2;
+  min-height: 7.5em;
+}
+
+.code-line {
+  display: block;
+}
+
+/* Анимация появления символов «печать» */
+.code-char {
+  opacity: 0;
+  animation: codeCharIn 0.12s ease forwards;
+}
+
+@keyframes codeCharIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .code-char {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.code-keyword {
+  color: #c678dd;
+}
+
+.code-string {
+  color: #98c379;
+}
