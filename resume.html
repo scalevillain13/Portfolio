@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Резюме — Александр, Frontend-разработчик</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text: #16161a;
+      --text-muted: #4a4a52;
+      --accent: #e8a84a;
+      --border: #e0e0e0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1.5rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text);
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 0.25rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin: 0 0 1.5rem;
+    }
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .contacts a, .contacts span {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .contacts a:hover { color: var(--accent); }
+    section {
+      margin-bottom: 1.75rem;
+    }
+    section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    section p, section ul {
+      margin: 0 0 0.5rem;
+      color: var(--text);
+    }
+    ul {
+      padding-left: 1.25rem;
+    }
+    .resume-block + .resume-block { margin-top: 1rem; }
+    .resume-block h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+    }
+    .resume-block .meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .resume-block p { margin: 0; font-size: 0.95rem; }
+    .print-hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    @media print {
+      body { padding: 1rem; }
+      .print-hint { display: none; }
+      .contacts a { color: var(--text); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Александр</h1>
+  <p class="subtitle">Frontend-разработчик</p>
+
+  <div class="contacts">
+    <a href="mailto:tka4ev2301@mail.ru">tka4ev2301@mail.ru</a>
+    <span>+7 988 501-54-84</span>
+    <a href="https://t.me/vanlaviks" target="_blank" rel="noopener">Telegram: @vanlaviks</a>
+    <a href="https://github.com/scalevillain13" target="_blank" rel="noopener">GitHub: scalevillain13</a>
+  </div>
+
+  <section>
+    <h2>О себе</h2>
+    <p>18 лет, Краснодар. Frontend-разработчик, самоучка. Фокус на вёрстке, JavaScript и React; планирую развитие в сторону fullstack. Открыт к удалённой работе, стажировкам и релокации.</p>
+    <p>Закончил 9 классов. На данный момент обучаюсь на 2 курсе по специальности РПО (разработчик программного обеспечения) в московском колледже IT TOP ACADEMY.</p>
+  </section>
+
+  <section>
+    <h2>Навыки</h2>
+    <p><strong>Frontend:</strong> HTML5, CSS3, JavaScript, React, TypeScript (начальный уровень), адаптивная вёрстка, Vite, Git, SASS, Figma.</p>
+    <p><strong>Бэкенд и инструменты:</strong> REST API, Firebase / Supabase (понимание), PHP (базово), MySQL (понимание).</p>
+  </section>
+
+  <section>
+    <h2>Проекты</h2>
+    <div class="resume-block">
+      <h3>yoom.pro</h3>
+      <p class="meta">Лендинг агентства недвижимости (новостройки Сочи)</p>
+      <p>Каталог ЖК, личный кабинет, авторизация, избранное, ипотечный калькулятор, заявки, админ-панель. Адаптивная вёрстка, REST API на PHP, MySQL, чистые URL, загрузка аватаров, безопасность (CORS, rate limiting).</p>
+    </div>
+    <div class="resume-block">
+      <h3>Погода (React)</h3>
+      <p class="meta">Одностраничное приложение, GitHub Pages</p>
+      <p>Текущая погода по геолокации (Open-Meteo API), детали и прогноз на 7 дней, график температур (Recharts). Фон и анимации зависят от погоды и времени суток. Стек: React, Vite, стеклянный UI.</p>
+      <p><a href="https://scalevillain13.github.io/weather-app/" target="_blank" rel="noopener">scalevillain13.github.io/weather-app</a></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Образование</h2>
+    <p>2 курс, специальность «Разработчик программного обеспечения» (РПО), колледж IT TOP ACADEMY, Москва.</p>
+  </section>
+
+  <p class="print-hint">Чтобы сохранить резюме в PDF: Ctrl+P (или Cmd+P на Mac) → «Сохранить как PDF».</p>
+</body>
+</html>

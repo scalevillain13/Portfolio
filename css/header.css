@@ -46,6 +46,10 @@
   color: var(--accent);
 }
 
+.nav-links a.active {
+  color: var(--accent);
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
