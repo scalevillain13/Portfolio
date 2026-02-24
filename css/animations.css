@@ -18,20 +18,7 @@
   transform: translateY(20px) scale(0.96);
 }
 
-.hero-greeting {
-  opacity: 0;
-  transform: translateY(14px);
-}
-
-.hero-title {
-  opacity: 0;
-  transform: translateY(18px);
-}
-
-.hero-subtitle {
-  opacity: 0;
-  transform: translateY(14px);
-}
+/* hero-greeting, hero-title, hero-subtitle — появление через печать в hero-typing.js */
 
 .hero-content .btn {
   opacity: 0;
@@ -47,17 +34,6 @@
   animation: fadeUpIn 0.6s ease 0.1s forwards;
 }
 
-.page-loaded .hero-greeting {
-  animation: fadeUpIn 0.5s ease 0.2s forwards;
-}
-
-.page-loaded .hero-title {
-  animation: fadeUpIn 0.5s ease 0.28s forwards;
-}
-
-.page-loaded .hero-subtitle {
-  animation: fadeUpIn 0.5s ease 0.36s forwards;
-}
 
 .page-loaded .hero-content .btn {
   animation: fadeUpIn 0.5s ease 0.44s forwards;
@@ -90,7 +66,10 @@
   .hero-photo-wrap,
   .hero-greeting,
   .hero-title,
-  .hero-subtitle,
+  .hero-subtitle {
+    opacity: 1 !important;
+  }
+
   .hero-content .btn,
   .hero-visual,
   .footer {
