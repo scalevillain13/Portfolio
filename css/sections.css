@@ -308,6 +308,7 @@
 .skill-category-card:nth-child(1) { animation-delay: 0.2s; }
 .skill-category-card:nth-child(2) { animation-delay: 0.35s; }
 .skill-category-card:nth-child(3) { animation-delay: 0.5s; }
+.skill-category-card:nth-child(4) { animation-delay: 0.65s; }
 
 @keyframes skillCategoryIn {
   to {
@@ -355,7 +356,23 @@
   height: 18px;
 }
 
-/* Бейджи: English B1, Cursor & AI */
+/* Карточка ИИ — подводка про Cursor */
+.skill-ai-lead {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.skill-ai-lead strong {
+  color: var(--accent);
+}
+
+.skill-category-card:hover .skill-ai-lead strong {
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Бейджи (если понадобятся в других карточках) */
 .skill-badges {
   display: flex;
   flex-wrap: wrap;
