@@ -1,4 +1,4 @@
-/* Цвета и типографика — тёмная тема, не мрачная */
+/* Цвета и типографика — тёмная тема по умолчанию */
 :root {
   --bg: #16161a;
   --bg-elevated: #1c1c21;
@@ -23,4 +23,23 @@
   --space: 8px;
   --font-sans: "Manrope", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Светлая тема — включается через data-theme="light" на html */
+:root[data-theme="light"] {
+  --bg: #f5f5f7;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f1f5;
+  --text: #111113;
+  --text-muted: #666671;
+  --accent: #e89a2c;
+  --accent-dim: #c57f1f;
+  --accent-glow: rgba(232, 154, 44, 0.25);
+  --accent-soft: rgba(232, 154, 44, 0.12);
+  --accent-2: #3b8f6b;
+  --accent-2-glow: rgba(59, 143, 107, 0.2);
+  --accent-3: #3c6acf;
+  --accent-3-glow: rgba(60, 106, 207, 0.22);
+  --border: #dedee6;
 }

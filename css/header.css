@@ -19,6 +19,12 @@
   justify-content: space-between;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .nav-logo {
   font-weight: 700;
   font-size: 1.25rem;
@@ -48,6 +54,46 @@
 
 .nav-links a.active {
   color: var(--accent);
+}
+
+.theme-toggle {
+  border-radius: 999px;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* По умолчанию показываем луну (тёмная тема) */
+.theme-toggle-icon--sun {
+  display: none;
+}
+
+html[data-theme="light"] .theme-toggle-icon--sun {
+  display: inline;
+}
+
+html[data-theme="light"] .theme-toggle-icon--moon {
+  display: none;
 }
 
 .nav-toggle {
