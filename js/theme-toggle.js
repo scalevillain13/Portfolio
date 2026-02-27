@@ -3,32 +3,29 @@
   var STORAGE_KEY = "theme";
 
   function getInitialTheme() {
-    var stored = null;
-    try {
-      stored = localStorage.getItem(STORAGE_KEY);
-    } catch (_) {}
+    var stored;
+    try { stored = localStorage.getItem(STORAGE_KEY); } catch (_) {}
     if (stored === "light" || stored === "dark") return stored;
+    // Уважаем системные настройки, если нет сохранённого выбора
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) return "light";
     return "dark";
   }
 
   function applyTheme(theme) {
-    var root = document.documentElement;
-    root.setAttribute("data-theme", theme);
-    try {
-      localStorage.setItem(STORAGE_KEY, theme);
-    } catch (_) {}
+    document.documentElement.setAttribute("data-theme", theme);
+    try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) {}
   }
 
-  function init() {
-    var current = getInitialTheme();
-    applyTheme(current);
+  // Применяем тему ДО рендера, чтобы не было мигания
+  applyTheme(getInitialTheme());
 
+  function init() {
     var toggle = document.querySelector(".theme-toggle");
     if (!toggle) return;
 
     toggle.addEventListener("click", function () {
-      var next = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
-      applyTheme(next);
+      var current = document.documentElement.getAttribute("data-theme");
+      applyTheme(current === "light" ? "dark" : "light");
     });
   }
 
@@ -38,4 +35,3 @@
     init();
   }
 })();
-

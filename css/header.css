@@ -56,44 +56,99 @@
   color: var(--accent);
 }
 
+/* ── Кнопка переключения темы ── */
 .theme-toggle {
-  border-radius: 999px;
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.15);
+  position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  font-size: 0;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .theme-toggle:hover {
-  background: var(--bg-card-hover);
   border-color: var(--accent);
   color: var(--accent);
-  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-.theme-toggle-icon {
-  font-size: 0.95rem;
-  line-height: 1;
+/* Трек-«таблетка» внутри кнопки */
+.theme-toggle-track {
+  position: relative;
+  width: 2rem;
+  height: 1.1rem;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background 0.3s ease;
+  flex-shrink: 0;
 }
 
-/* По умолчанию показываем луну (тёмная тема) */
-.theme-toggle-icon--sun {
-  display: none;
+html[data-theme="light"] .theme-toggle-track {
+  background: var(--accent);
 }
 
-html[data-theme="light"] .theme-toggle-icon--sun {
-  display: inline;
+/* Бегунок */
+.theme-toggle-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0.15rem;
+  transform: translateY(-50%);
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html[data-theme="light"] .theme-toggle-icon--moon {
-  display: none;
+html[data-theme="light"] .theme-toggle-thumb {
+  left: calc(100% - 0.95rem);
+}
+
+/* SVG-иконки */
+.theme-icon {
+  display: block;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
+
+/* Тёмная тема: показываем луну, прячем солнце */
+.theme-icon--sun {
+  opacity: 0;
+  transform: rotate(-30deg) scale(0.7);
+  width: 0;
+  overflow: hidden;
+}
+
+.theme-icon--moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  color: var(--accent);
+}
+
+/* Светлая тема: показываем солнце, прячем луну */
+html[data-theme="light"] .theme-icon--sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  width: 16px;
+  color: var(--accent);
+}
+
+html[data-theme="light"] .theme-icon--moon {
+  opacity: 0;
+  transform: rotate(30deg) scale(0.7);
+  width: 0;
+  overflow: hidden;
 }
 
 .nav-toggle {
