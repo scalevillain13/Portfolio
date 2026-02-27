@@ -42,12 +42,13 @@ a.btn-primary:focus {
 
 /* Окно в стиле macOS — увеличенное */
 .mac-window {
-  background: var(--bg-card);
+  background: var(--mac-bg, var(--bg-card));
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-hover), 0 0 0 1px var(--border);
   max-width: 440px;
   width: 100%;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mac-titlebar {
@@ -55,8 +56,9 @@ a.btn-primary:focus {
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  background: #2e2e36;
+  background: var(--mac-titlebar, #2e2e36);
   border-bottom: 1px solid var(--border);
+  transition: background 0.3s ease;
 }
 
 .mac-dots {
@@ -93,12 +95,14 @@ a.btn-primary:focus {
 }
 
 .code-block {
-  background: #18181d;
+  background: var(--mac-code-bg, #18181d);
+  color: var(--mac-code-text, #e8e6e3);
   padding: 1.5rem 1.75rem;
   font-family: var(--font-mono);
   font-size: 0.95rem;
   line-height: 2;
   min-height: 7.5em;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .code-line {
@@ -125,9 +129,11 @@ a.btn-primary:focus {
 }
 
 .code-keyword {
-  color: #c678dd;
+  color: var(--mac-keyword, #c678dd);
+  transition: color 0.3s ease;
 }
 
 .code-string {
-  color: #98c379;
+  color: var(--mac-string, #98c379);
+  transition: color 0.3s ease;
 }

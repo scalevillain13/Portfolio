@@ -25,6 +25,16 @@
   --font-mono: "JetBrains Mono", monospace;
 }
 
+/* Переменные mac-окна для тёмной темы */
+:root {
+  --mac-bg: #222228;
+  --mac-titlebar: #2e2e36;
+  --mac-code-bg: #18181d;
+  --mac-code-text: #e8e6e3;
+  --mac-keyword: #c678dd;
+  --mac-string: #98c379;
+}
+
 /* Светлая тема — включается через data-theme="light" на html */
 :root[data-theme="light"] {
   --bg: #f5f5f7;
@@ -42,4 +52,12 @@
   --accent-3: #3c6acf;
   --accent-3-glow: rgba(60, 106, 207, 0.22);
   --border: #dedee6;
+
+  /* mac-окно в светлой теме */
+  --mac-bg: #f0f0f5;
+  --mac-titlebar: #e2e2ea;
+  --mac-code-bg: #f7f7fb;
+  --mac-code-text: #1a1a2e;
+  --mac-keyword: #9b30c8;
+  --mac-string: #2d8a4e;
 }
