@@ -23,6 +23,10 @@
   --space: 8px;
   --font-sans: "Manrope", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+  --header-bg: rgba(22, 22, 26, 0.88);
+  --text-secondary: #a09c96;
+  --scrollbar-thumb: #3a3a42;
+  --btn-text: #16161a;
 }
 
 /* Переменные mac-окна для тёмной темы */
@@ -52,6 +56,12 @@
   --accent-3: #3c6acf;
   --accent-3-glow: rgba(60, 106, 207, 0.22);
   --border: #dedee6;
+  --header-bg: rgba(245, 245, 247, 0.92);
+  --text-secondary: #555560;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb: #c0c0cc;
+  --btn-text: #ffffff;
 
   /* mac-окно в светлой теме */
   --mac-bg: #f0f0f5;

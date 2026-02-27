@@ -5,6 +5,7 @@
   background: var(--bg-elevated);
   overflow: hidden;
   position: relative;
+  transition: background 0.3s ease;
 }
 
 .about .section-title {
