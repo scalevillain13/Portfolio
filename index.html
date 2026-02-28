@@ -240,6 +240,25 @@
               <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-kanban">Подробнее</button>
             </div>
           </article>
+          <article class="portfolio-item">
+            <span class="portfolio-item-tag portfolio-item-tag--php" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.49 1.009.37 1.774a3.04 3.04 0 0 1-.386 1.103 2.86 2.86 0 0 1-.52.425zm5.681-.079c-.107.543-.207.98-.302 1.308-.096.329-.24.6-.437.814-.196.213-.47.39-.82.53-.352.14-.766.209-1.242.209H9.737l1.23-6.326h1.379l-.327 1.681h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29h-.944l-.515 2.648h.838c.556 0 .97.105 1.242.314.272.21.455.559.55 1.049l-.225-.079zm4.34-3.837l-.327 1.681h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29h-.944l-.515 2.648h.838c.556 0 .97.105 1.242.314.272.21.455.559.55 1.049a3.04 3.04 0 0 1-.386 1.103c-.148.243-.326.434-.52.425H17.59l-.327 1.681h-1.378l1.23-6.326h2.649z"/></svg>
+              PHP
+            </span>
+            <div class="portfolio-item-head">
+              <h3 class="portfolio-item-title">Blog API</h3>
+              <p class="portfolio-item-tagline">REST API на Laravel + Sanctum</p>
+            </div>
+            <div class="portfolio-item-body">
+              <p class="portfolio-item-desc">
+                Бэкенд для блога: CRUD постов и комментариев, регистрация/логин через токен (Sanctum), фильтрация, пагинация, защита маршрутов и единый формат ответа.
+              </p>
+            </div>
+            <div class="portfolio-item-actions">
+              <a href="https://github.com/scalevillain13/blog-api" class="btn btn-primary" target="_blank" rel="noopener">Код проекта</a>
+              <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-blogapi">Подробнее</button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -363,6 +382,46 @@
             <h3>Технологии</h3>
             <p>React, Vite, CSS3, localStorage, HTML5 Drag and Drop API.</p>
             <p>Деплой: GitHub Pages. Ссылка: <a href="https://scalevillain13.github.io/kanban-board/" target="_blank" rel="noopener">scalevillain13.github.io/kanban-board</a></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div id="portfolio-detail-modal-blogapi" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title-blogapi">
+      <div class="portfolio-modal-backdrop"></div>
+      <div class="portfolio-modal-box">
+        <div class="portfolio-modal-header">
+          <h2 id="portfolio-detail-title-blogapi" class="portfolio-modal-title">Blog API</h2>
+          <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="portfolio-modal-body">
+          <p class="portfolio-detail-lead">REST API для блога на Laravel с авторизацией через токен (Sanctum). Полный CRUD постов и комментариев, фильтрация, пагинация и защита маршрутов.</p>
+
+          <section class="portfolio-detail-section">
+            <h3>Авторизация</h3>
+            <p>Регистрация и логин через Laravel Sanctum. Токен возвращается при регистрации/логине и передаётся в заголовке <code>Authorization: Bearer &lt;token&gt;</code>. Есть эндпоинты для logout и получения текущего пользователя.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Посты</h3>
+            <p>Полный CRUD: список (с пагинацией, поиском по заголовку, фильтром по статусу публикации), просмотр одного поста с комментариями, создание, обновление и удаление. Автоматическая генерация slug. Редактировать и удалять пост может только автор.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Комментарии</h3>
+            <p>Список комментариев к посту (с пагинацией), создание и удаление. Удалить комментарий может только его автор.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Архитектура</h3>
+            <p><strong>Валидация:</strong> выделена в Form Requests (StorePostRequest, UpdatePostRequest, StoreCommentRequest).</p>
+            <p><strong>Модели:</strong> Eloquent ORM с отношениями (hasMany, belongsTo), авто-генерация slug через <code>booted()</code> callback, массовое присваивание через fillable.</p>
+            <p><strong>Ответы:</strong> единый JSON-формат <code>{ success, data, error }</code> на всех эндпоинтах.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Стек</h3>
+            <p>PHP 8.1+, Laravel 11, Laravel Sanctum, MySQL / SQLite, Eloquent ORM, Form Requests.</p>
           </section>
         </div>
       </div>
