@@ -592,8 +592,8 @@
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
 }
 
 /* Главная карточка проекта */
@@ -602,10 +602,13 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
   opacity: 0;
   transform: translateY(16px);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .portfolio.in-view .portfolio-item {
@@ -613,22 +616,86 @@
 }
 
 .portfolio.in-view .portfolio-item:nth-child(2) {
-  animation-delay: 0.45s;
+  animation-delay: 0.4s;
 }
 
 .portfolio.in-view .portfolio-item:nth-child(3) {
-  animation-delay: 0.55s;
+  animation-delay: 0.5s;
 }
 
 .portfolio-item:hover {
   border-color: var(--accent);
-  box-shadow: 0 12px 40px var(--accent-glow);
+  box-shadow: 0 8px 32px var(--accent-glow), 0 2px 12px rgba(0,0,0,0.22);
+  transform: translateY(-3px);
 }
 
 .portfolio-item--featured {
   padding: 0;
   position: relative;
   grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.portfolio-item--featured .portfolio-item-head,
+.portfolio-item--featured .portfolio-item-body {
+  flex: 1;
+}
+
+@media (max-width: 760px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-item--featured {
+    flex-direction: column;
+  }
+}
+
+/* Технологический ярлык на обычной карточке */
+.portfolio-item-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  z-index: 2;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.portfolio-item:hover .portfolio-item-tag {
+  transform: translateY(-1px);
+}
+
+/* React — синий */
+.portfolio-item-tag--react {
+  background: rgba(97, 218, 251, 0.15);
+  color: #61dafb;
+  border: 1px solid rgba(97, 218, 251, 0.35);
+  box-shadow: 0 2px 10px rgba(97, 218, 251, 0.15);
+}
+
+.portfolio-item:hover .portfolio-item-tag--react {
+  box-shadow: 0 4px 18px rgba(97, 218, 251, 0.3);
+}
+
+/* PHP — фиолетовый (на будущее) */
+.portfolio-item-tag--php {
+  background: rgba(139, 90, 230, 0.12);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 90, 230, 0.3);
+  box-shadow: 0 2px 10px rgba(139, 90, 230, 0.12);
+}
+
+.portfolio-item:hover .portfolio-item-tag--php {
+  box-shadow: 0 4px 18px rgba(139, 90, 230, 0.25);
 }
 
 /* Стикер-огонёк на карточке */
@@ -665,14 +732,13 @@
 }
 
 .portfolio-item-head {
-  padding: 1.15rem 1.25rem 0;
-  padding-top: 2.2rem;
-  padding-right: 7.25rem;
+  padding: 2.5rem 1.5rem 0.75rem;
+  padding-right: 7rem;
 }
 
 .portfolio-item:not(.portfolio-item--featured) .portfolio-item-head {
-  padding-top: 1.15rem;
-  padding-right: 1.25rem;
+  padding: 1.5rem 1.5rem 0.5rem;
+  padding-right: 6rem;
 }
 
 @media (max-width: 480px) {
@@ -688,51 +754,67 @@
   }
 
   .portfolio-item-head {
-    padding-right: 1.75rem;
+    padding-right: 1.5rem;
     padding-top: 2.25rem;
+  }
+
+  .portfolio-item:not(.portfolio-item--featured) .portfolio-item-head {
+    padding-right: 5rem;
   }
 }
 
 .portfolio-item-title {
-  margin: 0 0 0.25rem;
-  font-size: 1.2rem;
+  margin: 0 0 0.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .portfolio-item-tagline {
-  margin: 0 0 0.7rem;
+  margin: 0;
   color: var(--text-muted);
-  font-size: 0.86rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .portfolio-item-body {
-  padding: 0 1.25rem 0.9rem;
+  padding: 0.75rem 1.5rem 1rem;
+  flex: 1;
 }
 
 .portfolio-item-desc {
   margin: 0 0 0.5rem;
-  color: var(--text);
-  font-size: 0.88rem;
-  line-height: 1.5;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
 }
 
 .portfolio-item-desc:last-child {
   margin-bottom: 0;
 }
 
+.portfolio-item-desc strong {
+  color: var(--text);
+}
+
 .portfolio-item-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  padding: 0.75rem 1.25rem 1rem;
+  padding: 0.85rem 1.5rem 1.1rem;
   border-top: 1px solid var(--border);
-  background: var(--bg-elevated);
+  background: rgba(0,0,0,0.12);
+  margin-top: auto;
+}
+
+html[data-theme="light"] .portfolio-item-actions {
+  background: rgba(0,0,0,0.04);
 }
 
 .portfolio-item-actions .btn {
-  padding: 0.52rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.875rem;
 }
 
 .portfolio-placeholder {
