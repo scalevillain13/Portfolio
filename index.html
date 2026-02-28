@@ -180,28 +180,51 @@
       <div class="container">
         <h2 class="section-title">Портфолио</h2>
         <p class="portfolio-intro">Ключевые проекты и технологии.</p>
+        
+        <div class="portfolio-filters">
+          <button type="button" class="portfolio-filter-btn portfolio-filter-btn--active" data-category="all">
+            Все проекты
+          </button>
+          <button type="button" class="portfolio-filter-btn" data-category="frontend">
+            Frontend
+          </button>
+          <button type="button" class="portfolio-filter-btn" data-category="backend">
+            Backend
+          </button>
+          <button type="button" class="portfolio-filter-btn" data-category="landing">
+            Landing
+          </button>
+        </div>
+
         <div class="portfolio-grid" id="portfolio-grid">
-          <article class="portfolio-item portfolio-item--featured">
-            <span class="portfolio-item-flame" aria-hidden="true">
-              <span class="portfolio-item-flame-icon">🔥</span>
-              <span class="portfolio-item-flame-text">Главный проект</span>
-            </span>
-            <div class="portfolio-item-head">
-              <h3 class="portfolio-item-title">yoom.pro</h3>
-              <p class="portfolio-item-tagline">Лендинг агентства недвижимости (новостройки Сочи)</p>
+          <article class="portfolio-item portfolio-item--featured" data-category="frontend">
+            <div class="portfolio-item-visual">
+              <div class="portfolio-item-visual-overlay"></div>
+              <div class="portfolio-item-visual-content">
+                <span class="portfolio-item-flame" aria-hidden="true">
+                  <span class="portfolio-item-flame-icon">🔥</span>
+                  <span class="portfolio-item-flame-text">Главный проект</span>
+                </span>
+              </div>
             </div>
-            <div class="portfolio-item-body">
-              <p class="portfolio-item-desc">
-                Лендинг агентства недвижимости с каталогом ЖК, авторизацией, избранным, ипотечным калькулятором и админкой. Стек: HTML/CSS/JS, PHP, MySQL, REST API, адаптив и безопасность.
-              </p>
-            </div>
-            <div class="portfolio-item-actions">
-              <a href="https://yoom.pro" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
-              <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal">Подробнее</button>
+            <div class="portfolio-item-content">
+              <div class="portfolio-item-head">
+                <h3 class="portfolio-item-title">yoom.pro</h3>
+                <p class="portfolio-item-tagline">Агентство недвижимости (новостройки Сочи)</p>
+              </div>
+              <div class="portfolio-item-body">
+                <p class="portfolio-item-desc">
+                  Полнофункциональный сайт с каталогом ЖК, авторизацией, избранным, ипотечным калькулятором и админкой. Стек: HTML/CSS/JS, PHP, MySQL, REST API, адаптив и безопасность.
+                </p>
+              </div>
+              <div class="portfolio-item-actions">
+                <a href="https://yoom.pro" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
+                <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal">Подробнее</button>
+              </div>
             </div>
           </article>
 
-          <article class="portfolio-item">
+          <article class="portfolio-item" data-category="frontend">
             <span class="portfolio-item-tag portfolio-item-tag--react" aria-hidden="true">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.065c-5.555 0-10.065-4.51-10.065-10.065S6.445 1.935 12 1.935 22.065 6.445 22.065 12 17.555 22.065 12 22.065zm0-18.026C6.537 4.039 2.1 7.67 2.1 12s4.437 7.961 9.9 7.961 9.9-3.63 9.9-7.961-4.437-7.961-9.9-7.961z"/></svg>
               React
@@ -221,7 +244,7 @@
             </div>
           </article>
 
-          <article class="portfolio-item">
+          <article class="portfolio-item" data-category="frontend">
             <span class="portfolio-item-tag portfolio-item-tag--react" aria-hidden="true">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.065c-5.555 0-10.065-4.51-10.065-10.065S6.445 1.935 12 1.935 22.065 6.445 22.065 12 17.555 22.065 12 22.065zm0-18.026C6.537 4.039 2.1 7.67 2.1 12s4.437 7.961 9.9 7.961 9.9-3.63 9.9-7.961-4.437-7.961-9.9-7.961z"/></svg>
               React
@@ -240,7 +263,8 @@
               <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-kanban">Подробнее</button>
             </div>
           </article>
-          <article class="portfolio-item">
+
+          <article class="portfolio-item" data-category="backend">
             <span class="portfolio-item-tag portfolio-item-tag--php" aria-hidden="true">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.49 1.009.37 1.774a3.04 3.04 0 0 1-.386 1.103 2.86 2.86 0 0 1-.52.425zm5.681-.079c-.107.543-.207.98-.302 1.308-.096.329-.24.6-.437.814-.196.213-.47.39-.82.53-.352.14-.766.209-1.242.209H9.737l1.23-6.326h1.379l-.327 1.681h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29h-.944l-.515 2.648h.838c.556 0 .97.105 1.242.314.272.21.455.559.55 1.049l-.225-.079zm4.34-3.837l-.327 1.681h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29h-.944l-.515 2.648h.838c.556 0 .97.105 1.242.314.272.21.455.559.55 1.049a3.04 3.04 0 0 1-.386 1.103c-.148.243-.326.434-.52.425H17.59l-.327 1.681h-1.378l1.23-6.326h2.649z"/></svg>
               PHP
@@ -478,5 +502,6 @@
   <script src="js/scroll-animations.js"></script>
   <script src="js/code-typing.js"></script>
   <script src="js/portfolio-modal.js"></script>
+  <script src="js/portfolio-filter.js"></script>
 </body>
 </html>
