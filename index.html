@@ -224,11 +224,11 @@
             </div>
             <div class="portfolio-item-body">
               <p class="portfolio-item-desc">
-                React-приложение с колонками Backlog / In Progress / Done, перетаскиванием карточек и сохранением состояния в localStorage. Показывает работу со state, компонентами и DnD.
+                React-приложение с DnD, приоритетами задач, поиском, фильтрами, быстрым переносом карточек и сохранением состояния в localStorage.
               </p>
             </div>
             <div class="portfolio-item-actions">
-              <a href="https://github.com/scalevillain13" class="btn btn-primary" target="_blank" rel="noopener">Код проекта</a>
+              <a href="kanban-board/README.md" class="btn btn-primary" target="_blank" rel="noopener">Код проекта</a>
               <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-kanban">Подробнее</button>
             </div>
           </article>
@@ -340,19 +340,20 @@
 
           <section class="portfolio-detail-section">
             <h3>Функционал</h3>
-            <p>Три колонки: <strong>Backlog</strong>, <strong>In Progress</strong>, <strong>Done</strong>. Карточки можно создавать, редактировать и переносить между колонками drag-and-drop.</p>
+            <p>Три колонки: <strong>Backlog</strong>, <strong>In Progress</strong>, <strong>Done</strong>. Карточки можно создавать, редактировать, удалять и переносить между колонками drag-and-drop.</p>
+            <p>Добавлены приоритеты <strong>High / Medium / Low</strong>, поиск по задачам, фильтр по приоритету, быстрый перенос карточки кнопками и очистка колонки Done.</p>
             <p>Состояние доски сохраняется в localStorage, поэтому после перезагрузки данные остаются.</p>
           </section>
 
           <section class="portfolio-detail-section">
             <h3>React-часть</h3>
-            <p>Проект собран на React с разделением на компоненты: колонка, карточка, форма создания/редактирования. Используются хуки useState и useEffect для управления состоянием и сохранения данных.</p>
-            <p>Drag-and-drop реализован через dnd-kit (или react-beautiful-dnd), с обновлением состояния без перезагрузки страницы.</p>
+            <p>Проект собран на React с разделением на компоненты: колонка, карточка, форма создания и панель фильтров. Используются хуки useState и useMemo для управления состоянием и производительной фильтрации.</p>
+            <p>Drag-and-drop реализован на HTML5 Drag and Drop API с мгновенным обновлением состояния без перезагрузки страницы.</p>
           </section>
 
           <section class="portfolio-detail-section">
             <h3>Технологии</h3>
-            <p>React, Vite, CSS3, localStorage, dnd-kit / react-beautiful-dnd.</p>
+            <p>React, Vite, CSS3, localStorage, HTML5 Drag and Drop API.</p>
           </section>
         </div>
       </div>
