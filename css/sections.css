@@ -77,7 +77,6 @@
 .about-card:nth-child(1) { animation-delay: 0.1s; }
 .about-card:nth-child(2) { animation-delay: 0.2s; }
 .about-card:nth-child(3) { animation-delay: 0.3s; }
-.about-card:nth-child(4) { animation-delay: 0.35s; }
 
 @keyframes aboutCardIn {
   to {
@@ -137,10 +136,6 @@
   background: linear-gradient(135deg, var(--accent-3), transparent 40%, transparent 60%, var(--accent-3));
 }
 
-.about-card:nth-child(4):hover::after {
-  background: linear-gradient(135deg, var(--accent), transparent 40%, transparent 60%, var(--accent));
-}
-
 .about-card:hover {
   transform: translateY(-10px) rotateX(-3deg) rotateY(4deg) scale(1.02);
   box-shadow:
@@ -172,14 +167,6 @@
     0 15px 45px -10px var(--accent-3-glow);
 }
 
-.about-card:nth-child(4):hover {
-  box-shadow:
-    0 20px 50px -15px rgba(0, 0, 0, 0.4),
-    0 25px 60px -20px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(232, 168, 74, 0.3),
-    0 15px 45px -10px var(--accent-glow);
-}
-
 /* Радиальный градиент фона при ховере */
 .about-card:hover {
   background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-soft), var(--bg-card) 60%);
@@ -191,10 +178,6 @@
 
 .about-card:nth-child(3):hover {
   background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123, 159, 212, 0.12), var(--bg-card) 60%);
-}
-
-.about-card:nth-child(4):hover {
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-soft), var(--bg-card) 60%);
 }
 
 /* Иконки SVG */
@@ -228,10 +211,6 @@
   color: var(--accent-3);
 }
 
-.about-card:nth-child(4):hover .about-icon {
-  color: var(--accent);
-}
-
 @keyframes aboutIconBounce {
   0%, 100% { transform: scale(1.1); }
   50% { transform: scale(1.25); }
@@ -253,10 +232,6 @@
 
 .about-card:nth-child(3):hover h3 {
   color: var(--accent-3);
-}
-
-.about-card:nth-child(4):hover h3 {
-  color: var(--accent);
 }
 
 .about-card p {
