@@ -2,7 +2,7 @@
  * Анимация печати текста в hero при заходе на сайт
  */
 (function () {
-  var DELAY_MS = 72;
+  var DELAY_MS = 58;
 
   function wrapElement(el, startDelay) {
     if (!el || el.querySelector('.hero-char')) return startDelay;
