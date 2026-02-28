@@ -26,11 +26,13 @@
     var greeting = document.querySelector('.hero-greeting.hero-text');
     var title = document.querySelector('.hero-title.hero-text');
     var subtitle = document.querySelector('.hero-subtitle.hero-text');
+    var tagline = document.querySelector('.hero-tagline.hero-text');
 
     var delay = 400;
     if (greeting) delay = wrapElement(greeting, delay);
     if (title) delay = wrapElement(title, delay);
-    if (subtitle) wrapElement(subtitle, delay);
+    if (subtitle) delay = wrapElement(subtitle, delay);
+    if (tagline) wrapElement(tagline, delay);
   }
 
   if (document.readyState === 'loading') {
