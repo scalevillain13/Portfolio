@@ -136,10 +136,12 @@
                 <li><span class="skill-level-bar" style="--level: 0.95"></span>HTML5</li>
                 <li><span class="skill-level-bar" style="--level: 0.9"></span>CSS3</li>
                 <li><span class="skill-level-bar" style="--level: 0.85"></span>JavaScript</li>
-                <li><span class="skill-level-bar" style="--level: 0.8"></span>React</li>
+                <li><span class="skill-level-bar" style="--level: 0.9"></span>React</li>
                 <li><span class="skill-level-bar" style="--level: 0.5"></span>TypeScript (начальный уровень)</li>
                 <li><span class="skill-level-bar" style="--level: 0.9"></span>Адаптивная вёрстка</li>
                 <li><span class="skill-level-bar" style="--level: 0.8"></span>Vite</li>
+                <li><span class="skill-level-bar" style="--level: 0.55"></span>Expo (базово)</li>
+                <li><span class="skill-level-bar" style="--level: 0.45"></span>Flutter (базово)</li>
                 <li><span class="skill-level-bar" style="--level: 0.75"></span>Git</li>
                 <li><span class="skill-level-bar" style="--level: 0.7"></span>SASS / Figma</li>
               </ul>
@@ -190,10 +192,7 @@
             </div>
             <div class="portfolio-item-body">
               <p class="portfolio-item-desc">
-                <strong>Реализовано:</strong> лендинг агентства недвижимости с каталогом ЖК, личным кабинетом, авторизацией (логин/пароль), избранным, ипотечным калькулятором, заявками и защищённой админкой. Адаптивная вёрстка, REST API на PHP, MySQL, чистые URL, загрузка аватаров, rate limiting, CORS.
-              </p>
-              <p class="portfolio-item-desc">
-                <strong>Технологии и навыки:</strong> HTML5, CSS3 (Flexbox, Grid, адаптив, медиа-запросы), ванильный JavaScript (ES5/ES6), Fetch API, PHP 7+, MySQL, Apache (.htaccess, mod_rewrite), REST API, аутентификация по токену, хеширование паролей (bcrypt), загрузка файлов, безопасность (CORS, подготовленные запросы, защита админки по хешу). iOS/Safari-совместимость (tap-highlight, безопасные зоны, плейсхолдеры для Face ID).
+                Лендинг агентства недвижимости с каталогом ЖК, авторизацией, избранным, ипотечным калькулятором и админкой. Стек: HTML/CSS/JS, PHP, MySQL, REST API, адаптив и безопасность.
               </p>
             </div>
             <div class="portfolio-item-actions">
@@ -209,12 +208,28 @@
             </div>
             <div class="portfolio-item-body">
               <p class="portfolio-item-desc">
-                Текущая погода по геолокации, детали (ощущается, влажность, ветер, давление, УФ, восход/закат), прогноз на 7 дней и график температуры. Фон и анимации зависят от времени суток и погоды (солнце, облака, дождь, снег, ночь со звёздами). Стек: React, Vite, Open-Meteo API, Recharts; адаптивная вёрстка, стеклянный UI. Деплой на GitHub Pages.
+                SPA на React с погодой по геолокации: текущие показатели, прогноз на 7 дней, график температуры и динамический фон. Стек: React, Vite, Open-Meteo API, Recharts.
               </p>
             </div>
             <div class="portfolio-item-actions">
               <a href="https://scalevillain13.github.io/weather-app/" class="btn btn-primary" target="_blank" rel="noopener">Открыть приложение</a>
               <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-weather">Подробнее</button>
+            </div>
+          </article>
+
+          <article class="portfolio-item">
+            <div class="portfolio-item-head">
+              <h3 class="portfolio-item-title">Kanban Board</h3>
+              <p class="portfolio-item-tagline">Управление задачами с drag-and-drop</p>
+            </div>
+            <div class="portfolio-item-body">
+              <p class="portfolio-item-desc">
+                React-приложение с колонками Backlog / In Progress / Done, перетаскиванием карточек и сохранением состояния в localStorage. Показывает работу со state, компонентами и DnD.
+              </p>
+            </div>
+            <div class="portfolio-item-actions">
+              <a href="https://github.com/scalevillain13" class="btn btn-primary" target="_blank" rel="noopener">Код проекта</a>
+              <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-kanban">Подробнее</button>
             </div>
           </article>
         </div>
@@ -308,6 +323,36 @@
             <h3>Стек и деплой</h3>
             <p>React 18, Vite, Open-Meteo API, Recharts (график), CSS (анимации, адаптив). Адаптивная вёрстка под мобильные (отступы, сетки, типографика до ~480px), учтены safe-area для вырезов экрана.</p>
             <p>Сборка через GitHub Actions, выкладка на GitHub Pages. Ссылка: <a href="https://scalevillain13.github.io/weather-app/" target="_blank" rel="noopener">scalevillain13.github.io/weather-app</a></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div id="portfolio-detail-modal-kanban" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title-kanban">
+      <div class="portfolio-modal-backdrop"></div>
+      <div class="portfolio-modal-box">
+        <div class="portfolio-modal-header">
+          <h2 id="portfolio-detail-title-kanban" class="portfolio-modal-title">Kanban Board</h2>
+          <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="portfolio-modal-body">
+          <p class="portfolio-detail-lead">Мини-система управления задачами в формате Kanban: быстрый обзор задач по статусам, приоритизация и перемещение карточек между колонками.</p>
+
+          <section class="portfolio-detail-section">
+            <h3>Функционал</h3>
+            <p>Три колонки: <strong>Backlog</strong>, <strong>In Progress</strong>, <strong>Done</strong>. Карточки можно создавать, редактировать и переносить между колонками drag-and-drop.</p>
+            <p>Состояние доски сохраняется в localStorage, поэтому после перезагрузки данные остаются.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>React-часть</h3>
+            <p>Проект собран на React с разделением на компоненты: колонка, карточка, форма создания/редактирования. Используются хуки useState и useEffect для управления состоянием и сохранения данных.</p>
+            <p>Drag-and-drop реализован через dnd-kit (или react-beautiful-dnd), с обновлением состояния без перезагрузки страницы.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Технологии</h3>
+            <p>React, Vite, CSS3, localStorage, dnd-kit / react-beautiful-dnd.</p>
           </section>
         </div>
       </div>

@@ -592,8 +592,8 @@
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
 }
 
 /* Главная карточка проекта */
@@ -616,6 +616,10 @@
   animation-delay: 0.45s;
 }
 
+.portfolio.in-view .portfolio-item:nth-child(3) {
+  animation-delay: 0.55s;
+}
+
 .portfolio-item:hover {
   border-color: var(--accent);
   box-shadow: 0 12px 40px var(--accent-glow);
@@ -624,6 +628,7 @@
 .portfolio-item--featured {
   padding: 0;
   position: relative;
+  grid-column: 1 / -1;
 }
 
 /* Стикер-огонёк на карточке */
@@ -660,14 +665,14 @@
 }
 
 .portfolio-item-head {
-  padding: 1.5rem 1.75rem 0;
-  padding-top: 2.5rem;
-  padding-right: 10rem;
+  padding: 1.15rem 1.25rem 0;
+  padding-top: 2.2rem;
+  padding-right: 7.25rem;
 }
 
 .portfolio-item:not(.portfolio-item--featured) .portfolio-item-head {
-  padding-top: 1.5rem;
-  padding-right: 1.75rem;
+  padding-top: 1.15rem;
+  padding-right: 1.25rem;
 }
 
 @media (max-width: 480px) {
@@ -690,26 +695,26 @@
 
 .portfolio-item-title {
   margin: 0 0 0.25rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 .portfolio-item-tagline {
-  margin: 0 0 1rem;
+  margin: 0 0 0.7rem;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.86rem;
 }
 
 .portfolio-item-body {
-  padding: 0 1.75rem 1.25rem;
+  padding: 0 1.25rem 0.9rem;
 }
 
 .portfolio-item-desc {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.5rem;
   color: var(--text);
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 .portfolio-item-desc:last-child {
@@ -719,10 +724,15 @@
 .portfolio-item-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 1rem 1.75rem 1.5rem;
+  gap: 0.6rem;
+  padding: 0.75rem 1.25rem 1rem;
   border-top: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--bg-elevated);
+}
+
+.portfolio-item-actions .btn {
+  padding: 0.52rem 1rem;
+  font-size: 0.9rem;
 }
 
 .portfolio-placeholder {
