@@ -466,6 +466,7 @@
 
   function onKeyDown(event) {
     var key = event.key;
+    var code = event.code;
 
     if (key === ' ' || key === 'Escape') {
       event.preventDefault();
@@ -475,10 +476,10 @@
     }
 
     var dir = '';
-    if (key === 'ArrowUp' || key === 'w' || key === 'W') dir = 'up';
-    if (key === 'ArrowDown' || key === 's' || key === 'S') dir = 'down';
-    if (key === 'ArrowLeft' || key === 'a' || key === 'A') dir = 'left';
-    if (key === 'ArrowRight' || key === 'd' || key === 'D') dir = 'right';
+    if (key === 'ArrowUp'   || code === 'KeyW') dir = 'up';
+    if (key === 'ArrowDown' || code === 'KeyS') dir = 'down';
+    if (key === 'ArrowLeft' || code === 'KeyA') dir = 'left';
+    if (key === 'ArrowRight'|| code === 'KeyD') dir = 'right';
 
     if (!dir) return;
     event.preventDefault();
