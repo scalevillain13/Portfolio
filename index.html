@@ -25,6 +25,7 @@
           <li><a href="#about">Обо мне</a></li>
           <li><a href="#skills">Навыки</a></li>
           <li><a href="#portfolio">Портфолио</a></li>
+          <li><a href="#faq">Вопросы</a></li>
           <li><a href="#contact">Контакты</a></li>
         </ul>
         <button class="theme-toggle" type="button" aria-label="Переключить тему">
@@ -139,8 +140,8 @@
                 <li><span class="skill-level-bar" style="--level: 0.95"></span>HTML5</li>
                 <li><span class="skill-level-bar" style="--level: 0.9"></span>CSS3</li>
                 <li><span class="skill-level-bar" style="--level: 0.85"></span>JavaScript</li>
-                <li><span class="skill-level-bar" style="--level: 0.9"></span>React</li>
-                <li><span class="skill-level-bar" style="--level: 0.5"></span>TypeScript (начальный уровень)</li>
+                <li><span class="skill-level-bar" style="--level: 0.9"></span>React (middle)</li>
+                <li><span class="skill-level-bar" style="--level: 0.75"></span>TypeScript</li>
                 <li><span class="skill-level-bar" style="--level: 0.9"></span>Адаптивная вёрстка</li>
                 <li><span class="skill-level-bar" style="--level: 0.8"></span>Vite</li>
                 <li><span class="skill-level-bar" style="--level: 0.55"></span>Expo (базово)</li>
@@ -154,11 +155,13 @@
             <div class="skill-category">
               <h3><span class="skill-category-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/><line x1="18" y1="6" x2="18.01" y2="6"/><line x1="18" y1="18" x2="18.01" y2="18"/></svg></span>Бэкенд & инструменты</h3>
               <ul class="skill-tags">
-                <li><span class="skill-level-bar" style="--level: 0.7"></span>REST API</li>
-                <li><span class="skill-level-bar" style="--level: 0.6"></span>PHP (базово)</li>
-                <li><span class="skill-level-bar" style="--level: 0.55"></span>Laravel (основы)</li>
-                <li><span class="skill-level-bar" style="--level: 0.5"></span>MySQL (понимание)</li>
-                <li><span class="skill-level-bar" style="--level: 0.55"></span>Битрикс24 (интеграции)</li>
+                <li><span class="skill-level-bar" style="--level: 0.8"></span>REST API</li>
+                <li><span class="skill-level-bar" style="--level: 0.75"></span>Node.js</li>
+                <li><span class="skill-level-bar" style="--level: 0.65"></span>NestJS</li>
+                <li><span class="skill-level-bar" style="--level: 0.7"></span>PHP</li>
+                <li><span class="skill-level-bar" style="--level: 0.65"></span>Laravel</li>
+                <li><span class="skill-level-bar" style="--level: 0.6"></span>MySQL</li>
+                <li><span class="skill-level-bar" style="--level: 0.6"></span>Битрикс24 (интеграции)</li>
               </ul>
             </div>
           </div>
@@ -201,10 +204,13 @@
 
         <div class="portfolio-grid" id="portfolio-grid">
           <article class="portfolio-item portfolio-item--featured" data-category="frontend">
-            <span class="portfolio-item-flame" aria-hidden="true">
-              <span class="portfolio-item-flame-icon">🔥</span>
-              <span class="portfolio-item-flame-text">Главный проект</span>
-            </span>
+            <div class="portfolio-item-badges">
+              <span class="portfolio-item-flame" aria-hidden="true">
+                <span class="portfolio-item-flame-icon">🔥</span>
+                <span class="portfolio-item-flame-text">Главный проект</span>
+              </span>
+              <span class="portfolio-item-badge portfolio-item-badge--dev" aria-hidden="true">Ведётся разработка</span>
+            </div>
             <div class="portfolio-item-head">
               <h3 class="portfolio-item-title">yoom.pro</h3>
               <p class="portfolio-item-tagline">Агентство недвижимости (новостройки Сочи)</p>
@@ -446,6 +452,21 @@
         </div>
       </div>
     </div>
+
+    <section id="faq" class="faq">
+      <div class="container">
+        <h2 class="section-title">Ответы на вопросы</h2>
+        <p class="section-subtitle">Часто спрашивают о работе и опыте</p>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3 class="faq-question">Какой у тебя опыт работы с React?</h3>
+            <div class="faq-answer">
+              <p>Работаю с React 1,5+ года. Писал SPA на React, хуки (useState, useEffect, useMemo, useCallback), компонентный подход, работа с API (fetch, axios), управление состоянием. Есть опыт с drag-and-drop, формами, фильтрами и пагинацией. В проектах: приложение погоды, Kanban-доска, коммерческие лендинги.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="contact" class="contact">
       <div class="container">

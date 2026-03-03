@@ -25,7 +25,7 @@
     return;
   }
 
-  var sections = document.querySelectorAll('.about, .skills, .portfolio, .contact, .footer');
+  var sections = document.querySelectorAll('.about, .skills, .portfolio, .faq, .contact, .footer');
   if (!sections.length) return;
 
   var observer = new IntersectionObserver(
