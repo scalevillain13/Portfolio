@@ -703,34 +703,36 @@
   padding-right: 9rem;
 }
 
-/* Обёртка для нескольких ярлыков на одной карточке */
+/* Обёртка для ярлыков */
 .portfolio-item-tags {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.4rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
   z-index: 2;
 }
 
-/* Технологический ярлык на обычной карточке */
+/* Технологический ярлык */
 .portfolio-item-tag {
-  position: relative;
-  top: auto;
-  right: auto;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.3rem 0.75rem;
+  gap: 0.3rem;
+  padding: 0.22rem 0.6rem;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   white-space: nowrap;
-  z-index: 2;
   transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.portfolio-item-tag svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
 }
 
 .portfolio-item:hover .portfolio-item-tag {
@@ -846,31 +848,27 @@ html[data-theme="light"] .portfolio-item-tag--ts {
 }
 
 .portfolio-item-head {
-  padding: 2.5rem 1.5rem 0.75rem;
-  padding-right: 7rem;
-}
-
-.portfolio-item:not(.portfolio-item--featured) .portfolio-item-head {
   padding: 1.5rem 1.5rem 0.5rem;
-  padding-right: 6rem;
+  padding-right: 8.5rem;
 }
 
 /* Мобильные: ярлыки и карточки */
 @media (max-width: 480px) {
-  /* Ярлыки React/PHP/TS — группа в правом верхнем углу */
-  .portfolio-item-tag {
-    position: static;
+  /* Ярлыки — горизонтально в правом верхнем углу */
+  .portfolio-item-tags {
+    top: 0.6rem;
+    right: 0.6rem;
+    gap: 0.25rem;
   }
 
-  .portfolio-item-tags {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.35rem;
-    z-index: 2;
+  .portfolio-item-tag {
+    padding: 0.18rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  .portfolio-item-tag svg {
+    width: 10px;
+    height: 10px;
   }
 
   .portfolio-item--featured .portfolio-item-badges {
