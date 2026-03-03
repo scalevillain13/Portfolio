@@ -26,6 +26,7 @@
           <li><a href="#skills">Навыки</a></li>
           <li><a href="#portfolio">Портфолио</a></li>
           <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#game">Игра</a></li>
           <li><a href="#contact">Контакты</a></li>
         </ul>
         <button class="theme-toggle" type="button" aria-label="Переключить тему">
@@ -552,6 +553,42 @@
       </div>
     </section>
 
+    <section id="game" class="game">
+      <div class="container">
+        <h2 class="section-title">Мини-игра</h2>
+        <p class="section-subtitle">Змейка — небольшой интерактив прямо на сайте</p>
+
+        <div class="game-card">
+          <div class="game-stats">
+            <p class="game-stat"><span>Очки:</span> <strong id="snake-score">0</strong></p>
+            <p class="game-stat"><span>Рекорд:</span> <strong id="snake-best">0</strong></p>
+          </div>
+
+          <canvas
+            id="snake-canvas"
+            width="400"
+            height="400"
+            role="img"
+            aria-label="Мини-игра Змейка"
+          ></canvas>
+
+          <p id="snake-status" class="game-status">Нажми «Старт», управляй стрелками / WASD, пробел — пауза.</p>
+
+          <div class="game-actions">
+            <button type="button" id="snake-start" class="btn btn-primary">Старт / Рестарт</button>
+            <button type="button" id="snake-pause" class="btn btn-ghost">Пауза</button>
+          </div>
+
+          <div class="game-pad" aria-label="Управление змейкой на телефоне">
+            <button type="button" class="game-pad-btn game-pad-btn--up" data-dir="up" aria-label="Вверх">↑</button>
+            <button type="button" class="game-pad-btn game-pad-btn--left" data-dir="left" aria-label="Влево">←</button>
+            <button type="button" class="game-pad-btn game-pad-btn--down" data-dir="down" aria-label="Вниз">↓</button>
+            <button type="button" class="game-pad-btn game-pad-btn--right" data-dir="right" aria-label="Вправо">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="contact">
       <div class="container">
         <h2 class="section-title">Контакты</h2>
@@ -604,5 +641,6 @@
   <script src="js/code-typing.js"></script>
   <script src="js/portfolio-modal.js"></script>
   <script src="js/portfolio-filter.js"></script>
+  <script src="js/snake-game.js"></script>
 </body>
 </html>
