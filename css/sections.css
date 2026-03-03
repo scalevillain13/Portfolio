@@ -703,11 +703,23 @@
   padding-right: 9rem;
 }
 
-/* Технологический ярлык на обычной карточке */
-.portfolio-item-tag {
+/* Обёртка для нескольких ярлыков на одной карточке */
+.portfolio-item-tags {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+/* Технологический ярлык на обычной карточке */
+.portfolio-item-tag {
+  position: relative;
+  top: auto;
+  right: auto;
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -735,6 +747,30 @@
 
 .portfolio-item:hover .portfolio-item-tag--react {
   box-shadow: 0 4px 18px rgba(97, 218, 251, 0.3);
+}
+
+/* React — светлая тема */
+html[data-theme="light"] .portfolio-item-tag--react {
+  color: #0891b2;
+  background: rgba(97, 218, 251, 0.12);
+}
+
+/* TypeScript — синий */
+.portfolio-item-tag--ts {
+  background: rgba(49, 120, 198, 0.13);
+  color: #3178c6;
+  border: 1px solid rgba(49, 120, 198, 0.35);
+  box-shadow: 0 2px 10px rgba(49, 120, 198, 0.12);
+}
+
+.portfolio-item:hover .portfolio-item-tag--ts {
+  box-shadow: 0 4px 18px rgba(49, 120, 198, 0.3);
+}
+
+/* TypeScript — светлая тема */
+html[data-theme="light"] .portfolio-item-tag--ts {
+  color: #1d5fa8;
+  background: rgba(49, 120, 198, 0.1);
 }
 
 /* PHP — фиолетовый (на будущее) */
@@ -821,12 +857,20 @@
 
 /* Мобильные: ярлыки и карточки */
 @media (max-width: 480px) {
-  /* Ярлыки React/PHP — в поток, сверху справа, не наезжают на текст */
+  /* Ярлыки React/PHP/TS — группа в правом верхнем углу */
   .portfolio-item-tag {
     position: static;
-    align-self: flex-end;
-    margin: 0.75rem 0.75rem 0 0;
-    order: -1;
+  }
+
+  .portfolio-item-tags {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.35rem;
+    z-index: 2;
   }
 
   .portfolio-item--featured .portfolio-item-badges {
@@ -849,8 +893,7 @@
   }
 
   .portfolio-item-head {
-    padding: 1rem 1rem 0.5rem;
-    padding-top: 0.75rem;
+    padding: 0.75rem 5.5rem 0.5rem 1rem;
   }
 
   .portfolio-item--featured .portfolio-item-head {

@@ -8,9 +8,9 @@
 
   function filterProjects(category) {
     portfolioItems.forEach(item => {
-      const itemCategory = item.getAttribute('data-category');
+      const itemCategories = (item.getAttribute('data-category') || '').split(' ');
       
-      if (category === 'all' || itemCategory === category) {
+      if (category === 'all' || itemCategories.includes(category)) {
         item.classList.remove('is-hidden');
       } else {
         item.classList.add('is-hidden');
