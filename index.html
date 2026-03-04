@@ -273,32 +273,6 @@
             </div>
           </article>
 
-          <article class="portfolio-item" data-category="frontend landing">
-            <div class="portfolio-item-tags">
-              <span class="portfolio-item-tag portfolio-item-tag--react" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.065c-5.555 0-10.065-4.51-10.065-10.065S6.445 1.935 12 1.935 22.065 6.445 22.065 12 17.555 22.065 12 22.065zm0-18.026C6.537 4.039 2.1 7.67 2.1 12s4.437 7.961 9.9 7.961 9.9-3.63 9.9-7.961-4.437-7.961-9.9-7.961z"/></svg>
-                React
-              </span>
-              <span class="portfolio-item-tag portfolio-item-tag--ts" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M0 12v12h24V0H0zm19.341-.956c.61.152 1.074.423 1.501.865.221.236.549.666.575.77.008.03-1.036.73-1.668 1.123-.023.015-.115-.084-.217-.236-.31-.45-.633-.644-1.128-.678-.728-.05-1.196.331-1.192.967a.88.88 0 0 0 .102.45c.16.331.458.53 1.39.933 1.719.74 2.454 1.227 2.911 1.92.51.773.625 2.008.278 2.926-.38.998-1.325 1.676-2.655 1.9-.411.073-1.386.062-1.828-.018-.964-.172-1.878-.648-2.442-1.273-.221-.243-.652-.88-.625-.925.011-.016.11-.077.22-.141.108-.061.511-.294.892-.515l.69-.4.145.214c.202.308.643.731.91.872.766.404 1.817.347 2.335-.118a.883.883 0 0 0 .313-.72c0-.278-.035-.4-.18-.61-.186-.266-.567-.49-1.649-.96-1.238-.533-1.771-.864-2.259-1.39a3.165 3.165 0 0 1-.659-1.2c-.091-.339-.114-1.189-.042-1.531.255-1.197 1.158-2.03 2.461-2.278.423-.08 1.406-.05 1.821.053zm-5.634 1.002l.008.983H10.59v8.876H8.38v-8.876H5.258v-.964c0-.534.011-.98.026-.99.012-.016 1.913-.024 4.217-.02l4.195.009z"/></svg>
-                TS
-              </span>
-            </div>
-            <div class="portfolio-item-head">
-              <h3 class="portfolio-item-title">Tariffs App</h3>
-              <p class="portfolio-item-tagline">Страница выбора тарифа — тестовое задание</p>
-            </div>
-            <div class="portfolio-item-body">
-              <p class="portfolio-item-desc">
-                Next.js + React + TypeScript. Тарифы с API, таймер обратного отсчёта, анимация смены цен, выбор карточки, мигающая кнопка покупки, адаптив.
-              </p>
-            </div>
-            <div class="portfolio-item-actions">
-              <a href="https://scalevillain13.github.io/tariffs-app/" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
-              <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-tariffs">Подробнее</button>
-            </div>
-          </article>
-
           <article class="portfolio-item" data-category="backend">
             <div class="portfolio-item-tags">
               <span class="portfolio-item-tag portfolio-item-tag--php" aria-hidden="true">
@@ -483,50 +457,6 @@
           <section class="portfolio-detail-section">
             <h3>Стек</h3>
             <p>PHP 8.1+, Laravel 11, Laravel Sanctum, MySQL / SQLite, Eloquent ORM, Form Requests.</p>
-          </section>
-        </div>
-      </div>
-    </div>
-
-    <div id="portfolio-detail-modal-tariffs" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title-tariffs">
-      <div class="portfolio-modal-backdrop"></div>
-      <div class="portfolio-modal-box">
-        <div class="portfolio-modal-header">
-          <h2 id="portfolio-detail-title-tariffs" class="portfolio-modal-title">Tariffs App</h2>
-          <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
-        </div>
-        <div class="portfolio-modal-body">
-          <p class="portfolio-detail-lead">Тестовое задание: адаптивная страница выбора тарифа для фитнес-приложения с таймером обратного отсчёта, анимациями смены цен и получением данных от реального API.</p>
-
-          <section class="portfolio-detail-section">
-            <h3>Стек</h3>
-            <p>Next.js · React · TypeScript · Tailwind CSS v4 · GitHub Actions → GitHub Pages.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Тарифы и интерактивность</h3>
-            <p>Данные загружаются с внешнего REST API через Next.js Server Component. Тариф с <code>is_best: true</code> выводится крупной карточкой с бейджем «хит!» и выбирается по умолчанию. Процент скидки рассчитывается автоматически. Выбор тарифа — мгновенное переключение с золотой рамкой и glow-эффектом.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Таймер и анимация цен</h3>
-            <p>Sticky-хедер с обратным отсчётом 2 минуты, закреплён поверх страницы. При ≤ 30 секундах таймер мигает красным. По истечении времени срабатывает двухфазный crossfade: скидочная цена уходит вверх с fade-out (400ms), затем полная появляется снизу с fade-in (500ms).</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Кнопка «Купить» и валидация</h3>
-            <p>Постоянная анимация мигания кнопки через CSS keyframes. При нажатии без отмеченного чекбокса — подсветка ошибки на 2 секунды. При корректном нажатии — подтверждение покупки.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Адаптивность</h3>
-            <p><strong>Десктоп:</strong> фото спортсмена слева, крупная карточка «Навсегда» сверху, три тарифа в сетке 3 колонки.<br><strong>Мобильный:</strong> фото по центру сверху, все тарифы в столбик.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Деплой</h3>
-            <p>При пуше в <code>main</code> GitHub Actions автоматически собирает проект (static export) и деплоит на GitHub Pages.</p>
-            <p><a href="https://scalevillain13.github.io/tariffs-app/" target="_blank" rel="noopener">Открыть приложение →</a></p>
           </section>
         </div>
       </div>

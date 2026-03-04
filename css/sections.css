@@ -895,8 +895,7 @@ html[data-theme="light"] .portfolio-item-tag--ts {
   }
 
   .portfolio-item--featured .portfolio-item-head {
-    padding-right: 1rem;
-    padding-top: 0.75rem;
+    padding: 1.9rem 1rem 0.6rem 1rem;
   }
 
   /* Карточки менее вытянутые: компактные отступы */
