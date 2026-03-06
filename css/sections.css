@@ -787,6 +787,40 @@ html[data-theme="light"] .portfolio-item-tag--ts {
   box-shadow: 0 4px 18px rgba(139, 90, 230, 0.25);
 }
 
+/* JavaScript — жёлтый */
+.portfolio-item-tag--js {
+  background: rgba(247, 223, 30, 0.18);
+  color: #f7df1e;
+  border: 1px solid rgba(247, 223, 30, 0.45);
+  box-shadow: 0 2px 10px rgba(247, 223, 30, 0.15);
+}
+
+.portfolio-item:hover .portfolio-item-tag--js {
+  box-shadow: 0 4px 18px rgba(247, 223, 30, 0.35);
+}
+
+html[data-theme="light"] .portfolio-item-tag--js {
+  color: #c9a906;
+  background: rgba(247, 223, 30, 0.2);
+}
+
+/* Игра — зелёный */
+.portfolio-item-tag--game {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  box-shadow: 0 2px 10px rgba(34, 197, 94, 0.12);
+}
+
+.portfolio-item:hover .portfolio-item-tag--game {
+  box-shadow: 0 4px 18px rgba(34, 197, 94, 0.28);
+}
+
+html[data-theme="light"] .portfolio-item-tag--game {
+  color: #15803d;
+  background: rgba(34, 197, 94, 0.12);
+}
+
 /* Бейджи на featured карточке (yoom.pro) */
 .portfolio-item-badges {
   position: absolute;
@@ -891,7 +925,7 @@ html[data-theme="light"] .portfolio-item-tag--ts {
   }
 
   .portfolio-item-head {
-    padding: 0.75rem 5.5rem 0.5rem 1rem;
+    padding: 0.75rem 6.5rem 0.5rem 1rem;
   }
 
   .portfolio-item--featured .portfolio-item-head {
