@@ -7,6 +7,25 @@
   font-size: 1rem;
   border-radius: var(--radius);
   transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple по клику */
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  pointer-events: none;
+  animation: rippleOut 0.55s ease-out forwards;
+}
+
+@keyframes rippleOut {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
 .btn-primary {
@@ -25,6 +44,33 @@ a.btn-primary:focus {
   box-shadow: 0 8px 24px var(--accent-glow);
   background: var(--accent);
   color: var(--btn-text);
+}
+
+/* Кнопка «Смотреть работы» — градиентная вращающаяся обводка */
+.btn-primary--hero {
+  position: relative;
+  background: var(--accent);
+}
+
+.btn-primary--hero::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: btnConicRotate 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes btnConicRotate {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .btn-ghost {
@@ -121,6 +167,15 @@ a.btn-primary:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .btn .ripple {
+    animation: none;
+    opacity: 0;
+  }
+
+  .btn-primary--hero::before {
+    animation: none;
+  }
+
   .code-char {
     animation: none;
     opacity: 1;

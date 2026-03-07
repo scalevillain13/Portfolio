@@ -1,0 +1,561 @@
+/* Секции: Обо мне, Навыки + Reduced motion */
+
+/* --- About: декоративная линия под заголовком --- */
+.about {
+  background: var(--bg-elevated);
+  overflow: hidden;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.about .section-title {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.about .section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+/* Заголовок и подзаголовок: анимация по скроллу (без .in-view скрыты) */
+.about .section-title,
+.about .section-subtitle {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.about .section-title.in-view {
+  animation: aboutTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.about .section-subtitle.in-view {
+  animation: aboutTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s forwards;
+}
+
+@keyframes aboutTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  perspective: 900px;
+  counter-reset: about-card;
+}
+
+.about-card {
+  position: relative;
+  background: rgba(34, 34, 40, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  padding-top: 2.25rem;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    0 10px 40px -10px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px) rotateX(8deg) scale(0.98);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.35s ease, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.3s ease;
+}
+
+html[data-theme="light"] .about-card {
+  background: rgba(255, 255, 255, 0.65);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.about .about-card.in-view {
+  animation: aboutCardIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.about .about-card:nth-child(1).in-view { animation-delay: 0s; }
+.about .about-card:nth-child(2).in-view { animation-delay: 0.1s; }
+.about .about-card:nth-child(3).in-view { animation-delay: 0.2s; }
+
+@keyframes aboutCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(5deg) scale(1);
+  }
+}
+
+/* Номер карточки */
+.about-card::before {
+  content: counter(about-card);
+  counter-increment: about-card;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.about-card:hover {
+  transform: translateY(-10px) rotateX(calc(var(--mouse-y, 0) * -5deg)) rotateY(calc(var(--mouse-x, 0) * 5deg)) scale(1.02);
+  box-shadow:
+    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35);
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-soft), rgba(34, 34, 40, 0.7) 60%);
+}
+
+.about-card:nth-child(1):hover {
+  box-shadow:
+    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px var(--accent-ring),
+    0 15px 45px -10px var(--accent-glow);
+}
+
+.about-card:nth-child(2):hover {
+  box-shadow:
+    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px var(--accent-2-ring),
+    0 15px 45px -10px var(--accent-2-glow);
+}
+
+.about-card:nth-child(3):hover {
+  box-shadow:
+    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px var(--accent-3-ring),
+    0 15px 45px -10px var(--accent-3-glow);
+}
+
+html[data-theme="light"] .about-card:hover {
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-soft), rgba(255, 255, 255, 0.75) 60%);
+}
+
+/* Иконки SVG */
+.about-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  transition: color 0.25s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.about-card:hover .about-icon {
+  color: var(--accent);
+  transform: scale(1.1);
+  animation: aboutIconBounce 0.5s ease;
+}
+
+.about-card:nth-child(2):hover .about-icon {
+  color: var(--accent-2);
+}
+
+.about-card:nth-child(3):hover .about-icon {
+  color: var(--accent-3);
+}
+
+@keyframes aboutIconBounce {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.25); }
+}
+
+.about-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.about-card:hover h3 {
+  color: var(--accent);
+}
+
+.about-card:nth-child(2):hover h3 {
+  color: var(--accent-2);
+}
+
+.about-card:nth-child(3):hover h3 {
+  color: var(--accent-3);
+}
+
+.about-card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* --- Skills: декоративный фон и подзаголовок --- */
+.skills {
+  overflow: hidden;
+  position: relative;
+}
+
+.skills::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0);
+  background-size: 24px 24px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.skills .section-title,
+.skills .section-subtitle {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.skills .section-title.in-view {
+  animation: skillsTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.skills .section-subtitle.in-view {
+  animation: skillsTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+}
+
+@keyframes skillsTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+  perspective: 900px;
+}
+
+/* Карточка категории — 3D */
+.skill-category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  min-height: auto;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    0 10px 40px -10px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(20px) rotateX(8deg);
+  transform-style: preserve-3d;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skills .skill-category-card.in-view {
+  animation: skillCategoryIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.skills .skill-category-card:nth-child(1).in-view { animation-delay: 0s; }
+.skills .skill-category-card:nth-child(2).in-view { animation-delay: 0.12s; }
+.skills .skill-category-card:nth-child(3).in-view { animation-delay: 0.24s; }
+
+@keyframes skillCategoryIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(5deg);
+  }
+}
+
+.skill-category-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-10px) rotateX(-3deg) rotateY(4deg) scale(1.02);
+  box-shadow:
+    0 20px 50px -15px rgba(0, 0, 0, 0.4),
+    0 25px 60px -20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px var(--accent-ring),
+    0 15px 45px -10px var(--accent-glow);
+}
+
+.skill-category-card:hover .skill-tags li {
+  border-color: var(--accent-muted);
+}
+
+.skill-category {
+  position: relative;
+}
+
+.skill-category h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+  position: relative;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-category-icon {
+  display: inline-flex;
+  color: var(--accent);
+}
+
+.skill-category-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Бейджи (если понадобятся в других карточках) */
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.skill-badge--lang {
+  color: var(--accent);
+  border-color: var(--accent-muted);
+  background: var(--accent-soft);
+}
+
+.skill-badge--ai {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.skill-category-card:hover .skill-badge--lang {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.skill-category-card:hover .skill-badge--ai {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* Soft skills — теги без полоски уровня */
+.skill-tags--soft li {
+  padding-left: 0.85rem;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.skill-tags--soft .skill-level-bar {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .skill-tags--soft {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 110px), 1fr));
+  }
+}
+
+.skill-category h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 1px;
+  transform-origin: left;
+  transition: width 0.3s ease;
+}
+
+.skill-category-card:hover h3::after {
+  width: 56px;
+}
+
+.skill-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.5rem 0.75rem;
+}
+
+.skill-tags li {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem 0.6rem;
+  padding-left: 0.85rem;
+  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  opacity: 0;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Разное появление: чётные — scale, нечётные — translateY */
+.skills .skill-tags li.in-view:nth-child(odd) {
+  animation: skillTagInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.skills .skill-tags li.in-view:nth-child(even) {
+  animation: skillTagInScale 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.skills .skill-tags li:nth-child(1).in-view { animation-delay: 0s; }
+.skills .skill-tags li:nth-child(2).in-view { animation-delay: 0.04s; }
+.skills .skill-tags li:nth-child(3).in-view { animation-delay: 0.08s; }
+.skills .skill-tags li:nth-child(4).in-view { animation-delay: 0.12s; }
+.skills .skill-tags li:nth-child(5).in-view { animation-delay: 0.16s; }
+.skills .skill-tags li:nth-child(6).in-view { animation-delay: 0.2s; }
+.skills .skill-tags li:nth-child(7).in-view { animation-delay: 0.24s; }
+.skills .skill-tags li:nth-child(8).in-view { animation-delay: 0.28s; }
+.skills .skill-tags li:nth-child(9).in-view { animation-delay: 0.32s; }
+.skills .skill-tags li:nth-child(10).in-view { animation-delay: 0.36s; }
+.skills .skill-tags li:nth-child(11).in-view { animation-delay: 0.4s; }
+
+@keyframes skillTagInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes skillTagInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Полоска уровня внутри тега */
+.skill-level-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: calc(var(--level, 0.8) * 100%);
+  max-width: 100%;
+  background: var(--accent);
+  border-radius: 0 1px 0 0;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.skill-tags li:hover .skill-level-bar {
+  opacity: 1;
+}
+
+.skill-tags li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .about .section-title,
+  .about .section-subtitle,
+  .about-card,
+  .about-icon,
+  .skills .section-title,
+  .skills .section-subtitle,
+  .skill-category-card,
+  .skill-tags li {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .about .section-title,
+  .about .section-subtitle,
+  .about-card,
+  .skills .section-title,
+  .skills .section-subtitle,
+  .skill-category-card,
+  .skill-tags li {
+    opacity: 1;
+    transform: none !important;
+  }
+
+  .about .section-title.in-view,
+  .about .section-subtitle.in-view,
+  .about .about-card.in-view,
+  .skills .section-title.in-view,
+  .skills .section-subtitle.in-view,
+  .skills .skill-category-card.in-view,
+  .skills .skill-tags li.in-view,
+  .portfolio .section-title.in-view,
+  .portfolio .portfolio-intro.in-view,
+  .portfolio .portfolio-filters.in-view,
+  .portfolio .portfolio-item.in-view,
+  .portfolio .portfolio-placeholder.in-view,
+  .faq .section-title.in-view,
+  .faq .section-subtitle.in-view,
+  .faq .faq-item.in-view,
+  .faq .alexa-chat.in-view,
+  .game .section-title.in-view,
+  .game .section-subtitle.in-view,
+  .game .game-card.in-view,
+  .contact .section-title.in-view,
+  .contact .contact-intro.in-view,
+  .contact .contact-link.in-view {
+    animation: none !important;
+  }
+
+  .about-card:hover,
+  .portfolio-item:hover {
+    transform: none;
+  }
+
+  .skill-tags li:hover {
+    transform: none;
+  }
+
+  .portfolio .section-title,
+  .portfolio-intro,
+  .portfolio-placeholder,
+  .portfolio-item,
+  .faq .section-title,
+  .faq .section-subtitle,
+  .faq-item,
+  .faq .alexa-chat,
+  .contact .section-title,
+  .contact-intro,
+  .contact-link {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

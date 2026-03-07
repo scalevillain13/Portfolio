@@ -39,6 +39,8 @@
       'Александр — frontend-разработчик из Краснодара, 18 лет. Самоучка. Более 30 заказов, 25+ лендингов. Делаю быстро и качественно, открыт к удалёнке и релокации. Пишу интерфейсы и мечтает вырасти до fullstack.',
     skills:
       'Frontend: HTML5, CSS3, JavaScript (ES6+), React (middle), TypeScript, адаптивная вёрстка, Vite, Vue, Tailwind, SASS, Figma. Бэкенд и инструменты: REST API, Node.js, NestJS, PHP, Laravel, MySQL, Docker, WordPress, Git. Опыт с змейкой на канвасе — считаю, что это тоже навык.',
+    contacts:
+      'Связаться со мной: Telegram — @vanlaviks, GitHub — github.com/scalevillain13, почта — tka4ev2301@mail.ru. Пиши в удобный канал.',
     unknown:
       'Пока не знаю ответ на такой вопрос. Спроси про опыт с React, JavaScript, HTML, CSS, Git, Vite, Vue, про образование или про Александра — или просто поздоровайся.',
   };
@@ -84,6 +86,7 @@
     if (matchTopic(text, ['vue', 'вью'])) return REPLIES.vue;
     if (matchTopic(text, ['образование', 'учёба', 'учился', 'учиться', 'практикум', 'колледж', 'курсы', 'рпо', 'it top', 'яндекс'])) return REPLIES.education;
     if (matchTopic(text, ['расскажи про навыки', 'про навыки', 'навыки', 'какие навыки', 'какой стек'])) return REPLIES.skills;
+    if (matchTopic(text, ['как связаться', 'соцсети', 'соц сети', 'куда написать', 'дай контакты', 'контакты', 'телеграм', 'telegram', 'гитхаб', 'github', 'почта', 'email', 'написать'])) return REPLIES.contacts;
     if (matchTopic(text, ['обо мне', 'о себе', 'кто ты', 'расскажи о себе', 'расскажи про опыт', 'про опыт', 'александр', 'саша', 'верстальщик', 'фриланс', 'опыт работы', 'краснодар'])) return REPLIES.about;
 
     return REPLIES.unknown;

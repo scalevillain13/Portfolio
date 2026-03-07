@@ -1,12 +1,21 @@
 /**
- * Плавная загрузка: класс .page-loaded на body для анимации появления при заходе на сайт
- * Анимации при скролле: класс .in-view секциям при появлении в viewport
- * При полной загрузке/рефреше — всегда показываем страницу с верха (без прокрутки к якорю в URL)
+ * Плавная загрузка: класс .page-loaded на body.
+ * Анимации при скролле: каждому элементу добавляется .in-view при появлении в viewport
+ * (заголовки, карточки, пункты) — появление плавное по мере прокрутки.
  */
 (function () {
   function addPageLoaded() {
     document.body.classList.add('page-loaded');
   }
+
+  /* Параллакс hero: --scroll для смещения mac-окна */
+  function setScrollVar() {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.documentElement.style.setProperty('--scroll', reduced ? 0 : window.scrollY);
+  }
+  window.addEventListener('scroll', setScrollVar, { passive: true });
+  window.addEventListener('load', setScrollVar);
+  setScrollVar();
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', addPageLoaded);
@@ -21,12 +30,43 @@
     }
   });
 
-  if (!('IntersectionObserver' in window)) {
-    return;
-  }
+  if (!('IntersectionObserver' in window)) return;
 
-  var sections = document.querySelectorAll('.about, .skills, .portfolio, .faq, .game, .contact, .footer');
-  if (!sections.length) return;
+  var revealSelectors = [
+    '.about .section-title',
+    '.about .section-subtitle',
+    '.about .about-card',
+    '.skills .section-title',
+    '.skills .section-subtitle',
+    '.skills .skill-category-card',
+    '.portfolio .section-title',
+    '.portfolio .portfolio-intro',
+    '.portfolio .portfolio-filters',
+    '.portfolio .portfolio-item',
+    '.portfolio .portfolio-placeholder',
+    '.faq .section-title',
+    '.faq .section-subtitle',
+    '.faq .alexa-chat',
+    '.game .section-title',
+    '.game .section-subtitle',
+    '.game .game-card',
+    '.contact .section-title',
+    '.contact .contact-intro',
+    '.contact .contact-link'
+  ];
+
+  var revealElements = [];
+  revealSelectors.forEach(function (sel) {
+    try {
+      var list = document.querySelectorAll(sel);
+      for (var i = 0; i < list.length; i++) revealElements.push(list[i]);
+    } catch (e) {}
+  });
+
+  var skillTags = document.querySelectorAll('.skills .skill-tags li');
+  for (var j = 0; j < skillTags.length; j++) revealElements.push(skillTags[j]);
+
+  if (!revealElements.length) return;
 
   var observer = new IntersectionObserver(
     function (entries) {
@@ -37,12 +77,12 @@
       });
     },
     {
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.08
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.05
     }
   );
 
-  sections.forEach(function (section) {
-    observer.observe(section);
+  revealElements.forEach(function (el) {
+    observer.observe(el);
   });
 })();

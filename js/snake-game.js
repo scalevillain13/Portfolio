@@ -14,8 +14,8 @@
   var ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  var CELL = 20;
-  var GRID = canvas.width / CELL;
+  var CELL = 40;
+  var GRID = Math.floor(canvas.width / CELL);
   var BEST_KEY = 'portfolioSnakeBest';
 
   var SPEED_LEVELS = [
@@ -446,9 +446,9 @@
     if (timerId) { clearInterval(timerId); timerId = null; }
 
     snake = [
-      { x: 9, y: 10 },
-      { x: 8, y: 10 },
-      { x: 7, y: 10 }
+      { x: 6, y: 6 },
+      { x: 5, y: 6 },
+      { x: 4, y: 6 }
     ];
     direction = 'right';
     nextDirection = 'right';
@@ -505,9 +505,9 @@
     best = safeGetBest();
     updateScoreText();
     snake = [
-      { x: 9, y: 10 },
-      { x: 8, y: 10 },
-      { x: 7, y: 10 }
+      { x: 6, y: 6 },
+      { x: 5, y: 6 },
+      { x: 4, y: 6 }
     ];
     placeFood();
     draw(false);

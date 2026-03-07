@@ -45,4 +45,8 @@
     requestAnimationFrame(setActive);
   });
   setActive();
+  // При загрузке с хешем (#portfolio и т.д.) обновить подсветку после скролла к секции
+  if (window.location.hash) {
+    window.addEventListener('load', function () { requestAnimationFrame(setActive); });
+  }
 })();

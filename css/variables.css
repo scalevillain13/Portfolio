@@ -10,11 +10,15 @@
   --accent-dim: #d49840;
   --accent-glow: rgba(232, 168, 74, 0.25);
   --accent-soft: rgba(232, 168, 74, 0.12);
+  --accent-ring: rgba(232, 168, 74, 0.28);
+  --accent-muted: rgba(232, 168, 74, 0.35);
   /* Оттенки акцента для карточек «Обо мне» */
   --accent-2: #6bbf9e;
   --accent-2-glow: rgba(107, 191, 158, 0.25);
+  --accent-2-ring: rgba(107, 191, 158, 0.3);
   --accent-3: #7b9fd4;
   --accent-3-glow: rgba(123, 159, 212, 0.25);
+  --accent-3-ring: rgba(123, 159, 212, 0.3);
   --border: #2e2e36;
   --radius: 12px;
   --radius-lg: 16px;
@@ -39,35 +43,39 @@
   --mac-string: #98c379;
 }
 
-/* Светлая тема — включается через data-theme="light" на html */
+/* Светлая тема — чёрно-белая в стиле Apple */
 :root[data-theme="light"] {
-  --bg: #f5f5f7;
+  --bg: #fbfbfd;
   --bg-elevated: #ffffff;
   --bg-card: #ffffff;
-  --bg-card-hover: #f1f1f5;
-  --text: #111113;
-  --text-muted: #666671;
-  --accent: #e89a2c;
-  --accent-dim: #c57f1f;
-  --accent-glow: rgba(232, 154, 44, 0.25);
-  --accent-soft: rgba(232, 154, 44, 0.12);
-  --accent-2: #3b8f6b;
-  --accent-2-glow: rgba(59, 143, 107, 0.2);
-  --accent-3: #3c6acf;
-  --accent-3-glow: rgba(60, 106, 207, 0.22);
-  --border: #dedee6;
-  --header-bg: rgba(245, 245, 247, 0.98);
-  --text-secondary: #555560;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
-  --scrollbar-thumb: #c0c0cc;
+  --bg-card-hover: #f5f5f7;
+  --text: #1d1d1f;
+  --text-muted: #6e6e73;
+  --accent: #1d1d1f;
+  --accent-dim: #424245;
+  --accent-glow: rgba(0, 0, 0, 0.08);
+  --accent-soft: rgba(0, 0, 0, 0.06);
+  --accent-ring: rgba(0, 0, 0, 0.12);
+  --accent-muted: rgba(0, 0, 0, 0.1);
+  --accent-2: #424245;
+  --accent-2-glow: rgba(0, 0, 0, 0.06);
+  --accent-2-ring: rgba(0, 0, 0, 0.1);
+  --accent-3: #6e6e73;
+  --accent-3-glow: rgba(0, 0, 0, 0.05);
+  --accent-3-ring: rgba(0, 0, 0, 0.1);
+  --border: #d2d2d7;
+  --header-bg: rgba(251, 251, 253, 0.92);
+  --text-secondary: #6e6e73;
+  --shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --scrollbar-thumb: #c7c7cc;
   --btn-text: #ffffff;
 
   /* mac-окно в светлой теме */
-  --mac-bg: #f0f0f5;
-  --mac-titlebar: #e2e2ea;
-  --mac-code-bg: #f7f7fb;
-  --mac-code-text: #1a1a2e;
-  --mac-keyword: #9b30c8;
-  --mac-string: #2d8a4e;
+  --mac-bg: #f5f5f7;
+  --mac-titlebar: #e8e8ed;
+  --mac-code-bg: #fafafa;
+  --mac-code-text: #1d1d1f;
+  --mac-keyword: #424245;
+  --mac-string: #6e6e73;
 }

@@ -2,7 +2,7 @@
  * Анимация печати текста в hero при заходе на сайт
  */
 (function () {
-  var DELAY_MS = 58;
+  var DELAY_MS = 42;
 
   function wrapElement(el, startDelay) {
     if (!el || el.querySelector('.hero-char')) return startDelay;
@@ -26,13 +26,11 @@
     var greeting = document.querySelector('.hero-greeting.hero-text');
     var title = document.querySelector('.hero-title.hero-text');
     var subtitle = document.querySelector('.hero-subtitle.hero-text');
-    var tagline = document.querySelector('.hero-tagline.hero-text');
 
     var delay = 400;
     if (greeting) delay = wrapElement(greeting, delay);
     if (title) delay = wrapElement(title, delay);
-    if (subtitle) delay = wrapElement(subtitle, delay);
-    if (tagline) wrapElement(tagline, delay);
+    if (subtitle) wrapElement(subtitle, delay);
   }
 
   if (document.readyState === 'loading') {
