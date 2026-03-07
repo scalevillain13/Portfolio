@@ -715,6 +715,11 @@
   z-index: 2;
 }
 
+.portfolio-item-tags--vertical {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 /* Технологический ярлык */
 .portfolio-item-tag {
   display: inline-flex;
@@ -1442,7 +1447,16 @@ html[data-theme="light"] .portfolio-item-actions {
     padding: 10px 14px;
   }
   .alexa-input-wrap {
+    flex-direction: column;
     padding: 12px 16px 16px;
+    gap: 10px;
+  }
+  .alexa-input-wrap .alexa-input {
+    width: 100%;
+    min-width: 0;
+  }
+  .alexa .alexa-send {
+    width: 100%;
   }
 }
 

@@ -92,13 +92,15 @@
   function addMessage(container, isUser, name, text) {
     var wrap = document.createElement('div');
     wrap.className = 'alexa-msg alexa-msg--' + (isUser ? 'user' : 'bot');
-    var nameSpan = document.createElement('span');
-    nameSpan.className = 'alexa-msg-name';
-    nameSpan.textContent = name;
+    if (!isUser) {
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'alexa-msg-name';
+      nameSpan.textContent = name;
+      wrap.appendChild(nameSpan);
+    }
     var p = document.createElement('p');
     p.className = 'alexa-msg-text';
     p.textContent = text;
-    wrap.appendChild(nameSpan);
     wrap.appendChild(p);
     container.appendChild(wrap);
     container.scrollTop = container.scrollHeight;
