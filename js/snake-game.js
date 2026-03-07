@@ -501,6 +501,29 @@
     });
   }
 
+  function redrawForTheme() {
+    if (isGameOver) {
+      draw(true);
+      drawDeathOverlay();
+    } else if (isPaused) {
+      draw(false);
+      drawPauseOverlay();
+    } else {
+      draw(false);
+    }
+  }
+
+  function observeTheme() {
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (m) {
+        if (m.type === 'attributes' && m.attributeName === 'data-theme') {
+          redrawForTheme();
+        }
+      });
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  }
+
   function init() {
     best = safeGetBest();
     updateScoreText();
@@ -517,6 +540,7 @@
     });
     document.addEventListener('keydown', onKeyDown);
     initPad();
+    observeTheme();
   }
 
   init();

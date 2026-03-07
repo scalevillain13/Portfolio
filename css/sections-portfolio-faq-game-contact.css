@@ -8,11 +8,11 @@
 
 .portfolio .section-title {
   opacity: 0;
-  transform: translateY(-12px);
+  transform: scale(0.96);
 }
 
 .portfolio .section-title.in-view {
-  animation: sectionFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .portfolio-intro {
@@ -20,11 +20,11 @@
   margin: -1rem 0 2rem;
   max-width: 560px;
   opacity: 0;
-  transform: translateY(10px);
+  transform: scale(0.96);
 }
 
 .portfolio .portfolio-intro.in-view {
-  animation: sectionFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
 }
 
 /* Portfolio Filters */
@@ -35,11 +35,11 @@
   margin: 2rem 0 2.5rem;
   flex-wrap: wrap;
   opacity: 0;
-  transform: translateY(10px);
+  transform: scale(0.96);
 }
 
 .portfolio .portfolio-filters.in-view {
-  animation: sectionFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
 }
 
 .portfolio-filter-btn {
@@ -72,7 +72,7 @@
 
 .portfolio-filter-btn--active:hover,
 .portfolio-filter-btn--active:active,
-.portfolio-filter-btn--active:focus {
+.portfolio-filter-btn--active:focus-visible {
   color: var(--btn-text);
   background: var(--accent);
   box-shadow: 0 6px 20px var(--accent-glow);
@@ -94,7 +94,7 @@
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0,0,0,0.18);
   opacity: 0;
-  transform: translateY(16px) scale(0.98);
+  transform: scale(0.96);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -108,7 +108,7 @@ html[data-theme="light"] .portfolio-item {
 }
 
 .portfolio .portfolio-item.in-view {
-  animation: sectionFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .portfolio .portfolio-item:nth-child(1).in-view { animation-delay: 0s; }
@@ -532,11 +532,22 @@ html[data-theme="light"] .portfolio-item-actions {
   gap: 0.5rem;
   background: var(--bg-card);
   opacity: 0;
-  transform: translateY(16px);
+  transform: scale(0.96);
 }
 
 .portfolio .portfolio-placeholder.in-view {
-  animation: sectionFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes sectionScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes sectionFadeUp {
@@ -680,9 +691,8 @@ html[data-theme="light"] .portfolio-item-actions {
 .faq.alexa {
   padding-top: 4rem;
   padding-bottom: 4rem;
-  border-top: 1px solid var(--border);
-  margin-top: 2rem;
-  background: var(--bg);
+  margin-top: 0;
+  background: var(--bg-elevated);
 }
 
 .faq .section-title {
@@ -908,7 +918,7 @@ html[data-theme="light"] .alexa-msg--user {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.alexa-input:focus {
+.alexa-input:focus-visible {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-glow);
@@ -929,7 +939,7 @@ html[data-theme="light"] .alexa-msg--user {
   .faq.alexa {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    margin-top: 1.5rem;
+    margin-top: 0;
   }
   .alexa .alexa-chat {
     max-width: 100%;
@@ -980,22 +990,22 @@ html[data-theme="light"] .alexa-msg--user {
 
 .game .section-title {
   opacity: 0;
-  transform: translateY(-12px);
+  transform: scale(0.96);
 }
 
 .game .section-title.in-view {
-  animation: sectionFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .game .section-subtitle {
   color: var(--text-muted);
   margin: -1rem 0 2rem;
   opacity: 0;
-  transform: translateY(10px);
+  transform: scale(0.96);
 }
 
 .game .section-subtitle.in-view {
-  animation: sectionFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
 }
 
 .game-card {
@@ -1007,11 +1017,11 @@ html[data-theme="light"] .alexa-msg--user {
   background: linear-gradient(180deg, var(--bg-card), var(--bg-elevated));
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
   opacity: 0;
-  transform: translateY(16px);
+  transform: scale(0.96);
 }
 
 .game .game-card.in-view {
-  animation: sectionFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: sectionScaleIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .game-stats {
@@ -1094,6 +1104,7 @@ html[data-theme="light"] .alexa-msg--user {
 /* --- Contact --- */
 .contact {
   overflow: hidden;
+  background: var(--bg);
 }
 
 .contact .section-title {
@@ -1171,7 +1182,8 @@ html[data-theme="light"] .alexa-msg--user {
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  transition: color 0.2s ease, transform 0.2s ease;
+  transform: scale(1);
+  transition: color 0.25s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .contact-link:hover .contact-link-icon {
@@ -1183,15 +1195,15 @@ html[data-theme="light"] .alexa-msg--user {
 }
 
 .contact-link:nth-child(2):hover .contact-link-icon {
-  animation: contactIconShake 0.4s ease;
+  animation: contactIconShake 0.5s ease;
 }
 
 .contact-link:nth-child(3):hover .contact-link-icon {
-  animation: contactIconBounce 0.5s ease;
+  animation: contactIconBounce 0.55s ease;
 }
 
 .contact-link:nth-child(4):hover .contact-link-icon {
-  animation: contactIconWiggle 0.45s ease;
+  animation: contactIconWiggle 0.5s ease;
 }
 
 @keyframes contactIconShake {
@@ -1296,11 +1308,19 @@ html[data-theme="light"] .alexa-msg--user {
 
 /* --- Footer --- */
 .footer {
+  position: relative;
+  flex-shrink: 0;
   padding: 2rem 1.5rem;
+  padding-bottom: max(2rem, env(safe-area-inset-bottom, 0));
   text-align: center;
   border-top: 1px solid var(--border);
+  background: var(--bg);
   color: var(--text-muted);
   font-size: 0.9rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  /* Тень вниз тем же цветом — убирает просвет в самом низу страницы */
+  box-shadow: 0 100vh 0 0 var(--bg);
 }
 
 .footer p {

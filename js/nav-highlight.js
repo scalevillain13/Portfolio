@@ -24,12 +24,18 @@
       return;
     }
 
-    var viewportMid = scrollY + window.innerHeight * 0.4;
-    var current = null;
+    // Внизу страницы (футер в зоне видимости) — всегда Контакты
+    if (docHeight > 0 && scrollY >= docHeight - 80) {
+      sections.forEach(function (s) {
+        s.link.classList.toggle('active', s === sections[sections.length - 1]);
+      });
+      return;
+    }
 
-    // Ищем секцию, чья верхняя граница уже прошла середину вьюпорта
+    var current = null;
+    // Ищем секцию, чья верхняя граница уже прошла точку чуть ниже верха вьюпорта
     for (var i = sections.length - 1; i >= 0; i--) {
-      var top = sections[i].section.offsetTop - 80; // учитываем высоту шапки
+      var top = sections[i].section.offsetTop - 80;
       if (scrollY >= top) {
         current = sections[i];
         break;

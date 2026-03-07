@@ -35,7 +35,7 @@
 }
 
 a.btn-primary:hover,
-a.btn-primary:focus {
+a.btn-primary:focus-visible {
   color: var(--btn-text);
 }
 
@@ -46,7 +46,7 @@ a.btn-primary:focus {
   color: var(--btn-text);
 }
 
-/* Кнопка «Смотреть работы» — градиентная вращающаяся обводка */
+/* Кнопка «Смотреть работы» — градиентная вращающаяся обводка (цвета из темы: фиолетовая в тёмной, чёрно-белая в светлой) */
 .btn-primary--hero {
   position: relative;
   background: var(--accent);

@@ -13,13 +13,14 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-  background: var(--bg-elevated);
+  background: linear-gradient(to bottom, var(--bg-elevated), var(--border) 20%, var(--bg-elevated));
 }
 
 html::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb, #3a3a42);
   border-radius: 5px;
   border: 2px solid var(--bg-elevated);
+  box-shadow: 0 0 6px var(--accent-glow);
 }
 
 html::-webkit-scrollbar-thumb:hover {
@@ -41,13 +42,14 @@ html::-webkit-scrollbar-thumb:active {
 }
 
 .portfolio-modal-body::-webkit-scrollbar-track {
-  background: var(--bg-card);
+  background: linear-gradient(to bottom, var(--bg-card), var(--border) 20%, var(--bg-card));
 }
 
 .portfolio-modal-body::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb, #3a3a42);
   border-radius: 4px;
   border: 2px solid var(--bg-card);
+  box-shadow: 0 0 6px var(--accent-glow);
 }
 
 .portfolio-modal-body::-webkit-scrollbar-thumb:hover {

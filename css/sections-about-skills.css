@@ -24,19 +24,30 @@
   border-radius: 2px;
 }
 
-/* Заголовок и подзаголовок: анимация по скроллу (без .in-view скрыты) */
+/* Заголовок и подзаголовок: анимация по скроллу (вход слева) */
 .about .section-title,
 .about .section-subtitle {
   opacity: 0;
-  transform: translateY(-12px);
+  transform: translateX(-24px);
 }
 
 .about .section-title.in-view {
-  animation: aboutTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: sectionSlideFromLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .about .section-subtitle.in-view {
-  animation: aboutTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s forwards;
+  animation: sectionSlideFromLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s forwards;
+}
+
+@keyframes sectionSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes aboutTitleIn {

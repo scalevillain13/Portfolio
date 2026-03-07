@@ -7,6 +7,16 @@
 
 section {
   padding: 4rem 0;
+  position: relative;
+  /* Чтобы между секциями не просвечивал общий фон */
+  background: var(--bg);
+  /* Перекрытие убирает просвет по границе */
+  margin-bottom: -2px;
+}
+
+/* Hero без своего фона — сливается с градиентом body */
+#hero.hero {
+  background: transparent;
 }
 
 .section-title {
