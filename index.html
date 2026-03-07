@@ -553,29 +553,36 @@
       </div>
     </div>
 
-    <section id="faq" class="faq">
+    <section id="faq" class="faq alexa">
       <div class="container">
-        <h2 class="section-title">Ответы на вопросы</h2>
-        <p class="section-subtitle">Часто спрашивают о работе и опыте</p>
-        <div class="faq-list">
-          <article class="faq-item">
-            <h3 class="faq-question">Какой у тебя опыт работы с React?</h3>
-            <div class="faq-answer">
-              <p>Работаю с React 1,5+ года. Писал SPA на React, хуки (useState, useEffect, useMemo, useCallback), компонентный подход, работа с API (fetch, axios), управление состоянием. Есть опыт с drag-and-drop, формами, фильтрами и пагинацией. В проектах: приложение погоды, Kanban-доска, коммерческие лендинги.</p>
+        <h2 class="section-title">Обо мне</h2>
+        <p class="section-subtitle">Спроси о навыках, образовании или просто поздоровайся</p>
+        <div class="alexa-chat">
+          <div class="alexa-chat-header">
+            <img src="images/alexa-icon.svg" alt="" class="alexa-chat-icon" width="40" height="40">
+            <span class="alexa-chat-title">Алекса</span>
+          </div>
+          <div id="alexa-messages" class="alexa-messages" role="log" aria-live="polite">
+            <div class="alexa-msg alexa-msg--bot alexa-msg--visible">
+              <span class="alexa-msg-name">Алекса</span>
+              <p class="alexa-msg-text">Привет! Задай мне вопрос про опыт работы или про Александра!</p>
+            </div>
+          </div>
+          <form class="alexa-input-wrap" id="alexa-form" aria-label="Чат с Алекой">
+            <label for="alexa-input" class="visually-hidden">Ваше сообщение для Алексы</label>
+            <input type="text" id="alexa-input" class="alexa-input" placeholder="Напиши сообщение..." maxlength="500" autocomplete="off" inputmode="text">
+            <button type="submit" class="btn btn-primary alexa-send">Отправить</button>
+          </form>
+          <!-- old faq removed -->
+          <!-- понимаю асинхронность (Promise, async/await), замыкания, прототипы, модули. Работаю с DOM, событиями, Fetch API, localStorage. Умею проектировать архитектуру компонентов и выносить логику в переиспользуемые модули. Пишу читаемый код, соблюдаю соглашения по стилю. Опыт с ванильным JS и React.</p>
             </div>
           </article>
-          <article class="faq-item">
-            <h3 class="faq-question">Какой у тебя опыт работы с JavaScript?</h3>
-            <div class="faq-answer">
-              <p>Твёрдый middle: 2+ года коммерческой разработки. Пишу на ES6+, понимаю асинхронность (Promise, async/await), замыкания, прототипы, модули. Работаю с DOM, событиями, Fetch API, localStorage. Умею проектировать архитектуру компонентов и выносить логику в переиспользуемые модули. Пишу читаемый код, соблюдаю соглашения по стилю. Опыт с ванильным JS и React.</p>
-            </div>
-          </article>
-          <article class="faq-item">
+          <article class="faq-item" style="display:none">
             <h3 class="faq-question">Как обстоят дела с Git?</h3>
             <div class="faq-answer">
               <p>Уверенно пользуюсь Git в повседневной работе: коммиты, ветки, merge, push/pull, работа с удалёнными репозиториями (GitHub). Делал pull request’ы, ревью кода, решал конфликты при слиянии. Понимаю базовый workflow (feature-ветки, main/develop). Сложные сценарии вроде массового rebase или тонкой настройки CI не делал — но для командной разработки и своих проектов уровня хватает.</p>
             </div>
-          </article>
+          -->
         </div>
       </div>
     </section>
@@ -668,6 +675,7 @@
   <script src="js/code-typing.js"></script>
   <script src="js/portfolio-modal.js"></script>
   <script src="js/portfolio-filter.js"></script>
+  <script src="js/alexa-chat.js"></script>
   <script src="js/snake-game.js"></script>
 </body>
 </html>

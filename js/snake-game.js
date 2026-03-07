@@ -465,6 +465,11 @@
   }
 
   function onKeyDown(event) {
+    var target = event.target;
+    var tag = target && target.tagName ? target.tagName.toUpperCase() : '';
+    var isInput = tag === 'INPUT' || tag === 'TEXTAREA' || (target && target.isContentEditable);
+    if (isInput) return;
+
     var key = event.key;
     var code = event.code;
 
