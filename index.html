@@ -145,8 +145,8 @@
                 <li><span class="skill-level-bar" style="--level: 0.75"></span>TypeScript</li>
                 <li><span class="skill-level-bar" style="--level: 0.9"></span>Адаптивная вёрстка</li>
                 <li><span class="skill-level-bar" style="--level: 0.8"></span>Vite</li>
-                <li><span class="skill-level-bar" style="--level: 0.55"></span>Expo (базово)</li>
-                <li><span class="skill-level-bar" style="--level: 0.45"></span>Flutter (базово)</li>
+                <li><span class="skill-level-bar" style="--level: 0.7"></span>Vue</li>
+                <li><span class="skill-level-bar" style="--level: 0.7"></span>Tailwind CSS</li>
                 <li><span class="skill-level-bar" style="--level: 0.75"></span>Git</li>
                 <li><span class="skill-level-bar" style="--level: 0.7"></span>SASS / Figma</li>
               </ul>
@@ -270,6 +270,25 @@
             <div class="portfolio-item-actions">
               <a href="https://scalevillain13.github.io/kanban-board/" class="btn btn-primary" target="_blank" rel="noopener">Открыть приложение</a>
               <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-kanban">Подробнее</button>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-category="frontend">
+            <div class="portfolio-item-tags">
+              <span class="portfolio-item-tag portfolio-item-tag--vue" aria-hidden="true">Vue</span>
+            </div>
+            <div class="portfolio-item-head">
+              <h3 class="portfolio-item-title">Circles</h3>
+              <p class="portfolio-item-tagline">Круговой прогресс-бар на Vue 3</p>
+            </div>
+            <div class="portfolio-item-body">
+              <p class="portfolio-item-desc">
+                Переиспользуемый компонент: SVG и Canvas, типы circle/dashboard, состояния in_progress/success/warning/error, анимация и градиент по значению. Composition API, адаптивная вёрстка.
+              </p>
+            </div>
+            <div class="portfolio-item-actions">
+              <a href="https://github.com/scalevillain13/Circles" class="btn btn-primary" target="_blank" rel="noopener">Открыть репозиторий</a>
+              <button type="button" class="btn btn-ghost portfolio-detail-trigger" data-target="#portfolio-detail-modal-circles">Подробнее</button>
             </div>
           </article>
 
@@ -485,6 +504,31 @@
       </div>
     </div>
 
+    <div id="portfolio-detail-modal-circles" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title-circles">
+      <div class="portfolio-modal-backdrop"></div>
+      <div class="portfolio-modal-box">
+        <div class="portfolio-modal-header">
+          <h2 id="portfolio-detail-title-circles" class="portfolio-modal-title">Circles</h2>
+          <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="portfolio-modal-body">
+          <p class="portfolio-detail-lead">Компонент кругового прогресс-бара на Vue 3 (Composition API) без сторонних библиотек. Реализация на SVG и дополнительно на Canvas.</p>
+
+          <section class="portfolio-detail-section">
+            <h3>Возможности</h3>
+            <p><strong>Типы:</strong> <code>circle</code> (полный круг) и <code>dashboard</code> (дуга с разрывом снизу).</p>
+            <p><strong>Состояния:</strong> in_progress, success, warning, error — с плавной анимацией при смене значения и статуса. В in_progress цвет заполнения от красного (0%) к зелёному (100%). В центре: процент или иконки (галочка / ! / крестик).</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Технологии</h3>
+            <p>Vue 3, Composition API, Vite. SVG и Canvas-вариант с теми же props, анимация через requestAnimationFrame. Адаптивная вёрстка.</p>
+            <p><a href="https://github.com/scalevillain13/Circles" target="_blank" rel="noopener">Репозиторий на GitHub →</a></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
     <div id="portfolio-detail-modal-mygame" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title-mygame">
       <div class="portfolio-modal-backdrop"></div>
       <div class="portfolio-modal-box">
@@ -524,6 +568,12 @@
             <h3 class="faq-question">Какой у тебя опыт работы с JavaScript?</h3>
             <div class="faq-answer">
               <p>Твёрдый middle: 2+ года коммерческой разработки. Пишу на ES6+, понимаю асинхронность (Promise, async/await), замыкания, прототипы, модули. Работаю с DOM, событиями, Fetch API, localStorage. Умею проектировать архитектуру компонентов и выносить логику в переиспользуемые модули. Пишу читаемый код, соблюдаю соглашения по стилю. Опыт с ванильным JS и React.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <h3 class="faq-question">Как обстоят дела с Git?</h3>
+            <div class="faq-answer">
+              <p>Уверенно пользуюсь Git в повседневной работе: коммиты, ветки, merge, push/pull, работа с удалёнными репозиториями (GitHub). Делал pull request’ы, ревью кода, решал конфликты при слиянии. Понимаю базовый workflow (feature-ветки, main/develop). Сложные сценарии вроде массового rebase или тонкой настройки CI не делал — но для командной разработки и своих проектов уровня хватает.</p>
             </div>
           </article>
         </div>
