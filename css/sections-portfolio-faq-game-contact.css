@@ -27,57 +27,6 @@
   animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
 }
 
-/* Portfolio Filters */
-.portfolio-filters {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin: 2rem 0 2.5rem;
-  flex-wrap: wrap;
-  opacity: 0;
-  transform: scale(0.96);
-}
-
-.portfolio .portfolio-filters.in-view {
-  animation: sectionScaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
-}
-
-.portfolio-filter-btn {
-  padding: 0.65rem 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  background: var(--bg-card);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.portfolio-filter-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-soft);
-  box-shadow: 0 4px 12px var(--accent-glow);
-}
-
-.portfolio-filter-btn--active {
-  border-color: var(--accent);
-  color: var(--btn-text);
-  background: var(--accent);
-  box-shadow: 0 4px 16px var(--accent-glow);
-}
-
-.portfolio-filter-btn--active:hover,
-.portfolio-filter-btn--active:active,
-.portfolio-filter-btn--active:focus-visible {
-  color: var(--btn-text);
-  background: var(--accent);
-  box-shadow: 0 6px 20px var(--accent-glow);
-}
-
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1329,15 +1278,6 @@ html[data-theme="light"] .alexa-msg--user {
 
 /* --- Responsive: Mobile --- */
 @media (max-width: 480px) {
-  .portfolio-filters {
-    gap: 0.5rem;
-  }
-
-  .portfolio-filter-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-  }
-
   .portfolio-item--featured .portfolio-item-head {
     font-size: 0.95rem;
   }
@@ -1359,15 +1299,6 @@ html[data-theme="light"] .alexa-msg--user {
   .portfolio-item--featured {
     grid-column: 1 / -1;
     max-width: 100%;
-  }
-
-  .portfolio-filters {
-    justify-content: center;
-  }
-
-  .portfolio-filter-btn {
-    padding: 0.75rem 1.75rem;
-    font-size: 1rem;
   }
 
   .portfolio-item--featured .portfolio-item-title {

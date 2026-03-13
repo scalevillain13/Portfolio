@@ -121,37 +121,39 @@ html[data-theme="light"] .about-card {
 .about-card:hover {
   transform: translateY(-10px) rotateX(calc(var(--mouse-y, 0) * -5deg)) rotateY(calc(var(--mouse-x, 0) * 5deg)) scale(1.02);
   box-shadow:
-    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
-    0 20px 50px -15px rgba(0, 0, 0, 0.4),
-    0 25px 60px -20px rgba(0, 0, 0, 0.35);
+    inset 0 -24px 48px -20px rgba(0, 0, 0, 0.2),
+    0 24px 56px -16px rgba(0, 0, 0, 0.45),
+    0 32px 72px -24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--accent-ring),
+    0 18px 50px -12px var(--accent-glow);
   background: radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-soft), rgba(34, 34, 40, 0.7) 60%);
 }
 
 .about-card:nth-child(1):hover {
   box-shadow:
-    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
-    0 20px 50px -15px rgba(0, 0, 0, 0.4),
-    0 25px 60px -20px rgba(0, 0, 0, 0.35),
-    0 0 0 1px var(--accent-ring),
-    0 15px 45px -10px var(--accent-glow);
+    inset 0 -24px 48px -20px rgba(0, 0, 0, 0.2),
+    0 24px 56px -16px rgba(0, 0, 0, 0.45),
+    0 32px 72px -24px rgba(0, 0, 0, 0.4),
+    0 0 0 2px var(--accent-ring),
+    0 18px 50px -12px var(--accent-glow);
 }
 
 .about-card:nth-child(2):hover {
   box-shadow:
-    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
-    0 20px 50px -15px rgba(0, 0, 0, 0.4),
-    0 25px 60px -20px rgba(0, 0, 0, 0.35),
-    0 0 0 1px var(--accent-2-ring),
-    0 15px 45px -10px var(--accent-2-glow);
+    inset 0 -24px 48px -20px rgba(0, 0, 0, 0.2),
+    0 24px 56px -16px rgba(0, 0, 0, 0.45),
+    0 32px 72px -24px rgba(0, 0, 0, 0.4),
+    0 0 0 2px var(--accent-2-ring),
+    0 18px 50px -12px var(--accent-2-glow);
 }
 
 .about-card:nth-child(3):hover {
   box-shadow:
-    inset 0 -20px 40px -20px rgba(0, 0, 0, 0.15),
-    0 20px 50px -15px rgba(0, 0, 0, 0.4),
-    0 25px 60px -20px rgba(0, 0, 0, 0.35),
-    0 0 0 1px var(--accent-3-ring),
-    0 15px 45px -10px var(--accent-3-glow);
+    inset 0 -24px 48px -20px rgba(0, 0, 0, 0.2),
+    0 24px 56px -16px rgba(0, 0, 0, 0.45),
+    0 32px 72px -24px rgba(0, 0, 0, 0.4),
+    0 0 0 2px var(--accent-ring),
+    0 18px 50px -12px var(--accent-glow);
 }
 
 html[data-theme="light"] .about-card:hover {
@@ -185,10 +187,6 @@ html[data-theme="light"] .about-card:hover {
   color: var(--accent-2);
 }
 
-.about-card:nth-child(3):hover .about-icon {
-  color: var(--accent-3);
-}
-
 @keyframes aboutIconBounce {
   0%, 100% { transform: scale(1.1); }
   50% { transform: scale(1.25); }
@@ -206,10 +204,6 @@ html[data-theme="light"] .about-card:hover {
 
 .about-card:nth-child(2):hover h3 {
   color: var(--accent-2);
-}
-
-.about-card:nth-child(3):hover h3 {
-  color: var(--accent-3);
 }
 
 .about-card p {
@@ -529,7 +523,6 @@ html[data-theme="light"] .about-card:hover {
   .skills .skill-tags li.in-view,
   .portfolio .section-title.in-view,
   .portfolio .portfolio-intro.in-view,
-  .portfolio .portfolio-filters.in-view,
   .portfolio .portfolio-item.in-view,
   .portfolio .portfolio-placeholder.in-view,
   .faq .section-title.in-view,

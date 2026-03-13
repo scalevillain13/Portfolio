@@ -41,7 +41,6 @@
     '.skills .skill-category-card',
     '.portfolio .section-title',
     '.portfolio .portfolio-intro',
-    '.portfolio .portfolio-filters',
     '.portfolio .portfolio-item',
     '.portfolio .portfolio-placeholder',
     '.faq .section-title',
