@@ -201,30 +201,3 @@ html[data-theme="light"] .theme-icon--moon {
   border-radius: 1px;
 }
 
-@media (max-width: 640px) {
-  .nav-links {
-    display: none;
-    /* Сбрасываем центрирование на мобильном */
-    position: static;
-    transform: none;
-  }
-
-  .nav-toggle {
-    display: flex;
-  }
-
-  .nav.open .nav-links {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    transform: none;
-    flex-direction: column;
-    gap: 0;
-    padding: 1rem;
-    background: var(--bg-elevated);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
-  }
-}

@@ -383,12 +383,6 @@ html[data-theme="light"] .about-card:hover {
   display: none;
 }
 
-@media (max-width: 480px) {
-  .skill-tags--soft {
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 110px), 1fr));
-  }
-}
-
 .skill-category h3::after {
   content: "";
   position: absolute;
