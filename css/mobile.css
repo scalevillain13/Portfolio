@@ -84,6 +84,18 @@
     height: 16px;
   }
 
+  /* Бейджи технологий скрыты на мобилке */
+  .portfolio-item-tags {
+    display: none !important;
+  }
+
+  .portfolio-item-head {
+    padding-right: 1rem;
+  }
+
+  .portfolio-item--featured .portfolio-item-head {
+    padding-right: 1rem;
+  }
 }
 
 /* ========== 640px (мобильный) ========== */
@@ -207,7 +219,7 @@
   }
 
   .portfolio-item-head {
-    padding: 0.75rem 7.5rem 0.5rem 1rem;
+    padding: 0.75rem 1rem 0.5rem 1rem;
   }
 
   .portfolio-item--featured .portfolio-item-head {

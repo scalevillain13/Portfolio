@@ -225,30 +225,6 @@ html[data-theme="light"] .portfolio-item-tag--game {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* Vue вЂ” Р·РµР»С‘РЅС‹Р№ Р±СЂРµРЅРґ */
-.portfolio-item-tag--vue {
-  background: rgba(66, 184, 131, 0.15);
-  color: #42b883;
-  border: 1px solid rgba(66, 184, 131, 0.4);
-  box-shadow: 0 2px 10px rgba(66, 184, 131, 0.12);
-}
-
-.portfolio-item:hover .portfolio-item-tag--vue {
-  box-shadow: 0 4px 18px rgba(66, 184, 131, 0.28);
-}
-
-/* Vue вЂ” СЃРІРµС‚Р»Р°СЏ С‚РµРјР°: Р·РµР»С‘РЅР°СЏ РїРѕРґСЃРІРµС‚РєР° (Р±СЂРµРЅРґ Vue) */
-html[data-theme="light"] .portfolio-item-tag--vue {
-  color: #2d6a4f;
-  background: rgba(66, 184, 131, 0.2);
-  border-color: rgba(66, 184, 131, 0.45);
-  box-shadow: 0 2px 8px rgba(66, 184, 131, 0.12);
-}
-
-html[data-theme="light"] .portfolio-item:hover .portfolio-item-tag--vue {
-  box-shadow: 0 4px 14px rgba(66, 184, 131, 0.2);
-}
-
 /* PHP вЂ” СЃРІРµС‚Р»Р°СЏ С‚РµРјР°: С„РёРѕР»РµС‚РѕРІР°СЏ РїРѕРґСЃРІРµС‚РєР° */
 html[data-theme="light"] .portfolio-item-tag--php {
   color: #6f42c1;
