@@ -1,0 +1,102 @@
+/* Loading screen — Mr Robot style, ч/б, печать «Добро пожаловать» */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0a0a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.loading-screen--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-screen__text {
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  min-height: 1.5em;
+}
+
+.loading-screen__char {
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.loading-screen__char.is-visible {
+  opacity: 1;
+}
+
+.loading-screen__cursor {
+  display: inline-block;
+  width: 0.12em;
+  height: 1em;
+  background: currentColor;
+  margin-left: 0.05em;
+  vertical-align: -0.15em;
+  animation: loadingCursor 0.8s step-end infinite;
+}
+
+@keyframes loadingCursor {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.loading-screen__line {
+  width: 100%;
+  max-width: 280px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  margin-top: 1rem;
+  animation: loadingScan 2s ease-in-out infinite;
+}
+
+@keyframes loadingScan {
+  0%, 100% { opacity: 0.3; transform: scaleX(0.8); }
+  50% { opacity: 0.8; transform: scaleX(1); }
+}
+
+html.loading,
+body.loading {
+  overflow: hidden !important;
+  height: 100% !important;
+}
+
+body.loading .loading-screen {
+  display: flex;
+}
+
+body.loading .header,
+body.loading #main,
+body.loading .footer {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  animation-play-state: paused !important;
+}
+
+body.loading #main *,
+body.loading .header *,
+body.loading .footer * {
+  animation-play-state: paused !important;
+}
+
+body:not(.loading) #main,
+body:not(.loading) .footer {
+  opacity: 1;
+  visibility: visible;
+}
+
+body:not(.loading) .loading-screen {
+  display: none;
+}

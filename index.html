@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="loading">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Unbounded:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/theme-toggle.js"></script>
+  <script src="js/loading.js"></script>
 </head>
-<body>
+<body class="loading">
+  <div class="loading-screen" id="loading-screen" aria-live="polite" aria-label="Загрузка">
+    <p class="loading-screen__text" id="loading-text"></p>
+    <span class="loading-screen__cursor" aria-hidden="true"></span>
+    <div class="loading-screen__line" aria-hidden="true"></div>
+  </div>
   <a href="#main" class="skip-link">Перейти к основному содержимому</a>
   <header class="header">
     <nav class="nav">
@@ -142,7 +148,7 @@
                 <li><span class="skill-level-bar" style="--level: 0.95"></span>HTML5</li>
                 <li><span class="skill-level-bar" style="--level: 0.9"></span>CSS3</li>
                 <li><span class="skill-level-bar" style="--level: 0.85"></span>JavaScript</li>
-                <li><span class="skill-level-bar" style="--level: 0.9"></span>React (middle)</li>
+                <li><span class="skill-level-bar" style="--level: 0.9"></span>React</li>
                 <li><span class="skill-level-bar" style="--level: 0.75"></span>TypeScript</li>
                 <li><span class="skill-level-bar" style="--level: 0.8"></span>Vite</li>
                 <li><span class="skill-level-bar" style="--level: 0.7"></span>Tailwind CSS</li>
@@ -159,11 +165,9 @@
                 <li><span class="skill-level-bar" style="--level: 0.65"></span>NestJS</li>
                 <li><span class="skill-level-bar" style="--level: 0.85"></span>PHP</li>
                 <li><span class="skill-level-bar" style="--level: 0.7"></span>Laravel</li>
-                <li><span class="skill-level-bar" style="--level: 0.65"></span>Symfony</li>
                 <li><span class="skill-level-bar" style="--level: 0.6"></span>PostgreSQL</li>
                 <li><span class="skill-level-bar" style="--level: 0.6"></span>Docker</li>
                 <li><span class="skill-level-bar" style="--level: 0.6"></span>WordPress</li>
-                <li><span class="skill-level-bar" style="--level: 0.6"></span>Битрикс24 (интеграции)</li>
               </ul>
             </div>
           </div>
@@ -177,6 +181,8 @@
                 <li>Работа в команде</li>
                 <li>Адаптивность</li>
                 <li>Ответственность</li>
+                <li>Критическое мышление</li>
+                <li>Стрессоустойчивость</li>
               </ul>
             </div>
           </div>
@@ -189,15 +195,15 @@
         <h2 class="section-title">Портфолио</h2>
         <p class="portfolio-intro">Ключевые проекты и технологии.</p>
 
+        <nav class="portfolio-tabs" role="tablist" aria-label="Разделы портфолио">
+          <button type="button" class="portfolio-tab-btn portfolio-tab-btn--active" role="tab" aria-selected="true" aria-controls="portfolio-tab-projects" id="tab-projects"><span class="portfolio-tab-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>Проекты</button>
+          <button type="button" class="portfolio-tab-btn" role="tab" aria-selected="false" aria-controls="portfolio-tab-questions" id="tab-questions"><span class="portfolio-tab-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>Вопросы</button>
+          <button type="button" class="portfolio-tab-btn" role="tab" aria-selected="false" aria-controls="portfolio-tab-stack" id="tab-stack"><span class="portfolio-tab-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/><path d="M12 8v4M8.5 17.2l2.5-3M15.5 17.2l-2.5-3"/></svg></span>Стек</button>
+        </nav>
+
+        <div class="portfolio-tab-content" id="portfolio-tab-projects" role="tabpanel" aria-labelledby="tab-projects" data-tab="projects">
         <div class="portfolio-grid" id="portfolio-grid">
-          <article class="portfolio-item portfolio-item--featured" data-category="frontend">
-            <div class="portfolio-item-badges">
-              <span class="portfolio-item-flame" aria-hidden="true">
-                <span class="portfolio-item-flame-icon">🔥</span>
-                <span class="portfolio-item-flame-text">Главный проект</span>
-              </span>
-              <span class="portfolio-item-badge portfolio-item-badge--dev" aria-hidden="true">Ведётся разработка</span>
-            </div>
+          <article class="portfolio-item" data-category="frontend">
             <div class="portfolio-item-head">
               <h3 class="portfolio-item-title">yoom.pro</h3>
               <p class="portfolio-item-tagline">Агентство недвижимости (новостройки Сочи)</p>
@@ -219,12 +225,6 @@
           </article>
 
           <article class="portfolio-item" data-category="frontend">
-            <div class="portfolio-item-tags">
-              <span class="portfolio-item-tag portfolio-item-tag--react" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.065c-5.555 0-10.065-4.51-10.065-10.065S6.445 1.935 12 1.935 22.065 6.445 22.065 12 17.555 22.065 12 22.065zm0-18.026C6.537 4.039 2.1 7.67 2.1 12s4.437 7.961 9.9 7.961 9.9-3.63 9.9-7.961-4.437-7.961-9.9-7.961z"/></svg>
-                React
-              </span>
-            </div>
             <div class="portfolio-item-head">
               <h3 class="portfolio-item-title">Погода</h3>
               <p class="portfolio-item-tagline">Одностраничное приложение на React</p>
@@ -235,7 +235,7 @@
               </p>
             </div>
             <div class="portfolio-item-actions">
-              <a href="https://scalevillain13.github.io/weather-app/" class="btn btn-primary" target="_blank" rel="noopener">Открыть приложение</a>
+              <a href="https://scalevillain13.github.io/weather-app/" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
               <button type="button" class="action-btn action-btn--secondary portfolio-detail-trigger" data-target="#portfolio-detail-modal-weather">
                 <span>Подробнее</span>
                 <svg class="action-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -246,12 +246,6 @@
           </article>
 
           <article class="portfolio-item" data-category="frontend">
-            <div class="portfolio-item-tags">
-              <span class="portfolio-item-tag portfolio-item-tag--react" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.065c-5.555 0-10.065-4.51-10.065-10.065S6.445 1.935 12 1.935 22.065 6.445 22.065 12 17.555 22.065 12 22.065zm0-18.026C6.537 4.039 2.1 7.67 2.1 12s4.437 7.961 9.9 7.961 9.9-3.63 9.9-7.961-4.437-7.961-9.9-7.961z"/></svg>
-                React
-              </span>
-            </div>
             <div class="portfolio-item-head">
               <h3 class="portfolio-item-title">Kanban Board</h3>
               <p class="portfolio-item-tagline">Управление задачами с drag-and-drop</p>
@@ -262,7 +256,7 @@
               </p>
             </div>
             <div class="portfolio-item-actions">
-              <a href="https://scalevillain13.github.io/kanban-board/" class="btn btn-primary" target="_blank" rel="noopener">Открыть приложение</a>
+              <a href="https://scalevillain13.github.io/kanban-board/" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
               <button type="button" class="action-btn action-btn--secondary portfolio-detail-trigger" data-target="#portfolio-detail-modal-kanban">
                 <span>Подробнее</span>
                 <svg class="action-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -273,16 +267,6 @@
           </article>
 
           <article class="portfolio-item" data-category="frontend">
-            <div class="portfolio-item-tags portfolio-item-tags--vertical">
-              <span class="portfolio-item-tag portfolio-item-tag--react" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.065c-5.555 0-10.065-4.51-10.065-10.065S6.445 1.935 12 1.935 22.065 6.445 22.065 12 17.555 22.065 12 22.065zm0-18.026C6.537 4.039 2.1 7.67 2.1 12s4.437 7.961 9.9 7.961 9.9-3.63 9.9-7.961-4.437-7.961-9.9-7.961z"/></svg>
-                React
-              </span>
-              <span class="portfolio-item-tag portfolio-item-tag--ts" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm10.71 14.86c.5.98 1.51 1.73 3.09 1.73 1.6 0 2.8-.83 2.8-2.36 0-1.41-.81-2.04-2.25-2.66l-.42-.18c-.73-.31-1.04-.52-1.04-1.02 0-.41.31-.73.81-.73.48 0 .8.21 1.09.73l1.31-.87c-.55-.96-1.33-1.33-2.4-1.33-1.51 0-2.48.96-2.48 2.23 0 1.38.81 2.03 2.03 2.55l.42.18c.78.34 1.24.55 1.24 1.13 0 .48-.45.83-1.15.83-.83 0-1.31-.43-1.67-1.03l-1.38.8zm3.01-9.03h-4.28v1.4h2.72v6.14h1.56v-6.14h1v-1.4z"/></svg>
-                TypeScript
-              </span>
-            </div>
             <div class="portfolio-item-head">
               <h3 class="portfolio-item-title">Админ-Панель</h3>
               <p class="portfolio-item-tagline">Управление пользователями, ролями и группами (RBAC)</p>
@@ -293,7 +277,7 @@
               </p>
             </div>
             <div class="portfolio-item-actions">
-              <a href="https://scalevillain13.github.io/admin-panel/login" class="btn btn-primary" target="_blank" rel="noopener">Открыть приложение</a>
+              <a href="https://scalevillain13.github.io/admin-panel/login" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
               <button type="button" class="action-btn action-btn--secondary portfolio-detail-trigger" data-target="#portfolio-detail-modal-admin">
                 <span>Подробнее</span>
                 <svg class="action-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -304,12 +288,6 @@
           </article>
 
           <article class="portfolio-item" data-category="frontend">
-            <div class="portfolio-item-tags">
-              <span class="portfolio-item-tag portfolio-item-tag--js" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.08-.373-.04-.499.113-.372.69-.507 1.134-.49.293.01.563.05.79.144.437.181.681.354 1.01.644.646.558.646 1.089.646 1.089v2.623h-1.555v-.903h-.002c-.009-.313-.102-.542-.319-.711-.217-.169-.506-.234-.879-.234-.315 0-.573.05-.774.15-.201.099-.344.242-.429.427-.085.185-.127.413-.127.683 0 .537.213.931.638 1.184.425.253 1.004.378 1.737.378.47 0 .915-.055 1.334-.164.419-.11.783-.266 1.092-.471.309-.205.538-.454.686-.747.148-.293.222-.622.222-.987v-.063h-1.578c.01.2.002.347-.024.451-.026.104-.082.194-.168.27-.086.076-.208.137-.366.183-.158.045-.354.068-.588.068-.261 0-.473-.044-.636-.132-.163-.087-.278-.208-.345-.363-.067-.155-.1-.338-.1-.549 0-.232.055-.43.164-.594.109-.164.27-.305.481-.423.212-.117.476-.223.793-.317.318-.094.659-.188 1.024-.283a6.92 6.92 0 0 0 1.107-.471c.328-.18.582-.404.763-.672.18-.267.27-.585.27-.954 0-.526-.186-.966-.557-1.324-.371-.358-.893-.634-1.566-.826-.673-.193-1.493-.289-2.46-.289-.927 0-1.735.085-2.424.254-.689.169-1.225.404-1.61.704-.385.3-.638.648-.749 1.043-.111.395-.087.804.071 1.226h1.578a1.516 1.516 0 0 0-.061-.306.983.983 0 0 0-.259-.422.868.868 0 0 0-.375-.228 2.18 2.18 0 0 0-.542-.067c-.261 0-.473.044-.636.132-.163.087-.278.208-.345.363-.067.155-.1.338-.1.549 0 .232.055.43.164.594.109.164.27.305.481.423.212.117.476.223.793.317.318.094.659.188 1.024.283.366.094.687.18.964.257.278.077.508.163.692.258.183.095.317.207.403.336.085.129.127.281.127.455 0 .246-.1.466-.299.661-.2.194-.476.354-.829.479-.353.125-.764.188-1.233.188-.939 0-1.658-.22-2.157-.659-.5-.439-.751-1.082-.755-1.929v-.063h1.578c0 .537.213.931.638 1.184.425.253 1.004.378 1.737.378.47 0 .915-.055 1.334-.164.419-.11.783-.266 1.092-.471.309-.205.538-.454.686-.747.148-.293.222-.622.222-.987v-.021c-.001-.488-.107-.875-.318-1.161-.211-.286-.515-.502-.914-.646-.398-.145-.863-.261-1.393-.348-.531-.088-1.082-.14-1.653-.164a25.04 25.04 0 0 0-1.693-.06c-.99-.002-1.853.078-2.59.24-.736.163-1.354.4-1.853.712-.498.313-.863.693-1.092 1.142-.229.448-.343.958-.343 1.529 0 .775.217 1.412.651 1.911.434.5 1.003.879 1.708 1.137.705.258 1.502.387 2.39.387.927 0 1.735-.085 2.424-.254.689-.169 1.225-.404 1.61-.704.385-.3.638-.648.749-1.043.111-.395.087-.804-.071-1.226H8.303zm7.176 2.706h1.578c.008.488.112.875.318 1.161.206.286.51.502.914.646.398.145.863.261 1.393.348.531.088 1.082.14 1.653.164.571.024 1.133.046 1.693.06.99.002 1.853-.078 2.59-.24.736-.163 1.354-.4 1.853-.712.498-.313.863-.693 1.092-1.142.229-.448.343-.958.343-1.529 0-.775-.217-1.412-.651-1.911-.434-.5-1.003-.879-1.708-1.137-.705-.258-1.502-.387-2.39-.387-.927 0-1.735.085-2.424.254-.689.169-1.225.404-1.61.704-.385.3-.638.648-.749 1.043-.111.395-.087.804.071 1.226h-1.578c-.008-.488-.112-.875-.318-1.161-.206-.286-.51-.502-.914-.646-.398-.145-.863-.261-1.393-.348-.531-.088-1.082-.14-1.653-.164-.571-.024-1.133-.046-1.693-.06-.99-.002-1.853.078-2.59.24-.736.163-1.354.4-1.853.712-.498.313-.863.693-1.092 1.142-.229.448-.343.958-.343 1.529 0 .775.217 1.412.651 1.911.434.5 1.003.879 1.708 1.137.705.258 1.502.387 2.39.387.927 0 1.735-.085 2.424-.254.689-.169 1.225-.404 1.61-.704.385-.3.638-.648.749-1.043.111-.395.087-.804-.071-1.226z"/></svg>
-                JS
-              </span>
-            </div>
             <div class="portfolio-item-head">
               <h3 class="portfolio-item-title">Убийца Слизней</h3>
               <p class="portfolio-item-tagline">Браузерная RPG-игра на ванильном JS</p>
@@ -320,7 +298,7 @@
               </p>
             </div>
             <div class="portfolio-item-actions">
-              <a href="https://scalevillain13.github.io/MyGame/" class="btn btn-primary" target="_blank" rel="noopener">Открыть игру</a>
+              <a href="https://scalevillain13.github.io/MyGame/" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
               <button type="button" class="action-btn action-btn--secondary portfolio-detail-trigger" data-target="#portfolio-detail-modal-mygame">
                 <span>Подробнее</span>
                 <svg class="action-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -330,6 +308,49 @@
             </div>
           </article>
         </div>
+        </div>
+
+        <div class="portfolio-tab-content portfolio-tab-content--hidden" id="portfolio-tab-questions" role="tabpanel" aria-labelledby="tab-questions" data-tab="questions" aria-hidden="true">
+          <div class="portfolio-questions-wrap">
+            <p class="portfolio-questions-intro">Частые вопросы по опыту и технологиям.</p>
+            <dl class="portfolio-questions-list">
+              <dt>Опыт с React?</dt>
+              <dd>1,5 года коммерческой разработки на React: SPA, хуки, стейт-менеджмент, интеграция с API. Готов к код-ревью и работе по гайдлайнам команды.</dd>
+              <dt>JavaScript?</dt>
+              <dd>2 года: ES6+, асинхронность, DOM, сборщики. Пишу читаемый и поддерживаемый код.</dd>
+              <dt>Git?</dt>
+              <dd>Ежедневное использование: ветки, merge, rebase, code review. Опыт в командной разработке и CI/CD.</dd>
+              <dt>Docker?</dt>
+              <dd>Опыт сборки и запуска контейнеров, docker-compose для локальной разработки и деплоя.</dd>
+              <dt>Vite?</dt>
+              <dd>Использую в проектах: быстрая сборка, HMR, настройка под продакшен.</dd>
+              <dt>HTML и CSS?</dt>
+              <dd>Глубокий опыт вёрстки: семантика, доступность, адаптив, препроцессоры. Pixel-perfect по макетам, кроссбраузерность и мобильная оптимизация.</dd>
+            </dl>
+            <p class="portfolio-questions-cta">Остались вопросы? Пиши в <a href="#contact">Контакты</a>.</p>
+          </div>
+        </div>
+
+        <div class="portfolio-tab-content portfolio-tab-content--hidden" id="portfolio-tab-stack" role="tabpanel" aria-labelledby="tab-stack" data-tab="stack" aria-hidden="true">
+          <div class="stack-grid" id="stack-grid">
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--html" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E34F26" width="28" height="28"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm4.5 20.5 2.5-15 1.5 15H14l-1-6.5h-.5L11 20.5h-5zm12-.5-1.5-6-1 4-.5-2-2.5 4H6.5L10 4h2l-3 16h9z"/></svg></span><span class="stack-card-label">HTML5</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--css" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zM17.09 4.413l-3.008 17.123-4.102-1.14-.31-3.504h1.508l.206 2.256 2.24.623 2.008-.56.283-3.247H6.639l-.432-4.853 8.216-.004.283-3.18H3.24L2.778 4.413h14.312z"/></svg></span><span class="stack-card-label">CSS3</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--js" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><path d="M3 3h18v18H3V3zm16.525 13.707c-.131-.821-.666-1.511-2.252-2.155-.552-.259-1.165-.438-1.349-.854-.068-.248-.08-.382-.046-.529.046-.244.268-.396.564-.396.27 0 .536.094.723.272.195.195.307.46.307.754 0 .554-.319.966-.785 1.22-.566.293-1.34.487-1.976.587-.642.104-1.244.31-1.68.676-.436.365-.646.814-.646 1.355 0 .624.312 1.123.89 1.485.578.362 1.38.558 2.213.558 1.016 0 1.872-.244 2.55-.722.678-.478 1.057-1.14 1.188-1.98l-1.418-.094zm-6.737-5.434h1.413c.088 1.18.646 1.803 1.701 1.803.958 0 1.6-.457 1.92-1.352.319-.895.319-2.04 0-2.936-.32-.895-.962-1.352-1.92-1.352-.94 0-1.576.447-1.804 1.306h-1.43c.218-1.332.907-2.231 2.234-2.231.966 0 1.735.478 2.205 1.408.47.93.47 2.166 0 3.096-.47.93-1.239 1.408-2.205 1.408-1.333 0-2.022-.932-2.234-2.226z" fill="#F7DF1E"/></svg></span><span class="stack-card-label">JavaScript</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--react" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#61DAFB" width="28" height="28"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.236-2.235 2.236 2.236 0 0 1 2.235 2.235zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.264-.973 6.365C1.98 8.917 0 10.42 0 12.004c0 1.59 1.99 3.097 5.043 4.03-.704 3.113-.39 5.588.988 6.38.32.187.69.275 1.102.275 1.345 0 3.107-.96 4.888-2.624 1.78 1.654 3.542 2.603 4.887 2.603.41 0 .783-.09 1.106-.275 1.374-.792 1.683-3.263.973-6.365C22.02 15.096 24 13.59 24 12.004c0-1.59-1.99-3.097-5.043-4.032.704-3.11.39-5.587-.988-6.38-.318-.184-.688-.277-1.091-.278zm-6.627 2.453c.31 0 .595.14.795.385.204.248.312.58.312.944 0 .365-.108.697-.312.945-.2.246-.485.386-.795.386-.31 0-.595-.14-.795-.386-.204-.248-.312-.58-.312-.945 0-.365.108-.696.312-.944.2-.246.485-.385.795-.385zm-4.72 2.834c.287 0 .552.132.738.36.19.23.29.54.29.87 0 .33-.1.64-.29.87-.186.228-.45.36-.737.36-.288 0-.552-.132-.738-.36-.19-.23-.29-.54-.29-.87 0-.33.1-.64.29-.87.186-.228.45-.36.737-.36zm10.165 2.68c.287 0 .552.132.738.36.19.23.29.54.29.87 0 .33-.1.64-.29.87-.186.228-.45.36-.737.36-.288 0-.552-.132-.738-.36-.19-.23-.29-.54-.29-.87 0-.33.1-.64.29-.87.186-.228.45-.36.737-.36zm-10.165 2.69c.287 0 .552.132.738.36.19.23.29.54.29.87 0 .33-.1.64-.29.87-.186.228-.45.36-.737.36-.288 0-.552-.132-.738-.36-.19-.23-.29-.54-.29-.87 0-.33.1-.64.29-.87.186-.228.45-.36.737-.36z"/></svg></span><span class="stack-card-label">React</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--ts" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#3178C6" width="28" height="28"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg></span><span class="stack-card-label">TypeScript</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--vite" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#646CFF" width="28" height="28"><path d="M8.286 10.578c.026-.06.057-.122.09-.184.073-.152.158-.302.255-.446a.416.416 0 0 1 .09-.12l.012-.012.007-.008 3.535-5.55 2.243 3.5-2.102 3.303a.801.801 0 0 0-.087.396c0 .164.063.318.177.43.115.114.27.177.435.177h1.141a.42.42 0 0 0 .416-.356.41.41 0 0 0-.078-.316L12.712 5.69l-.013-.02-.001-.002-.002-.003-3.039-4.763a.848.848 0 0 0-.718-.407.858.858 0 0 0-.721.41L.985 11.975a.84.84 0 0 0-.008.814c.145.27.435.443.744.443h2.23l2.382 4.078 2.155 3.735a.843.843 0 0 0 .732.42c.327 0 .64-.165.813-.436l2.232-3.675.267-.445zm4.708 2.585a.822.822 0 0 0-.355.08l-.02.01-2.123 1.23a.827.827 0 0 0-.409.733c0 .294.177.56.451.677l2.128 1.226a.834.834 0 0 0 .84-.006c.264-.15.432-.435.432-.744v-2.454a.837.837 0 0 0-.544-.773zm.544 2.076-1.282-.74 1.282-.74z"/><path d="M21.015 11.975a.84.84 0 0 0-.008-.814L16.74 4.41a.858.858 0 0 0-.72-.41.848.848 0 0 0-.719.407l-3.038 4.764-.002.002-.001.002-.012.019-3.714 6.14a.41.41 0 0 0 .078.316.42.42 0 0 0 .416.356h1.14c.165 0 .32-.063.435-.177a.606.606 0 0 0 .177-.43.801.801 0 0 0-.087-.396l-2.102-3.303 2.243-3.5 3.535 5.55.007.008.012.012a.416.416 0 0 0 .09.12c.097.144.182.294.255.446.033.062.064.124.09.184l2.29 3.966a.843.843 0 0 0 .732.42c.327 0 .64-.165.813-.436l2.232-3.675.267-.445.267.445 2.232 3.675c.173.27.486.436.813.436a.843.843 0 0 0 .732-.42z"/></svg></span><span class="stack-card-label">Vite</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--tailwind" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#06B6D4" width="28" height="28"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg></span><span class="stack-card-label">Tailwind CSS</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--git" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F05032" width="28" height="28"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-2.006L9.217 8.245c-.673.268-1.465.134-2.004-.406-.545-.545-.676-1.342-.403-2.009L4.319 3.6.453 7.455c-.603.604-.603 1.582 0 2.188l10.473 10.474c.604.604 1.582.604 2.186 0l10.393-10.394c.603-.604.603-1.582 0-2.187"/></svg></span><span class="stack-card-label">Git</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--api" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#A5A5A5" width="28" height="28"><path d="M6 4v16h4v-7h4v7h4V4H6zm2 2h2v5H8V6zm6 0h2v5h-2V6zM4 8l4 4-4 4V8zm12 0l4 4-4 4V8z"/></svg></span><span class="stack-card-label">REST API</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--node" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#339933" width="28" height="28"><path d="M11.998 24c-.321 0-.641-.084-.922-.247l-2.736-1.636c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.151-.023.218.017l2.128 1.278a.291.291 0 0 0 .297 0l8.721-5.032a.292.292 0 0 0 0-.506l-8.72-5.033a.286.286 0 0 0-.298 0L3.075 12.42a.292.292 0 0 0 0 .506l2.346 1.354c1.307.654 2.108-.116 2.108-.893V7.384c0-.161.13-.292.292-.292h1.258c.161 0 .292.13.292.292v6.643c0 1.745-.95 2.745-2.604 2.745-.505 0-.909 0-2.026-.551L2.28 15.24a1.656 1.656 0 0 1-.84-1.434V10.19c0-.593.322-1.139.84-1.434l8.72-5.032a1.658 1.658 0 0 1 1.678 0l8.72 5.032c.518.295.84.841.84 1.434v3.615c0 .593-.322 1.139-.84 1.434l-8.72 5.032a1.656 1.656 0 0 1-.756.183z"/><path d="M17.207 16.26h-1.676a.292.292 0 0 1-.291-.292v-6.38c0-.16-.13-.291-.292-.291h-1.257a.292.292 0 0 0-.292.29v6.381c0 .161.13.292.292.292h2.235c.16 0 .292-.13.292-.292v-.59a.292.292 0 0 0-.293-.291z"/></svg></span><span class="stack-card-label">Node.js</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--nestjs" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E0234E" width="28" height="28"><path d="M12 0L4.56 2.28v9.44l7.44 4.11 7.44-4.11V2.28L12 0zm0 13.33l-5.44-3 5.44-3 5.44 3-5.44 3zM4.56 12.72v9.44L12 24l7.44-2.28v-9.44L12 17.28 4.56 12.72z"/></svg></span><span class="stack-card-label">NestJS</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--php" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#777BB4" width="28" height="28"><path d="M12.014 12.914H10.9v3.062h1.114c.557 0 .98-.167 1.273-.494.291-.327.437-.802.437-1.419 0-.616-.146-1.09-.437-1.417-.293-.328-.716-.494-1.273-.494zM12 4.823L5.636 20.055h2.748l1.551-3.967h2.12l1.552 3.967h2.764L12 4.823zm-2.175 7.091h1.084c.37 0 .645.087.826.26.18.174.27.422.27.745 0 .323-.09.572-.27.745-.181.173-.456.26-.826.26H9.825v-2.01z"/></svg></span><span class="stack-card-label">PHP</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--laravel" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FF2D20" width="28" height="28"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span><span class="stack-card-label">Laravel</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--postgres" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#336791" width="28" height="28"><path d="M3.9 6.5c-.6 0-1.1.5-1.1 1.1s.5 1.1 1.1 1.1 1.1-.5 1.1-1.1-.5-1.1-1.1-1.1zm16.2 0c-.6 0-1.1.5-1.1 1.1s.5 1.1 1.1 1.1 1.1-.5 1.1-1.1-.5-1.1-1.1-1.1zM12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.7 0 12 0zm0 1.8c2.2 0 4.2.4 6 1.2l-1.2 2.9c-1.5-.6-3.2-.9-4.8-.9-1.7 0-3.3.3-4.8.9L4.8 3C6.6 2.2 8.6 1.8 11 1.8z"/></svg></span><span class="stack-card-label">PostgreSQL</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--docker" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2496ED" width="28" height="28"><path d="M13.983 10.735h2.648V8.364h-2.648zm-3.306 0h2.648V8.364h-2.648zm-3.307 0h2.648V8.364H7.37zm-3.306 0h2.648V8.364H4.064zm-2.649 2.371h2.649v-2.37H1.415zm2.649 0h2.648v-2.37H4.064zm2.649 0h2.648v-2.37H6.712zm2.648 0h2.649v-2.37H9.36zm2.649 0h2.648v-2.37h2.649v2.37zm2.648 0h2.648v-2.37H14.658zM1.415 15.477h2.649v-2.371H1.415zm2.649 0h2.648v-2.371H4.064zm2.649 0h2.648v-2.371H6.712zm2.648 0h2.649v-2.371H9.36zm2.649 0h2.648v-2.371h2.649v2.371zm2.648 0h2.648v-2.371H14.658zm2.648 0h2.648v-2.371h2.649v2.371z"/></svg></span><span class="stack-card-label">Docker</span></div>
+            <div class="stack-card"><span class="stack-card-icon stack-card-icon--wp" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#21759B" width="28" height="28"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM6.9 17.2l1.4-4.1c-.3.1-.6.1-.9.1-1.4 0-2.5-.5-3.4-1.3.6 1.1 1.8 1.9 3.2 1.9 1 0 1.9-.3 2.7-.8l1.3 3.6c-1.2.6-2.6 1-4.1 1-2.2 0-4.1-1.1-5.2-2.7zm8.2-1.5c-.4.9-1 1.6-1.8 2.1l-1.3-3.6c.8-.3 1.5-.9 1.9-1.7h-2.4v-1.4h4.2v1.2c0 .2 0 .4-.1.6-.2.6-.6 1.1-1.2 1.5.5.2 1 .3 1.5.3.2 0 .4 0 .6-.1.1-.5.2-1 .2-1.5 0-1.4-.3-2.7-.9-3.9.9 1.2 1.4 2.7 1.4 4.3 0 .3 0 .6-.1.9zM12 4.5c1.9 0 3.6.7 4.9 1.9-.1-.5-.4-1-.9-1.4-1.2-.9-2.8-1.2-4.3-.9-1.2.3-2.2 1-2.9 1.9-.6.8-.9 1.8-.9 2.8 0 .9.2 1.8.6 2.5.6 1.2 1.6 2.1 2.8 2.6-1.2-.5-2.2-1.4-2.8-2.5-.2-.4-.3-.9-.3-1.4 0-1.5.8-2.8 2-3.5.6-.4 1.3-.6 2-.6z"/></svg></span><span class="stack-card-label">WordPress</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -337,52 +358,54 @@
       <div class="portfolio-modal-backdrop"></div>
       <div class="portfolio-modal-box">
         <div class="portfolio-modal-header">
-          <h2 id="portfolio-detail-title" class="portfolio-modal-title">yoom.pro</h2>
+          <div class="portfolio-modal-header-inner">
+            <div class="portfolio-modal-header-top">
+              <button type="button" class="portfolio-modal-back" aria-label="Назад">← Назад</button>
+              <span class="portfolio-modal-breadcrumb">Проекты › yoom.pro</span>
+            </div>
+            <div class="portfolio-modal-title-wrap">
+              <h2 id="portfolio-detail-title" class="portfolio-modal-title">yoom.pro</h2>
+            </div>
+          </div>
           <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="portfolio-modal-body">
-          <p class="portfolio-detail-lead">Сайт агентства недвижимости (новостройки Сочи): презентация компании, каталог жилых комплексов с фильтрами и картой, карточки ЖК и квартир, личный кабинет пользователя, приём заявок и защищённая админ-панель для просмотра заявок и пользователей.</p>
-
-          <section class="portfolio-detail-section">
-            <h3>Фронтенд</h3>
-            <p><strong>Вёрстка:</strong> семантический HTML5 (header, section, main, aside, nav, footer). Многостраничная структура: главная, каталог, карточка комплекса, квартиры, личный кабинет, вход/регистрация, админ-панель.</p>
-            <p><strong>Стили:</strong> CSS3, каскад из нескольких файлов (styles.css, tablet.css, mobile.css, login.css, safari-fixes.css, critical.css). Flexbox и Grid, CSS-переменные, медиа-запросы для планшета (768px) и телефона (576px). Отдельный файл с фиксами для iOS/Safari (safe-area, tap-highlight, 100vh/dvh).</p>
-            <p><strong>Интерактивность:</strong> ванильный JavaScript без фреймворков. Обработка событий, делегирование. Работа с DOM, историей браузера (history.replaceState) и URL (URLSearchParams). Запросы к API через Fetch с заголовками (Content-Type, X-Auth-Token, X-Admin-Hash).</p>
-            <p><strong>Функциональные блоки:</strong> слайдер баннера на главной, быстрый поиск по количеству комнат, фильтры каталога (район, застройщик, цена, комнаты), сортировка, поиск по названию/адресу в шапке, карта каталога (Yandex Maps API), избранное, ипотечный калькулятор (первоначальный взнос, срок, расчёт платежа и переплаты), форма заявки с отправкой в API, модальные окна, мобильное меню (оверлей + боковая панель), редирект неавторизованных при переходе в кабинет и при добавлении в избранное.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Авторизация и личный кабинет</h3>
-            <p><strong>Регистрация и вход:</strong> форма с вкладками «Вход» и «Регистрация». Логин и пароль, валидация на клиенте и сервере. Поля с autocomplete для сохранения паролей и Face ID/Touch ID в Safari/iOS. После регистрации — опциональный шаг «Профиль» (имя, фамилия, телефон, email, аватар) с возможностью пропустить.</p>
-            <p><strong>Сохранение сессии:</strong> токен и объект пользователя в localStorage, отправка токена в заголовке X-Auth-Token. Выход — вызов API logout и очистка localStorage.</p>
-            <p><strong>Личный кабинет:</strong> избранные комплексы (список с картинкой, названием, ссылкой «Подробнее» и кнопкой «Удалить»), список заявок пользователя, раздел «Настройки» (аватар, имя, фамилия, телефон, email) с сохранением через API. Для неавторизованных кнопка «Выйти» заменяется на «Войти или зарегистрироваться» с редиректом на страницу входа.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Бэкенд (API)</h3>
-            <p><strong>Среда:</strong> PHP 7+, PostgreSQL, единая точка входа через init.php (конфиг, CORS-заголовки, соединение с БД, функции jsonOut, getAuthToken, getUserIdByToken).</p>
-            <p><strong>Аутентификация:</strong> api/auth/register.php (POST: логин, пароль → проверка формата и уникальности, bcrypt-хеш, создание пользователя и сессии, возврат token и user). api/auth/login.php (POST: проверка пароля через password_verify, создание сессии). api/auth/logout.php (POST: инвалидация сессии по токену).</p>
-            <p><strong>Профиль и аватар:</strong> api/user/profile.php (GET — данные профиля по X-Auth-Token; POST — обновление имени, фамилии, email, телефона, avatar_url). api/user/avatar-upload.php (POST, multipart: загрузка файла в uploads/avatars/, проверка типа и размера).</p>
-            <p><strong>Избранное:</strong> api/favorites.php (GET — список избранного; POST — добавление по item_id, name, link, image; DELETE по item_id). Привязка к user_id по токену.</p>
-            <p><strong>Заявки:</strong> api/requests.php (POST: создание заявки с полями имени, телефона, email, комментария). api/admin/requests.php (GET — список заявок для админки; PUT/POST — смена статуса). Защита заголовком X-Admin-Hash.</p>
-            <p><strong>Безопасность:</strong> подготовленные запросы (prepare/bind_param) против SQL-инъекций; rate limiting по IP; проверка origin для CORS; хранение паролей в виде bcrypt-хеша; админ-эндпоинты доступны только при совпадении хеша из конфига.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Инфраструктура и деплой</h3>
-            <p>Чистые URL через Apache mod_rewrite (.htaccess): редирект с .html на URL без расширения (301), маршрутизация запросов к соответствующим .html-файлам, сохранение query-строки (QSA).</p>
-            <p>База данных: таблицы users, sessions, favorites, requests, rate_limit. При необходимости в register/login выполняется ALTER TABLE для добавления полей login и password_hash.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Адаптив и UX</h3>
-            <p>Три брейкпоинта: десктоп, планшет (768px), мобильный (576px). На мобильном: компактный хедер, поиск по центру, скрытие кнопки «Избранное» в шапке и блока «Быстрый поиск», мобильное меню с перехватом перехода в «Личный кабинет» для неавторизованных. Кнопки избранного для неавторизованных ведут на страницу входа с return-url.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Навыки, которые демонстрирует проект</h3>
-            <p>Вёрстка (HTML/CSS), работа с DOM и событиями (JavaScript), проектирование и потребление REST API (Fetch), серверная логика и БД (PHP, PostgreSQL), аутентификация и авторизация (токены, сессии, хеширование паролей), загрузка файлов, безопасность (CORS, prepared statements, rate limit, разделение прав), конфигурация веб-сервера (Apache, .htaccess), учёт особенностей мобильных браузеров (Safari/iOS).</p>
-          </section>
+          <div class="portfolio-detail-two-col">
+            <div class="portfolio-detail-left">
+              <p class="portfolio-detail-lead">Сайт агентства недвижимости (новостройки Сочи): презентация компании, каталог жилых комплексов с фильтрами и картой, карточки ЖК и квартир, личный кабинет пользователя, приём заявок и защищённая админ-панель.</p>
+              <div class="portfolio-detail-summary">
+                <div class="portfolio-detail-summary-box"><span class="num">8</span><span class="label">Технологий</span></div>
+                <div class="portfolio-detail-summary-box"><span class="num">6</span><span class="label">Ключевых фич</span></div>
+              </div>
+              <div class="portfolio-detail-actions">
+                <a href="https://yoom.pro" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
+              </div>
+              <h3 class="portfolio-detail-tech-title">Использованные технологии</h3>
+              <div class="portfolio-detail-tech-grid">
+                <span class="portfolio-detail-tech-tag">HTML5</span>
+                <span class="portfolio-detail-tech-tag">CSS3</span>
+                <span class="portfolio-detail-tech-tag">JavaScript</span>
+                <span class="portfolio-detail-tech-tag">PHP</span>
+                <span class="portfolio-detail-tech-tag">PostgreSQL</span>
+                <span class="portfolio-detail-tech-tag">REST API</span>
+                <span class="portfolio-detail-tech-tag">Apache</span>
+              </div>
+            </div>
+            <div class="portfolio-detail-right">
+              <div class="portfolio-detail-preview">фото/превью скоро будет!</div>
+              <div>
+                <h3 class="portfolio-detail-features-title">Ключевые особенности</h3>
+                <ul class="portfolio-detail-features-list">
+                  <li>Каталог ЖК с фильтрами, картой и сортировкой</li>
+                  <li>Авторизация, личный кабинет, избранное</li>
+                  <li>Ипотечный калькулятор</li>
+                  <li>Форма заявок, админ-панель для заявок</li>
+                  <li>Бэкенд на PHP, безопасность (CORS, rate limit, bcrypt)</li>
+                  <li>Адаптивная вёрстка под планшет и мобильные</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -391,36 +414,51 @@
       <div class="portfolio-modal-backdrop"></div>
       <div class="portfolio-modal-box">
         <div class="portfolio-modal-header">
-          <h2 id="portfolio-detail-title-weather" class="portfolio-modal-title">Погода</h2>
+          <div class="portfolio-modal-header-inner">
+            <div class="portfolio-modal-header-top">
+              <button type="button" class="portfolio-modal-back" aria-label="Назад">← Назад</button>
+              <span class="portfolio-modal-breadcrumb">Проекты › Погода</span>
+            </div>
+            <div class="portfolio-modal-title-wrap">
+              <h2 id="portfolio-detail-title-weather" class="portfolio-modal-title">Погода</h2>
+            </div>
+          </div>
           <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="portfolio-modal-body">
-          <p class="portfolio-detail-lead">Одностраничное приложение для портфолио: пользователь видит текущую погоду по своему местоположению, подробные показатели, восход/закат и прогноз на неделю с графиком температур.</p>
-
-          <section class="portfolio-detail-section">
-            <h3>Данные</h3>
-            <p>Используется бесплатный API Open-Meteo (без ключа). Погода подставляется по геолокации браузера; при отказе или ошибке подставляется Москва.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Интерфейс</h3>
-            <p><strong>Блок «Сейчас»:</strong> температура, описание (ясно / облачно / дождь и т.д.), «Ощущается как … °C».</p>
-            <p><strong>Блок «Детали»:</strong> сетка плиток — ощущается, влажность, ветер, давление, видимость, УФ-индекс, при осадках — текущие осадки (мм).</p>
-            <p><strong>Блок «Световой день»:</strong> время восхода и заката для текущего дня.</p>
-            <p><strong>Прогноз на 7 дней:</strong> список дней (сегодня / название дня и дата), иконка погоды, макс/мин температура, осадки при наличии.</p>
-            <p><strong>График температуры на неделю:</strong> две линии (макс/мин) с заливкой, тултип по дням (Recharts).</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Визуал и анимации</h3>
-            <p>Фон и сцена меняются от времени суток и типа погоды: день — голубое небо, солнце или облака; дождь — серый фон и анимация капель; гроза — те же эффекты плюс вспышки «молнии»; снег — холодные тона и падающие снежинки; ночь при ясной погоде — тёмный градиент, луна и мерцающие звёзды; ночью при дожде/грозе — тёмный фон с дождём и молнией. Карточки и блоки оформлены в стиле стекла (полупрозрачный фон, размытие, границы).</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Стек и деплой</h3>
-            <p>React 18, Vite, Open-Meteo API, Recharts (график), CSS (анимации).</p>
-            <p>Сборка через GitHub Actions, выкладка на GitHub Pages. Ссылка: <a href="https://scalevillain13.github.io/weather-app/" target="_blank" rel="noopener">scalevillain13.github.io/weather-app</a></p>
-          </section>
+          <div class="portfolio-detail-two-col">
+            <div class="portfolio-detail-left">
+              <p class="portfolio-detail-lead">Одностраничное приложение: текущая погода по геолокации, подробные показатели, восход/закат и прогноз на неделю с графиком температур (Recharts).</p>
+              <div class="portfolio-detail-summary">
+                <div class="portfolio-detail-summary-box"><span class="num">5</span><span class="label">Технологий</span></div>
+                <div class="portfolio-detail-summary-box"><span class="num">4</span><span class="label">Ключевых фич</span></div>
+              </div>
+              <div class="portfolio-detail-actions">
+                <a href="https://scalevillain13.github.io/weather-app/" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
+                <a href="https://github.com/scalevillain13/weather-app" class="btn btn-ghost" target="_blank" rel="noopener">Github</a>
+              </div>
+              <h3 class="portfolio-detail-tech-title">Использованные технологии</h3>
+              <div class="portfolio-detail-tech-grid">
+                <span class="portfolio-detail-tech-tag">React</span>
+                <span class="portfolio-detail-tech-tag">Vite</span>
+                <span class="portfolio-detail-tech-tag">Open-Meteo API</span>
+                <span class="portfolio-detail-tech-tag">Recharts</span>
+                <span class="portfolio-detail-tech-tag">CSS</span>
+              </div>
+            </div>
+            <div class="portfolio-detail-right">
+              <div class="portfolio-detail-preview">фото/превью скоро будет!</div>
+              <div>
+                <h3 class="portfolio-detail-features-title">Ключевые особенности</h3>
+                <ul class="portfolio-detail-features-list">
+                  <li>Погода по геолокации браузера (fallback — Москва)</li>
+                  <li>Блок «Сейчас», детали (влажность, ветер, УФ), световой день</li>
+                  <li>Прогноз на 7 дней и график температуры</li>
+                  <li>Динамический фон и анимации под тип погоды</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -429,30 +467,52 @@
       <div class="portfolio-modal-backdrop"></div>
       <div class="portfolio-modal-box">
         <div class="portfolio-modal-header">
-          <h2 id="portfolio-detail-title-kanban" class="portfolio-modal-title">Kanban Board</h2>
+          <div class="portfolio-modal-header-inner">
+            <div class="portfolio-modal-header-top">
+              <button type="button" class="portfolio-modal-back" aria-label="Назад">← Назад</button>
+              <span class="portfolio-modal-breadcrumb">Проекты › Kanban Board</span>
+            </div>
+            <div class="portfolio-modal-title-wrap">
+              <h2 id="portfolio-detail-title-kanban" class="portfolio-modal-title">Kanban Board</h2>
+            </div>
+          </div>
           <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="portfolio-modal-body">
-          <p class="portfolio-detail-lead">Мини-система управления задачами в формате Kanban: быстрый обзор задач по статусам, приоритизация и перемещение карточек между колонками.</p>
-
-          <section class="portfolio-detail-section">
-            <h3>Функционал</h3>
-            <p>Три колонки: <strong>Backlog</strong>, <strong>In Progress</strong>, <strong>Done</strong>. Карточки можно создавать, редактировать, удалять и переносить между колонками drag-and-drop.</p>
-            <p>Добавлены приоритеты <strong>High / Medium / Low</strong>, поиск по задачам, фильтр по приоритету, быстрый перенос карточки кнопками и очистка колонки Done.</p>
-            <p>Состояние доски сохраняется в localStorage, поэтому после перезагрузки данные остаются.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>React-часть</h3>
-            <p>Проект собран на React с разделением на компоненты: колонка, карточка, форма создания и панель фильтров. Используются хуки useState и useMemo для управления состоянием и производительной фильтрации.</p>
-            <p>Drag-and-drop реализован на HTML5 Drag and Drop API с мгновенным обновлением состояния без перезагрузки страницы.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Технологии</h3>
-            <p>React, Vite, CSS3, localStorage, HTML5 Drag and Drop API.</p>
-            <p>Деплой: GitHub Pages. Ссылка: <a href="https://scalevillain13.github.io/kanban-board/" target="_blank" rel="noopener">scalevillain13.github.io/kanban-board</a></p>
-          </section>
+          <div class="portfolio-detail-two-col">
+            <div class="portfolio-detail-left">
+              <p class="portfolio-detail-lead">Мини-система управления задачами в формате Kanban: колонки Backlog, In Progress, Done, drag-and-drop, приоритеты и поиск. Состояние в localStorage.</p>
+              <div class="portfolio-detail-summary">
+                <div class="portfolio-detail-summary-box"><span class="num">5</span><span class="label">Технологий</span></div>
+                <div class="portfolio-detail-summary-box"><span class="num">5</span><span class="label">Ключевых фич</span></div>
+              </div>
+              <div class="portfolio-detail-actions">
+                <a href="https://scalevillain13.github.io/kanban-board/" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
+                <a href="https://github.com/scalevillain13/kanban-board" class="btn btn-ghost" target="_blank" rel="noopener">Github</a>
+              </div>
+              <h3 class="portfolio-detail-tech-title">Использованные технологии</h3>
+              <div class="portfolio-detail-tech-grid">
+                <span class="portfolio-detail-tech-tag">React</span>
+                <span class="portfolio-detail-tech-tag">Vite</span>
+                <span class="portfolio-detail-tech-tag">CSS3</span>
+                <span class="portfolio-detail-tech-tag">localStorage</span>
+                <span class="portfolio-detail-tech-tag">HTML5 DnD</span>
+              </div>
+            </div>
+            <div class="portfolio-detail-right">
+              <div class="portfolio-detail-preview">фото/превью скоро будет!</div>
+              <div>
+                <h3 class="portfolio-detail-features-title">Ключевые особенности</h3>
+                <ul class="portfolio-detail-features-list">
+                  <li>Три колонки: Backlog, In Progress, Done</li>
+                  <li>Создание, редактирование и удаление карточек</li>
+                  <li>Drag-and-drop между колонками</li>
+                  <li>Приоритеты High / Medium / Low, поиск и фильтр</li>
+                  <li>Сохранение состояния в localStorage</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -461,33 +521,57 @@
       <div class="portfolio-modal-backdrop"></div>
       <div class="portfolio-modal-box">
         <div class="portfolio-modal-header">
-          <h2 id="portfolio-detail-title-admin" class="portfolio-modal-title">Админ-Панель управления пользователями</h2>
+          <div class="portfolio-modal-header-inner">
+            <div class="portfolio-modal-header-top">
+              <button type="button" class="portfolio-modal-back" aria-label="Назад">← Назад</button>
+              <span class="portfolio-modal-breadcrumb">Проекты › Админ-Панель</span>
+            </div>
+            <div class="portfolio-modal-title-wrap">
+              <h2 id="portfolio-detail-title-admin" class="portfolio-modal-title">Админ-Панель</h2>
+            </div>
+          </div>
           <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="portfolio-modal-body">
-          <p class="portfolio-detail-lead">Веб-приложение для внутреннего учёта пользователей, ролей и групп с разграничением доступа в духе корпоративных и банковских систем.</p>
-
-          <section class="portfolio-detail-section">
-            <h3>Что сделано</h3>
-            <p><strong>Пользователи</strong> — создание, редактирование, блокировка; назначение ролей и групп; поиск и фильтры по роли и статусу; массовое назначение групп.</p>
-            <p><strong>Группы</strong> — CRUD групп, управление составом участников (добавление/исключение пользователей).</p>
-            <p><strong>Роли и права</strong> — справочник разрешений по категориям, роли с привязкой прав (RBAC); проверка прав на уровне UI.</p>
-            <p><strong>Активность</strong> — лог действий пользователей (кто, что, когда); фильтры по действию, сущности и периоду; экспорт в CSV.</p>
-            <p><strong>Дашборд</strong> — сводные показатели (количество пользователей, групп, ролей) и блок последних действий.</p>
-            <p><strong>Авторизация</strong> — вход по email/паролю (Supabase Auth), саморегистрация с последующим назначением роли админом, защищённые маршруты.</p>
-            <p><strong>Деплой</strong> — сборка под GitHub Pages (base path), GitHub Actions, 404.html для корректной работы при обновлении страницы и прямых ссылках.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Стек</h3>
-            <p>React 18, TypeScript, Vite, Tailwind CSS, React Router, TanStack Query, React Hook Form, Zod, Zustand; бэкенд — Supabase (PostgreSQL, Auth, RLS). Миграции и сиды в SQL, типизация и валидация форм (Zod).</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Роль в проекте</h3>
-            <p>Проектирование структуры, реализация фронтенда и интеграции с Supabase, настройка деплоя и документации.</p>
-            <p>Ссылка: <a href="https://scalevillain13.github.io/admin-panel/login" target="_blank" rel="noopener">scalevillain13.github.io/admin-panel/login</a></p>
-          </section>
+          <div class="portfolio-detail-two-col">
+            <div class="portfolio-detail-left">
+              <p class="portfolio-detail-lead">Веб-приложение для учёта пользователей, ролей и групп с разграничением доступа (RBAC). Supabase Auth, дашборд, лог активности, экспорт в CSV.</p>
+              <div class="portfolio-detail-summary">
+                <div class="portfolio-detail-summary-box"><span class="num">9</span><span class="label">Технологий</span></div>
+                <div class="portfolio-detail-summary-box"><span class="num">7</span><span class="label">Ключевых фич</span></div>
+              </div>
+              <div class="portfolio-detail-actions">
+                <a href="https://scalevillain13.github.io/admin-panel/login" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
+                <a href="https://github.com/scalevillain13/admin-panel" class="btn btn-ghost" target="_blank" rel="noopener">Github</a>
+              </div>
+              <h3 class="portfolio-detail-tech-title">Использованные технологии</h3>
+              <div class="portfolio-detail-tech-grid">
+                <span class="portfolio-detail-tech-tag">React</span>
+                <span class="portfolio-detail-tech-tag">TypeScript</span>
+                <span class="portfolio-detail-tech-tag">Vite</span>
+                <span class="portfolio-detail-tech-tag">Tailwind CSS</span>
+                <span class="portfolio-detail-tech-tag">React Router</span>
+                <span class="portfolio-detail-tech-tag">TanStack Query</span>
+                <span class="portfolio-detail-tech-tag">Zod</span>
+                <span class="portfolio-detail-tech-tag">Supabase</span>
+              </div>
+            </div>
+            <div class="portfolio-detail-right">
+              <div class="portfolio-detail-preview">фото/превью скоро будет!</div>
+              <div>
+                <h3 class="portfolio-detail-features-title">Ключевые особенности</h3>
+                <ul class="portfolio-detail-features-list">
+                  <li>Пользователи: CRUD, роли, группы, блокировка, фильтры</li>
+                  <li>Группы и управление составом участников</li>
+                  <li>Роли и права (RBAC), проверка на уровне UI</li>
+                  <li>Лог активности, экспорт в CSV</li>
+                  <li>Дашборд со сводными показателями</li>
+                  <li>Supabase Auth, защищённые маршруты</li>
+                  <li>Деплой на GitHub Pages</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -496,22 +580,50 @@
       <div class="portfolio-modal-backdrop"></div>
       <div class="portfolio-modal-box">
         <div class="portfolio-modal-header">
-          <h2 id="portfolio-detail-title-mygame" class="portfolio-modal-title">Убийца Слизней</h2>
+          <div class="portfolio-modal-header-inner">
+            <div class="portfolio-modal-header-top">
+              <button type="button" class="portfolio-modal-back" aria-label="Назад">← Назад</button>
+              <span class="portfolio-modal-breadcrumb">Проекты › Убийца Слизней</span>
+            </div>
+            <div class="portfolio-modal-title-wrap">
+              <h2 id="portfolio-detail-title-mygame" class="portfolio-modal-title">Убийца Слизней</h2>
+            </div>
+          </div>
           <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
         </div>
         <div class="portfolio-modal-body">
-          <p class="portfolio-detail-lead">Браузерная RPG-игра на ванильном JavaScript: «Лес слизней» — охота на слизней за золотом и опытом, прокачка персонажа и победа над боссом.</p>
-
-          <section class="portfolio-detail-section">
-            <h3>Геймплей</h3>
-            <p>Три сложности (Легко / Норма / Сложно), выбор перед стартом. Игрок бьёт слизней, получает золото и опыт. За золото можно прокачивать: силу удара, магию, шанс кровотечения, крит шанс и крит урон. Есть артефакты и шкала ярости. Цель — добраться до Босса Слизней в чаще и победить его.</p>
-          </section>
-
-          <section class="portfolio-detail-section">
-            <h3>Технологии</h3>
-            <p>Чистый JavaScript (без фреймворков), HTML5, CSS. Звуки. Деплой на GitHub Pages.</p>
-            <p><a href="https://scalevillain13.github.io/MyGame/" target="_blank" rel="noopener">Открыть игру →</a> · <a href="https://github.com/scalevillain13/MyGame" target="_blank" rel="noopener">Код на GitHub</a></p>
-          </section>
+          <div class="portfolio-detail-two-col">
+            <div class="portfolio-detail-left">
+              <p class="portfolio-detail-lead">Браузерная RPG на ванильном JavaScript: охота на слизней, золото и опыт, прокачка силы, магии, крита и кровотечения. Три сложности, босс в чаще, артефакты.</p>
+              <div class="portfolio-detail-summary">
+                <div class="portfolio-detail-summary-box"><span class="num">3</span><span class="label">Технологий</span></div>
+                <div class="portfolio-detail-summary-box"><span class="num">5</span><span class="label">Ключевых фич</span></div>
+              </div>
+              <div class="portfolio-detail-actions">
+                <a href="https://scalevillain13.github.io/MyGame/" class="btn btn-primary" target="_blank" rel="noopener">Открыть сайт</a>
+                <a href="https://github.com/scalevillain13/MyGame" class="btn btn-ghost" target="_blank" rel="noopener">Github</a>
+              </div>
+              <h3 class="portfolio-detail-tech-title">Использованные технологии</h3>
+              <div class="portfolio-detail-tech-grid">
+                <span class="portfolio-detail-tech-tag">HTML5</span>
+                <span class="portfolio-detail-tech-tag">CSS</span>
+                <span class="portfolio-detail-tech-tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="portfolio-detail-right">
+              <div class="portfolio-detail-preview">фото/превью скоро будет!</div>
+              <div>
+                <h3 class="portfolio-detail-features-title">Ключевые особенности</h3>
+                <ul class="portfolio-detail-features-list">
+                  <li>Три сложности: Легко, Норма, Сложно</li>
+                  <li>Прокачка: сила, магия, крит, кровотечение</li>
+                  <li>Артефакты и шкала ярости</li>
+                  <li>Босс Слизней в чаще</li>
+                  <li>Звуки, деплой на GitHub Pages</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -570,5 +682,6 @@
   <script src="js/card-tilt.js"></script>
   <script src="js/code-typing.js"></script>
   <script src="js/portfolio-modal.js"></script>
+  <script src="js/portfolio-tabs.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
  */
 (function () {
   function addPageLoaded() {
+    if (document.body.classList.contains('loading') && document.getElementById('loading-screen')) return;
     document.body.classList.add('page-loaded');
   }
 
@@ -63,6 +64,7 @@
 
   var observer = new IntersectionObserver(
     function (entries) {
+      if (!document.body.classList.contains('page-loaded')) return;
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');

@@ -33,9 +33,21 @@
     if (subtitle) wrapElement(subtitle, delay);
   }
 
+  function start() {
+    var hasLoader = document.getElementById('loading-screen');
+    if (hasLoader && document.body.classList.contains('loading')) {
+      document.addEventListener('page-ready', function onReady() {
+        document.removeEventListener('page-ready', onReady);
+        init();
+      });
+    } else {
+      init();
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', start);
   } else {
-    init();
+    start();
   }
 })();
