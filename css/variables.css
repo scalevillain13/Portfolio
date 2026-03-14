@@ -1,46 +1,47 @@
-/* Цвета и типографика — тёмная тема (чёрно-фиолетовая) по умолчанию */
+/* Цвета и типографика — тёмная тема (чёрно-белая, премиальный стиль Apple) по умолчанию */
 :root {
-  --bg: #0d0d12;
-  --bg-elevated: #15151d;
-  --bg-card: #1a1a24;
-  --bg-card-hover: #22222e;
-  --text: #e8e6f0;
-  --text-muted: #9a96a8;
-  --accent: #a78bfa;
-  --accent-dim: #8b5cf6;
-  --accent-glow: rgba(167, 139, 250, 0.28);
-  --accent-soft: rgba(167, 139, 250, 0.14);
-  --accent-ring: rgba(167, 139, 250, 0.35);
-  --accent-muted: rgba(167, 139, 250, 0.4);
+  --bg: #000000;
+  --bg-elevated: #0a0a0a;
+  --bg-card: #141414;
+  --bg-card-hover: #1c1c1e;
+  --text: #f5f5f7;
+  --text-muted: #a1a1a6;
+  --accent: #f5f5f7;
+  --accent-dim: #e8e8ed;
+  --accent-glow: rgba(255, 255, 255, 0.12);
+  --accent-soft: rgba(255, 255, 255, 0.06);
+  --accent-ring: rgba(255, 255, 255, 0.2);
+  --accent-muted: rgba(255, 255, 255, 0.15);
   /* Оттенки акцента для карточек «Обо мне» */
-  --accent-2: #c4b5fd;
-  --accent-2-glow: rgba(196, 181, 253, 0.22);
-  --accent-2-ring: rgba(196, 181, 253, 0.3);
-  --accent-3: #7c3aed;
-  --accent-3-glow: rgba(124, 58, 237, 0.25);
-  --accent-3-ring: rgba(124, 58, 237, 0.35);
-  --border: #2a2a38;
+  --accent-2: #e8e8ed;
+  --accent-2-glow: rgba(255, 255, 255, 0.08);
+  --accent-2-ring: rgba(255, 255, 255, 0.15);
+  --accent-3: #d2d2d7;
+  --accent-3-glow: rgba(255, 255, 255, 0.06);
+  --accent-3-ring: rgba(255, 255, 255, 0.12);
+  --border: #2c2c2e;
   --radius: 12px;
   --radius-lg: 16px;
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 0 12px 40px rgba(88, 28, 135, 0.2);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.35);
   --space: 8px;
   --font-sans: "Manrope", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  --header-bg: rgba(13, 13, 18, 0.9);
-  --text-secondary: #9a96a8;
-  --scrollbar-thumb: #3d3d4d;
-  --btn-text: #0d0d12;
+  --header-bg: rgba(0, 0, 0, 0.9);
+  --text-secondary: #a1a1a6;
+  --scrollbar-thumb: #424245;
+  --btn-text: #000000;
+  --accent-rgb: 245, 245, 247;
 }
 
 /* Переменные mac-окна для тёмной темы */
 :root {
-  --mac-bg: #1a1a24;
-  --mac-titlebar: #2a2a38;
-  --mac-code-bg: #12121a;
-  --mac-code-text: #e8e6f0;
-  --mac-keyword: #c084fc;
-  --mac-string: #a5b4fc;
+  --mac-bg: #141414;
+  --mac-titlebar: #1c1c1e;
+  --mac-code-bg: #0a0a0a;
+  --mac-code-text: #f5f5f7;
+  --mac-keyword: #e8e8ed;
+  --mac-string: #a1a1a6;
 }
 
 /* Светлая тема — чёрно-белая в стиле Apple */
@@ -70,6 +71,7 @@
   --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.08);
   --scrollbar-thumb: #c7c7cc;
   --btn-text: #ffffff;
+  --accent-rgb: 29, 29, 31;
 
   /* mac-окно в светлой теме */
   --mac-bg: #f5f5f7;

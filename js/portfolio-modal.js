@@ -23,6 +23,7 @@
 
     var closeBtn = modal.querySelector('.portfolio-modal-close');
     var backdrop = modal.querySelector('.portfolio-modal-backdrop');
+    var backBtn = modal.querySelector('.portfolio-modal-back');
 
     function handleKeydown(e) {
       if (e.key !== 'Tab') return;
@@ -62,6 +63,7 @@
     trigger.addEventListener('click', openModal);
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (backdrop) backdrop.addEventListener('click', closeModal);
+    if (backBtn) backBtn.addEventListener('click', closeModal);
 
     modal.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeModal();
