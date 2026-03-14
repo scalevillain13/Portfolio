@@ -43,12 +43,6 @@
     '.portfolio .portfolio-intro',
     '.portfolio .portfolio-item',
     '.portfolio .portfolio-placeholder',
-    '.faq .section-title',
-    '.faq .section-subtitle',
-    '.faq .alexa-chat',
-    '.game .section-title',
-    '.game .section-subtitle',
-    '.game .game-card',
     '.contact .section-title',
     '.contact .contact-intro',
     '.contact .contact-link'
