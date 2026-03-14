@@ -279,6 +279,33 @@
 
           <article class="portfolio-item" data-category="frontend">
             <div class="portfolio-item-tags">
+              <span class="portfolio-item-tag portfolio-item-tag--react" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.861A2.139 2.139 0 1 0 12 14.139 2.139 2.139 0 1 0 12 9.861zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.065c-5.555 0-10.065-4.51-10.065-10.065S6.445 1.935 12 1.935 22.065 6.445 22.065 12 17.555 22.065 12 22.065zm0-18.026C6.537 4.039 2.1 7.67 2.1 12s4.437 7.961 9.9 7.961 9.9-3.63 9.9-7.961-4.437-7.961-9.9-7.961z"/></svg>
+                React
+              </span>
+            </div>
+            <div class="portfolio-item-head">
+              <h3 class="portfolio-item-title">Админ-Панель</h3>
+              <p class="portfolio-item-tagline">Управление пользователями, ролями и группами (RBAC)</p>
+            </div>
+            <div class="portfolio-item-body">
+              <p class="portfolio-item-desc">
+                Админка в стиле банковских систем: пользователи, роли, группы, права доступа (RBAC), лог активности. React, TypeScript, Supabase, GitHub Pages.
+              </p>
+            </div>
+            <div class="portfolio-item-actions">
+              <a href="https://scalevillain13.github.io/admin-panel/login" class="btn btn-primary" target="_blank" rel="noopener">Открыть приложение</a>
+              <button type="button" class="action-btn action-btn--secondary portfolio-detail-trigger" data-target="#portfolio-detail-modal-admin">
+                <span>Подробнее</span>
+                <svg class="action-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-category="frontend">
+            <div class="portfolio-item-tags">
               <span class="portfolio-item-tag portfolio-item-tag--vue" aria-hidden="true">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 1.61H14.06L12 5.16 9.94 1.61H0L12 22.39 24 1.61zm-12 16.27L5.39 7.61H9.7L12 11.45l2.3-3.84h4.31L12 17.88z"/></svg>
                 Vue
@@ -453,6 +480,41 @@
             <h3>Технологии</h3>
             <p>React, Vite, CSS3, localStorage, HTML5 Drag and Drop API.</p>
             <p>Деплой: GitHub Pages. Ссылка: <a href="https://scalevillain13.github.io/kanban-board/" target="_blank" rel="noopener">scalevillain13.github.io/kanban-board</a></p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div id="portfolio-detail-modal-admin" class="portfolio-modal" aria-hidden="true" role="dialog" aria-labelledby="portfolio-detail-title-admin">
+      <div class="portfolio-modal-backdrop"></div>
+      <div class="portfolio-modal-box">
+        <div class="portfolio-modal-header">
+          <h2 id="portfolio-detail-title-admin" class="portfolio-modal-title">Админ-Панель управления пользователями</h2>
+          <button type="button" class="portfolio-modal-close" aria-label="Закрыть">&times;</button>
+        </div>
+        <div class="portfolio-modal-body">
+          <p class="portfolio-detail-lead">Веб-приложение для внутреннего учёта пользователей, ролей и групп с разграничением доступа в духе корпоративных и банковских систем.</p>
+
+          <section class="portfolio-detail-section">
+            <h3>Что сделано</h3>
+            <p><strong>Пользователи</strong> — создание, редактирование, блокировка; назначение ролей и групп; поиск и фильтры по роли и статусу; массовое назначение групп.</p>
+            <p><strong>Группы</strong> — CRUD групп, управление составом участников (добавление/исключение пользователей).</p>
+            <p><strong>Роли и права</strong> — справочник разрешений по категориям, роли с привязкой прав (RBAC); проверка прав на уровне UI.</p>
+            <p><strong>Активность</strong> — лог действий пользователей (кто, что, когда); фильтры по действию, сущности и периоду; экспорт в CSV.</p>
+            <p><strong>Дашборд</strong> — сводные показатели (количество пользователей, групп, ролей) и блок последних действий.</p>
+            <p><strong>Авторизация</strong> — вход по email/паролю (Supabase Auth), саморегистрация с последующим назначением роли админом, защищённые маршруты.</p>
+            <p><strong>Деплой</strong> — сборка под GitHub Pages (base path), GitHub Actions, 404.html для корректной работы при обновлении страницы и прямых ссылках.</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Стек</h3>
+            <p>React 18, TypeScript, Vite, Tailwind CSS, React Router, TanStack Query, React Hook Form, Zod, Zustand; бэкенд — Supabase (PostgreSQL, Auth, RLS). Миграции и сиды в SQL, типизация и валидация форм (Zod).</p>
+          </section>
+
+          <section class="portfolio-detail-section">
+            <h3>Роль в проекте</h3>
+            <p>Проектирование структуры, реализация фронтенда и интеграции с Supabase, настройка деплоя и документации.</p>
+            <p>Ссылка: <a href="https://scalevillain13.github.io/admin-panel/login" target="_blank" rel="noopener">scalevillain13.github.io/admin-panel/login</a></p>
           </section>
         </div>
       </div>
