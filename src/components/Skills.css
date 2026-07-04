@@ -1,0 +1,110 @@
+.skills__marquee-wrap {
+  overflow: hidden;
+  margin-bottom: 4rem;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+.skills__marquee {
+  display: flex;
+  gap: 1rem;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+.skills__pill {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 100px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.skills__pill-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.skills__card {
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.skills__card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 32px rgba(235, 141, 92, 0.1);
+}
+
+.skills__card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skills__card-icon svg {
+  width: 100%;
+  height: 100%;
+  color: var(--text);
+  transition: color 0.3s ease, filter 0.3s ease;
+}
+
+.skills__card:hover .skills__card-icon svg {
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.skills__card-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.skills__card-cat {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+@media (max-width: 768px) {
+  .skills__marquee {
+    animation-duration: 20s;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills__marquee {
+    animation: none;
+  }
+}
