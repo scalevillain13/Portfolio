@@ -112,9 +112,11 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
             <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
               Live Demo
             </MagneticButton>
-            <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
-              GitHub Repo
-            </MagneticButton>
+            {project.repoUrl && (
+              <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
+                GitHub Repo
+              </MagneticButton>
+            )}
           </div>
         </div>
       </motion.div>

@@ -9,7 +9,7 @@ export type Project = {
   color: string
   year: string
   liveUrl: string
-  repoUrl: string
+  repoUrl?: string
   highlights: string[]
 }
 
@@ -71,86 +71,43 @@ export const skills = [
 export const projects: Project[] = [
   {
     id: '01',
-    slug: 'nebula-commerce',
-    title: 'Nebula Commerce',
+    slug: 'cyberlearn',
+    title: 'CyberLearn',
     description:
-      'Fullstack e-commerce платформа с real-time инвентарём, Stripe-платежами и админ-панелью.',
+      'Русскоязычная платформа по кибербезопасности с Docker-лабораториями, CTF-заданиями и системой рангов.',
     longDescription:
-      'Nebula Commerce — полноценный e-commerce продукт с каталогом, корзиной, checkout и админ-панелью. Real-time обновление остатков, Stripe-платежи, роли пользователей и аналитика продаж. Backend на Laravel с REST API и очередями.',
-    tags: ['React', 'Laravel', 'PostgreSQL'],
-    stack: ['React', 'TypeScript', 'Laravel', 'PHP', 'PostgreSQL', 'Stripe', 'Docker', 'Redis'],
-    color: '#eb8d5c',
-    year: '2025',
-    liveUrl: 'https://example.com/nebula-commerce',
-    repoUrl: 'https://github.com/scalevillain13/nebula-commerce',
+      'CyberLearn — первая полноценная русскоязычная платформа для обучения информационной безопасности в формате TryHackMe. 38+ комнат, 5 треков обучения, Docker-лаборатории в один клик, интерактивный веб-терминал, система рангов fsociety и модель FREE / Premium-подписки.',
+    tags: ['Next.js', 'TypeScript', 'Docker'],
+    stack: ['Next.js', 'TypeScript', 'Docker', 'PostgreSQL', 'Redis', 'Vite'],
+    color: '#34d399',
+    year: '2026',
+    liveUrl: 'https://cyberlearn-psi.vercel.app/',
+    repoUrl: 'https://github.com/scalevillain13/cyberlearn',
     highlights: [
-      'Real-time inventory sync',
-      'Stripe checkout flow',
-      'Admin analytics dashboard',
-      'Role-based access control',
+      'Docker-лаборатории прямо в браузере',
+      '38+ комнат и 5 треков обучения',
+      'Система рангов, XP и CTF-флаги',
+      'FREE tier и Premium-подписка',
     ],
   },
   {
     id: '02',
-    slug: 'pulse-analytics',
-    title: 'Pulse Analytics',
+    slug: 'yoom-pro',
+    title: 'yoom.pro',
     description:
-      'Dashboard для визуализации метрик с кастомными графиками, WebSocket-стримингом и dark mode.',
+      'Платформа подбора новостроек в Сочи — каталог без посредников, wizard из 4 шагов и SEO по районам.',
     longDescription:
-      'Pulse Analytics — интерактивный dashboard для мониторинга метрик в реальном времени. Кастомные D3-графики, WebSocket-стриминг данных, фильтры по периодам и полноценный dark mode. API и стриминг реализованы на Laravel.',
-    tags: ['TypeScript', 'D3.js', 'WebSocket'],
-    stack: ['TypeScript', 'React', 'D3.js', 'WebSocket', 'Laravel', 'PHP', 'Vite'],
+      'yoom.pro — витрина новостроек Большого Сочи с актуальными ценами от застройщиков. Многошаговый подбор квартиры по району, ЖК и параметрам, каталог с фильтрами по бюджету и метражу, карта локаций и SEO-страницы под запросы «недвижимость Адлер», «квартира Хоста» и другие.',
+    tags: ['Laravel', 'React', 'PostgreSQL'],
+    stack: ['Laravel', 'PHP', 'React', 'TypeScript', 'PostgreSQL'],
     color: '#c9a66b',
     year: '2025',
-    liveUrl: 'https://example.com/pulse-analytics',
-    repoUrl: 'https://github.com/scalevillain13/pulse-analytics',
+    liveUrl: 'https://yoom.pro',
     highlights: [
-      'Live metric streaming',
-      'Custom D3 visualizations',
-      'Period filters & exports',
-      'Adaptive dark theme',
-    ],
-  },
-  {
-    id: '03',
-    slug: 'vault-notes',
-    title: 'Vault Notes',
-    description:
-      'End-to-end encrypted note-taking app с markdown, тегами и синхронизацией между устройствами.',
-    longDescription:
-      'Vault Notes — зашифрованное приложение для заметок с markdown-редактором, тегами и синхронизацией между устройствами. E2E шифрование, офлайн-режим и быстрый поиск. Backend — Laravel API с авторизацией и синхронизацией.',
-    tags: ['Next.js', 'Laravel', 'MongoDB'],
-    stack: ['Next.js', 'TypeScript', 'Laravel', 'PHP', 'MongoDB', 'Auth.js'],
-    color: '#d4846a',
-    year: '2024',
-    liveUrl: 'https://example.com/vault-notes',
-    repoUrl: 'https://github.com/scalevillain13/vault-notes',
-    highlights: [
-      'End-to-end encryption',
-      'Markdown editor',
-      'Cross-device sync',
-      'Tag-based organization',
-    ],
-  },
-  {
-    id: '04',
-    slug: 'orbit-social',
-    title: 'Orbit Social',
-    description:
-      'Минималистичная социальная сеть для dev-сообщества с live-чатом и code snippets.',
-    longDescription:
-      'Orbit Social — платформа для dev-сообщества с профилями, лентой, live-чатом и встроенными code snippets. GraphQL API на Laravel, Redis для real-time и модерация контента.',
-    tags: ['React', 'Laravel', 'Redis'],
-    stack: ['React', 'GraphQL', 'Redis', 'Laravel', 'PHP', 'PostgreSQL'],
-    color: '#e8b86d',
-    year: '2024',
-    liveUrl: 'https://example.com/orbit-social',
-    repoUrl: 'https://github.com/scalevillain13/orbit-social',
-    highlights: [
-      'Live community chat',
-      'Syntax-highlighted snippets',
-      'GraphQL API layer',
-      'Real-time notifications',
+      '4-шаговый wizard подбора квартиры',
+      'Каталог по 5 районам Большого Сочи',
+      'Фильтры по бюджету, метражу и комнатам',
+      'SEO-оптимизация под локальные запросы',
     ],
   },
 ]

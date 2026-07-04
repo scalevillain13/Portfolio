@@ -98,7 +98,7 @@ export function Projects({ onOpenProject }: ProjectsProps) {
         <SectionHeading
           label="03 — Проекты"
           title="Избранные работы"
-          subtitle="Placeholder-проекты — скоро здесь будут реальные кейсы."
+          subtitle="Реальные продукты — от edtech-платформы до коммерческого каталога недвижимости."
         />
 
         <div className="projects__grid">
