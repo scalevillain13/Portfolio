@@ -1,15 +1,30 @@
 import { useRef, type ReactNode } from 'react'
-import { motion, useInView, useScroll, useSpring, useTransform } from 'framer-motion'
+import {
+  motion,
+  useInView,
+  useScroll,
+  useSpring,
+  useTransform,
+} from 'framer-motion'
 import { useIsDesktop, useReducedMotion } from '../hooks/useMedia'
 import './ScrollStage3D.css'
 
 const EASE_CURVE = [0.16, 1, 0.3, 1] as const
 
-const SCROLL_SPRING = {
-  stiffness: 320,
-  damping: 44,
-  mass: 0.35,
-  restDelta: 0.0008,
+/** Main section transforms — soft follow, no mechanical snap */
+const STAGE_SPRING = {
+  stiffness: 175,
+  damping: 34,
+  mass: 0.48,
+  restDelta: 0.0004,
+}
+
+/** Parallax / decorative layers — slightly slower for depth separation */
+const DEPTH_SPRING = {
+  stiffness: 140,
+  damping: 30,
+  mass: 0.55,
+  restDelta: 0.0004,
 }
 
 type ScrollStage3DProps = {
@@ -36,37 +51,63 @@ function ScrollStageFallback({ children }: { children: ReactNode }) {
 
 function ScrollStageDesktop({ children, index }: ScrollStage3DProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const isNear = useInView(ref, { margin: '240px 0px', amount: 0 })
+  const isNear = useInView(ref, { margin: '280px 0px', amount: 0 })
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: ['start 0.92', 'start 0.42', 'end 0.58', 'end 0.08'],
   })
 
   const direction = index % 2 === 0 ? 1 : -1
+  const enterTilt = 14 * direction
+  const exitTilt = -9 * direction
 
   const rotateXRaw = useTransform(
     scrollYProgress,
-    [0, 0.22, 0.5, 0.78, 1],
-    [7 * direction, 2.5 * direction, 0, -2 * direction, -6 * direction],
+    [0, 0.28, 0.62, 1],
+    [enterTilt, 0, 0, exitTilt],
   )
   const rotateYRaw = useTransform(
     scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    [3.5 * direction, 1 * direction, 0, -0.8 * direction, -2.5 * direction],
+    [0, 0.28, 0.62, 1],
+    [5 * direction, 0, 0, -3.5 * direction],
   )
-  const zRaw = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [-70, -18, 0, -18, -55])
-  const scaleRaw = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0.935, 0.975, 1, 0.975, 0.935])
-  const opacityRaw = useTransform(scrollYProgress, [0, 0.18, 0.5, 0.82, 1], [0.55, 0.92, 1, 0.92, 0.55])
+  const zRaw = useTransform(scrollYProgress, [0, 0.32, 0.68, 1], [-140, 0, 0, -100])
+  const scaleRaw = useTransform(scrollYProgress, [0, 0.28, 0.72, 1], [0.86, 1, 1, 0.88])
+  const opacityRaw = useTransform(scrollYProgress, [0, 0.14, 0.86, 1], [0.38, 1, 1, 0.42])
+  const shadowOpacityRaw = useTransform(scrollYProgress, [0, 0.45, 1], [0, 0.45, 0.12])
+  const backYRaw = useTransform(scrollYProgress, [0, 1], [32, -32])
+  const frontYRaw = useTransform(scrollYProgress, [0, 1], [-18, 18])
+  const edgeGlowRaw = useTransform(scrollYProgress, [0, 0.5, 1], [0.15, 0.55, 0.2])
 
-  const rotateX = useSpring(rotateXRaw, SCROLL_SPRING)
-  const rotateY = useSpring(rotateYRaw, SCROLL_SPRING)
-  const z = useSpring(zRaw, SCROLL_SPRING)
-  const scale = useSpring(scaleRaw, SCROLL_SPRING)
-  const opacity = useSpring(opacityRaw, SCROLL_SPRING)
+  const rotateX = useSpring(rotateXRaw, STAGE_SPRING)
+  const rotateY = useSpring(rotateYRaw, STAGE_SPRING)
+  const z = useSpring(zRaw, STAGE_SPRING)
+  const scale = useSpring(scaleRaw, STAGE_SPRING)
+  const opacity = useSpring(opacityRaw, STAGE_SPRING)
+  const shadowOpacity = useSpring(shadowOpacityRaw, DEPTH_SPRING)
+  const backY = useSpring(backYRaw, DEPTH_SPRING)
+  const frontY = useSpring(frontYRaw, DEPTH_SPRING)
+  const edgeGlow = useSpring(edgeGlowRaw, DEPTH_SPRING)
+
+  const willChange = isNear ? 'transform, opacity' : 'auto'
 
   return (
     <div ref={ref} className="scroll-stage-3d">
+      <motion.div
+        className="scroll-stage-3d__shadow"
+        style={{ opacity: shadowOpacity, willChange }}
+        aria-hidden="true"
+      />
+
+      <motion.div
+        className="scroll-stage-3d__depth scroll-stage-3d__depth--far"
+        style={{ y: backY, z: -60, rotateX, opacity: edgeGlow, willChange }}
+        aria-hidden="true"
+      >
+        <span className="scroll-stage-3d__grid" />
+      </motion.div>
+
       <motion.div
         className="scroll-stage-3d__plane"
         style={{
@@ -75,11 +116,19 @@ function ScrollStageDesktop({ children, index }: ScrollStage3DProps) {
           z,
           scale,
           opacity,
-          willChange: isNear ? 'transform, opacity' : 'auto',
+          willChange,
         }}
       >
-        <div className="scroll-stage-3d__content">{children}</div>
+        <motion.div className="scroll-stage-3d__content" style={{ y: frontY, willChange }}>
+          {children}
+        </motion.div>
       </motion.div>
+
+      <motion.div
+        className="scroll-stage-3d__depth scroll-stage-3d__depth--near"
+        style={{ y: frontY, z: 30, opacity: edgeGlow, willChange }}
+        aria-hidden="true"
+      />
     </div>
   )
 }
