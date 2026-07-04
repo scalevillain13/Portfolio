@@ -28,6 +28,22 @@ export function useIsMobile(breakpoint = 768) {
   return mobile
 }
 
+export const DESKTOP_BREAKPOINT = 1024
+
+export function useIsDesktop(breakpoint = DESKTOP_BREAKPOINT) {
+  const [desktop, setDesktop] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(min-width: ${breakpoint}px)`)
+    setDesktop(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setDesktop(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [breakpoint])
+
+  return desktop
+}
+
 export function useIsTouchDevice() {
   const [touch, setTouch] = useState(false)
 

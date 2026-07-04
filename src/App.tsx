@@ -14,6 +14,7 @@ import { Resume } from './components/Resume'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { SectionDivider } from './components/SectionDivider'
+import { ScrollStage3D } from './components/ScrollStage3D'
 import { ProjectDetail } from './components/ProjectDetail'
 import { useReducedMotion } from './hooks/useMedia'
 import { useProjectRoute } from './hooks/useProjectRoute'
@@ -40,7 +41,11 @@ function App() {
     }
     requestAnimationFrame(raf)
 
+    const onResize = () => lenis.resize()
+    window.addEventListener('resize', onResize)
+
     return () => {
+      window.removeEventListener('resize', onResize)
       lenis.destroy()
       lenisRef.current = null
     }
@@ -68,20 +73,32 @@ function App() {
       <BackgroundEffects />
       <Navbar />
 
-      <main style={{ position: 'relative', zIndex: 1 }}>
+      <main className="scroll-canvas" style={{ position: 'relative', zIndex: 1 }}>
         <Hero />
-        <SectionDivider />
-        <About />
-        <SectionDivider />
-        <Skills />
-        <SectionDivider />
-        <Projects onOpenProject={openProject} />
-        <SectionDivider />
-        <Experience />
-        <SectionDivider />
-        <Resume />
-        <SectionDivider />
-        <Contact />
+        <ScrollStage3D index={0}>
+          <SectionDivider />
+          <About />
+        </ScrollStage3D>
+        <ScrollStage3D index={1}>
+          <SectionDivider />
+          <Skills />
+        </ScrollStage3D>
+        <ScrollStage3D index={2}>
+          <SectionDivider />
+          <Projects onOpenProject={openProject} />
+        </ScrollStage3D>
+        <ScrollStage3D index={3}>
+          <SectionDivider />
+          <Experience />
+        </ScrollStage3D>
+        <ScrollStage3D index={4}>
+          <SectionDivider />
+          <Resume />
+        </ScrollStage3D>
+        <ScrollStage3D index={5}>
+          <SectionDivider />
+          <Contact />
+        </ScrollStage3D>
       </main>
 
       <Footer />

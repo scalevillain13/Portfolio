@@ -1,0 +1,35 @@
+.scroll-canvas {
+  position: relative;
+  perspective: 1600px;
+  perspective-origin: 50% 50%;
+}
+
+.scroll-stage-3d {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.scroll-stage-3d--flat {
+  transform: none;
+}
+
+.scroll-stage-3d__plane {
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+.scroll-stage-3d__content {
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-stage-3d .section {
+  overflow: visible;
+}
+
+@media (max-width: 1023px), (prefers-reduced-motion: reduce) {
+  .scroll-canvas {
+    perspective: none;
+  }
+}
