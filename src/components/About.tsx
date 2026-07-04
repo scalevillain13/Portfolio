@@ -60,7 +60,7 @@ export function About() {
       <div className="container section__content">
         <SectionHeading
           label="01 — Обо мне"
-          title="Молодой разработчик с большими амбициями"
+          title="Разработчик с большими амбициями"
         />
       </div>
 
