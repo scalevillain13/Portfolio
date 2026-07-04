@@ -92,7 +92,7 @@ export const projects: Project[] = [
     liveUrl: 'https://cyberlearn-psi.vercel.app/',
     repoUrl: 'https://github.com/scalevillain13/cyberlearn',
     image: './images/cyberlearn.png',
-    gallery: ['./images/cyberlearn.png'],
+    gallery: ['./images/cyberlearn.png', './images/cy-1.png'],
     highlights: [
       'Docker-лаборатории прямо в браузере',
       '38+ комнат и 5 треков обучения',
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     year: '2025',
     liveUrl: 'https://yoom.pro',
     image: './images/yoom.png',
-    gallery: ['./images/yoom.png'],
+    gallery: ['./images/yoom.png', './images/y-1.png'],
     highlights: [
       '4-шаговый wizard подбора квартиры',
       'Каталог по 5 районам Большого Сочи',

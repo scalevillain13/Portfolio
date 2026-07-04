@@ -105,52 +105,41 @@ export function ProjectDetail({ project, onClose, onNavigate }: ProjectDetailPro
             animate="visible"
             variants={sectionMotion}
           >
-            <p className="project-detail__eyebrow">{project.slug}</p>
-            <h1 id="project-detail-title" className="project-detail__title">
-              {project.title}
-            </h1>
-            <p className="project-detail__tagline">{project.tagline}</p>
-
-            <div className="project-detail__header-tags">
-              {project.tags.map((tag) => {
-                const Icon = techIconMap[tag]
-                return (
-                  <span key={tag} className="project-detail__header-tag">
-                    {Icon && <Icon />}
-                    {tag}
-                  </span>
-                )
-              })}
+            <div className="project-detail__header-deco" aria-hidden="true">
+              <span className="project-detail__header-watermark">{project.id}</span>
+              <span className="project-detail__header-orb" />
+              <span className="project-detail__header-ring" />
             </div>
 
-            <div className="project-detail__header-actions">
-              <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
-                Live Demo
-              </MagneticButton>
-              {project.repoUrl && (
-                <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
-                  GitHub Repo
+            <div className="project-detail__header-body">
+              <p className="project-detail__eyebrow">{project.slug}</p>
+              <h1 id="project-detail-title" className="project-detail__title">
+                {project.title}
+              </h1>
+              <p className="project-detail__tagline">{project.tagline}</p>
+
+              <div className="project-detail__header-tags">
+                {project.tags.map((tag) => {
+                  const Icon = techIconMap[tag]
+                  return (
+                    <span key={tag} className="project-detail__header-tag">
+                      {Icon && <Icon />}
+                      {tag}
+                    </span>
+                  )
+                })}
+              </div>
+
+              <div className="project-detail__header-actions">
+                <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
+                  Live Demo
                 </MagneticButton>
-              )}
-            </div>
-          </motion.section>
-
-          <motion.section
-            className="project-detail__hero-image"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={sectionMotion}
-          >
-            <div className="project-detail__hero-frame">
-              <div className="project-detail__hero-glow" style={{ background: project.color }} />
-              <img
-                src={project.image}
-                alt={`${project.title} — preview`}
-                className="project-detail__hero-img"
-                loading="eager"
-              />
-              <div className="project-detail__hero-shine" aria-hidden="true" />
+                {project.repoUrl && (
+                  <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
+                    GitHub Repo
+                  </MagneticButton>
+                )}
+              </div>
             </div>
           </motion.section>
 

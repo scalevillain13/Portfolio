@@ -60,12 +60,14 @@ function ProjectCard({
       whileTap={{ scale: 0.98 }}
     >
       <div className="project-card__visual" style={{ '--project-color': project.color } as CSSProperties}>
-        <img
-          src={project.image}
-          alt=""
-          className="project-card__image"
-          loading="lazy"
-        />
+        <div className="project-card__image-wrap">
+          <img
+            src={project.image}
+            alt=""
+            className="project-card__image"
+            loading="lazy"
+          />
+        </div>
         <span className="project-card__number">{project.id}</span>
         <div className="project-card__glow" />
         <div className="project-card__pattern" />
