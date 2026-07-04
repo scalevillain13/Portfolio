@@ -2,14 +2,18 @@ export type Project = {
   id: string
   slug: string
   title: string
+  tagline: string
   description: string
   longDescription: string
+  problem: string
   tags: string[]
   stack: string[]
   color: string
   year: string
   liveUrl: string
   repoUrl?: string
+  image: string
+  gallery: string[]
   highlights: string[]
 }
 
@@ -28,6 +32,7 @@ export const personal = {
   telegramUrl: 'https://t.me/vanlaviks',
   github: 'scalevillain13',
   githubUrl: 'https://github.com/scalevillain13',
+  resumeUrl: './docs/resume_alexander.pdf',
 } as const
 
 export const about = {
@@ -73,16 +78,21 @@ export const projects: Project[] = [
     id: '01',
     slug: 'cyberlearn',
     title: 'CyberLearn',
+    tagline: 'Интерактивная платформа по кибербезопасности на русском языке',
     description:
       'Русскоязычная платформа по кибербезопасности с Docker-лабораториями, CTF-заданиями и системой рангов.',
     longDescription:
-      'CyberLearn — первая полноценная русскоязычная платформа для обучения информационной безопасности в формате TryHackMe. 38+ комнат, 5 треков обучения, Docker-лаборатории в один клик, интерактивный веб-терминал, система рангов fsociety и модель FREE / Premium-подписки.',
+      'CyberLearn — первая полноценная русскоязычная платформа для обучения информационной безопасности в формате TryHackMe. Теория, квизы, практика в изолированных контейнерах и прогрессия от script_kiddie до fsociety_member — всё в одном продукте.',
+    problem:
+      'В Рунете не было качественной русскоязычной платформы с интерактивной практикой в InfoSec. Новичкам приходилось либо учить английский ради TryHackMe, либо читать устаревшие учебники без hands-on опыта.',
     tags: ['Next.js', 'TypeScript', 'Docker'],
     stack: ['Next.js', 'TypeScript', 'Docker', 'PostgreSQL', 'Redis', 'Vite'],
     color: '#34d399',
     year: '2026',
     liveUrl: 'https://cyberlearn-psi.vercel.app/',
     repoUrl: 'https://github.com/scalevillain13/cyberlearn',
+    image: './images/cyberlearn.png',
+    gallery: ['./images/cyberlearn.png'],
     highlights: [
       'Docker-лаборатории прямо в браузере',
       '38+ комнат и 5 треков обучения',
@@ -94,15 +104,20 @@ export const projects: Project[] = [
     id: '02',
     slug: 'yoom-pro',
     title: 'yoom.pro',
+    tagline: 'Витрина новостроек Сочи без посредников и устаревших объявлений',
     description:
       'Платформа подбора новостроек в Сочи — каталог без посредников, wizard из 4 шагов и SEO по районам.',
     longDescription:
-      'yoom.pro — витрина новостроек Большого Сочи с актуальными ценами от застройщиков. Многошаговый подбор квартиры по району, ЖК и параметрам, каталог с фильтрами по бюджету и метражу, карта локаций и SEO-страницы под запросы «недвижимость Адлер», «квартира Хоста» и другие.',
+      'yoom.pro — коммерческий продукт для рынка недвижимости Большого Сочи. Актуальные цены от застройщиков, понятный путь от выбора района до заявки на подборку и SEO-страницы под локальные поисковые запросы.',
+    problem:
+      'Рынок недвижимости Сочи перегружен посредниками, устаревшими объявлениями и непрозрачными ценами. Покупателям нужен честный каталог новостроек с быстрым подбором без лишних звонков.',
     tags: ['Laravel', 'React', 'PostgreSQL'],
     stack: ['Laravel', 'PHP', 'React', 'TypeScript', 'PostgreSQL'],
     color: '#c9a66b',
     year: '2025',
     liveUrl: 'https://yoom.pro',
+    image: './images/yoom.png',
+    gallery: ['./images/yoom.png'],
     highlights: [
       '4-шаговый wizard подбора квартиры',
       'Каталог по 5 районам Большого Сочи',
@@ -141,10 +156,43 @@ export const navLinks = [
   { label: 'Стек', href: '#skills' },
   { label: 'Проекты', href: '#projects' },
   { label: 'Опыт', href: '#experience' },
+  { label: 'Резюме', href: '#resume' },
   { label: 'Контакт', href: '#contact' },
 ]
+
+const stackCategoryLabels: Record<string, string> = {
+  frontend: 'Frontend',
+  backend: 'Backend',
+  devops: 'DevOps',
+  tools: 'Tools',
+  design: 'Design',
+}
 
 export function getProjectById(id: string | null) {
   if (!id) return null
   return projects.find((p) => p.id === id) ?? null
+}
+
+export function getAdjacentProjects(id: string) {
+  const index = projects.findIndex((p) => p.id === id)
+  if (index === -1) return { prev: null, next: null }
+  return {
+    prev: index > 0 ? projects[index - 1] : null,
+    next: index < projects.length - 1 ? projects[index + 1] : null,
+  }
+}
+
+export function groupProjectStack(stack: string[]) {
+  const groups = new Map<string, string[]>()
+
+  for (const tech of stack) {
+    const skill = skills.find((s) => s.name === tech)
+    const category = skill?.category ?? 'tools'
+    const label = stackCategoryLabels[category] ?? category
+    const existing = groups.get(label) ?? []
+    existing.push(tech)
+    groups.set(label, existing)
+  }
+
+  return Array.from(groups.entries()).map(([label, items]) => ({ label, items }))
 }

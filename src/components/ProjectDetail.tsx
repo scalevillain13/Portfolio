@@ -1,17 +1,42 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import type { CSSProperties } from 'react'
-import type { Project } from '../data/content'
+import {
+  getAdjacentProjects,
+  groupProjectStack,
+  type Project,
+} from '../data/content'
 import { techIconMap } from '../icons/TechIcons'
 import { MagneticButton } from './MagneticButton'
+import { ProjectDetailAmbience } from './ProjectDetailAmbience'
 import './ProjectDetail.css'
 
 type ProjectDetailProps = {
   project: Project
   onClose: () => void
+  onNavigate: (id: string) => void
 }
 
-export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
+const ease = [0.16, 1, 0.3, 1] as const
+
+const sectionMotion = {
+  hidden: { opacity: 0, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75, ease },
+  },
+}
+
+export function ProjectDetail({ project, onClose, onNavigate }: ProjectDetailProps) {
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const { prev, next } = getAdjacentProjects(project.id)
+  const stackGroups = groupProjectStack(project.stack)
+
+  useEffect(() => {
+    scrollerRef.current?.scrollTo(0, 0)
+  }, [project.id])
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose()
@@ -26,7 +51,10 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.35 }}
+      transition={{ duration: 0.4 }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-detail-title"
     >
       <motion.div
         className="project-detail__backdrop"
@@ -37,87 +65,240 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
       />
 
       <motion.div
-        className="project-detail__panel"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="project-detail-title"
-        initial={{ y: '100%' }}
-        animate={{ y: 0 }}
-        exit={{ y: '100%' }}
-        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        ref={scrollerRef}
+        className="project-detail__scroller"
+        data-lenis-prevent
+        initial={{ opacity: 0, y: 48 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 32 }}
+        transition={{ duration: 0.65, ease }}
       >
-        <button
-          type="button"
-          className="project-detail__close"
-          onClick={onClose}
-          aria-label="Закрыть"
-          data-cursor="Close"
-        >
-          ✕
-        </button>
+        <ProjectDetailAmbience color={project.color} />
 
-        <div
-          className="project-detail__hero"
-          style={{ '--project-color': project.color } as CSSProperties}
-        >
-          <div className="project-detail__hero-glow" />
-          <div className="project-detail__hero-grid" />
-          <div className="project-detail__hero-mock">
-            <span className="project-detail__hero-id">{project.id}</span>
-            <span className="project-detail__hero-title">{project.title}</span>
-            <div className="project-detail__hero-bars">
-              <span /><span /><span />
-            </div>
-          </div>
-        </div>
+        <div className="project-detail__inner">
+          <header className="project-detail__topbar">
+            <button
+              type="button"
+              className="project-detail__back"
+              onClick={onClose}
+              data-cursor="Back"
+            >
+              <span className="project-detail__back-icon" aria-hidden="true">←</span>
+              <span>К проектам</span>
+            </button>
+            <span className="project-detail__top-id">{project.id} / {project.year}</span>
+            <button
+              type="button"
+              className="project-detail__close"
+              onClick={onClose}
+              aria-label="Закрыть"
+              data-cursor="Close"
+            >
+              ✕
+            </button>
+          </header>
 
-        <div className="project-detail__body">
-          <div className="project-detail__meta">
-            <span className="project-detail__year">{project.year}</span>
-            <span className="project-detail__divider" />
-            <span className="project-detail__slug">{project.slug}</span>
-          </div>
+          <motion.section
+            className="project-detail__header"
+            style={{ '--project-color': project.color } as CSSProperties}
+            initial="hidden"
+            animate="visible"
+            variants={sectionMotion}
+          >
+            <p className="project-detail__eyebrow">{project.slug}</p>
+            <h1 id="project-detail-title" className="project-detail__title">
+              {project.title}
+            </h1>
+            <p className="project-detail__tagline">{project.tagline}</p>
 
-          <h1 id="project-detail-title" className="project-detail__heading">
-            {project.title}
-          </h1>
-
-          <p className="project-detail__desc">{project.longDescription}</p>
-
-          <div className="project-detail__highlights">
-            <h2>Ключевые фичи</h2>
-            <ul>
-              {project.highlights.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="project-detail__stack">
-            <h2>Tech Stack</h2>
-            <div className="project-detail__stack-grid">
-              {project.stack.map((tech) => {
-                const Icon = techIconMap[tech]
+            <div className="project-detail__header-tags">
+              {project.tags.map((tag) => {
+                const Icon = techIconMap[tag]
                 return (
-                  <span key={tech} className="project-detail__stack-item">
+                  <span key={tag} className="project-detail__header-tag">
                     {Icon && <Icon />}
-                    {tech}
+                    {tag}
                   </span>
                 )
               })}
             </div>
-          </div>
 
-          <div className="project-detail__actions">
-            <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
-              Live Demo
-            </MagneticButton>
-            {project.repoUrl && (
-              <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
-                GitHub Repo
+            <div className="project-detail__header-actions">
+              <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
+                Live Demo
               </MagneticButton>
-            )}
-          </div>
+              {project.repoUrl && (
+                <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
+                  GitHub Repo
+                </MagneticButton>
+              )}
+            </div>
+          </motion.section>
+
+          <motion.section
+            className="project-detail__hero-image"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={sectionMotion}
+          >
+            <div className="project-detail__hero-frame">
+              <div className="project-detail__hero-glow" style={{ background: project.color }} />
+              <img
+                src={project.image}
+                alt={`${project.title} — preview`}
+                className="project-detail__hero-img"
+                loading="eager"
+              />
+              <div className="project-detail__hero-shine" aria-hidden="true" />
+            </div>
+          </motion.section>
+
+          <motion.section
+            className="project-detail__section"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={sectionMotion}
+          >
+            <p className="project-detail__section-label">Overview</p>
+            <h2 className="project-detail__section-title">О проекте</h2>
+            <p className="project-detail__overview">{project.longDescription}</p>
+            <div className="project-detail__problem">
+              <span className="project-detail__problem-label">Задача</span>
+              <p>{project.problem}</p>
+            </div>
+          </motion.section>
+
+          <motion.section
+            className="project-detail__section"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={sectionMotion}
+          >
+            <p className="project-detail__section-label">Highlights</p>
+            <h2 className="project-detail__section-title">Ключевые фичи</h2>
+            <div className="project-detail__features">
+              {project.highlights.map((item, i) => (
+                <motion.article
+                  key={item}
+                  className="project-detail__feature-card"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.6, ease }}
+                >
+                  <span className="project-detail__feature-index">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p>{item}</p>
+                </motion.article>
+              ))}
+            </div>
+          </motion.section>
+
+          <motion.section
+            className="project-detail__section"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            variants={sectionMotion}
+          >
+            <p className="project-detail__section-label">Stack</p>
+            <h2 className="project-detail__section-title">Технологии</h2>
+            <div className="project-detail__stack-groups">
+              {stackGroups.map((group) => (
+                <div key={group.label} className="project-detail__stack-group">
+                  <h3>{group.label}</h3>
+                  <div className="project-detail__stack-grid">
+                    {group.items.map((tech) => {
+                      const Icon = techIconMap[tech]
+                      return (
+                        <span key={tech} className="project-detail__stack-item">
+                          {Icon && <Icon />}
+                          {tech}
+                        </span>
+                      )
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+
+          {project.gallery.length > 0 && (
+            <motion.section
+              className="project-detail__section"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              variants={sectionMotion}
+            >
+              <p className="project-detail__section-label">Gallery</p>
+              <h2 className="project-detail__section-title">Скриншоты</h2>
+              <div className="project-detail__gallery">
+                {project.gallery.map((src, i) => (
+                  <motion.figure
+                    key={`${src}-${i}`}
+                    className="project-detail__gallery-item"
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.65, ease }}
+                  >
+                    <img src={src} alt={`${project.title} screenshot ${i + 1}`} loading="lazy" />
+                  </motion.figure>
+                ))}
+              </div>
+            </motion.section>
+          )}
+
+          <motion.footer
+            className="project-detail__footer-nav"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={sectionMotion}
+          >
+            <button
+              type="button"
+              className="project-detail__nav-btn project-detail__nav-btn--back"
+              onClick={onClose}
+              data-cursor="Back"
+            >
+              <span>← Все проекты</span>
+            </button>
+
+            <div className="project-detail__nav-adjacent">
+              {prev ? (
+                <button
+                  type="button"
+                  className="project-detail__nav-btn"
+                  onClick={() => onNavigate(prev.id)}
+                  data-cursor="View"
+                >
+                  <span className="project-detail__nav-dir">Предыдущий</span>
+                  <span className="project-detail__nav-title">{prev.title}</span>
+                </button>
+              ) : (
+                <span />
+              )}
+              {next ? (
+                <button
+                  type="button"
+                  className="project-detail__nav-btn project-detail__nav-btn--next"
+                  onClick={() => onNavigate(next.id)}
+                  data-cursor="View"
+                >
+                  <span className="project-detail__nav-dir">Следующий</span>
+                  <span className="project-detail__nav-title">{next.title}</span>
+                </button>
+              ) : (
+                <span />
+              )}
+            </div>
+          </motion.footer>
         </div>
       </motion.div>
     </motion.div>

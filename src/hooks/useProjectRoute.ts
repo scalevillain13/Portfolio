@@ -13,8 +13,10 @@ export function useProjectRoute() {
   }, [])
 
   useEffect(() => {
+    document.documentElement.classList.toggle('lenis-stopped', Boolean(projectId))
     document.body.style.overflow = projectId ? 'hidden' : ''
     return () => {
+      document.documentElement.classList.remove('lenis-stopped')
       document.body.style.overflow = ''
     }
   }, [projectId])

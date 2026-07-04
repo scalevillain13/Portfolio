@@ -68,7 +68,7 @@ export function Contact() {
       <SectionAmbience variant="contact" />
       <div className="container section__content">
         <SectionHeading
-          label="05 — Контакт"
+          label="06 — Контакт"
           title="Давайте создадим что-то вместе"
           subtitle="Открыт к новым проектам, коллаборациям и интересным задачам."
         />

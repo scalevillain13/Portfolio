@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Lenis from 'lenis'
 import { Preloader } from './components/Preloader'
@@ -10,6 +10,7 @@ import { About } from './components/About'
 import { Skills } from './components/Skills'
 import { Projects } from './components/Projects'
 import { Experience } from './components/Experience'
+import { Resume } from './components/Resume'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { SectionDivider } from './components/SectionDivider'
@@ -20,6 +21,7 @@ import { useProjectRoute } from './hooks/useProjectRoute'
 function App() {
   const [loading, setLoading] = useState(true)
   const reducedMotion = useReducedMotion()
+  const lenisRef = useRef<Lenis | null>(null)
   const { project, openProject, closeProject } = useProjectRoute()
 
   useEffect(() => {
@@ -30,6 +32,7 @@ function App() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     })
+    lenisRef.current = lenis
 
     function raf(time: number) {
       lenis.raf(time)
@@ -37,8 +40,22 @@ function App() {
     }
     requestAnimationFrame(raf)
 
-    return () => lenis.destroy()
+    return () => {
+      lenis.destroy()
+      lenisRef.current = null
+    }
   }, [reducedMotion])
+
+  useEffect(() => {
+    const lenis = lenisRef.current
+    if (!lenis) return
+
+    if (project) {
+      lenis.stop()
+    } else {
+      lenis.start()
+    }
+  }, [project])
 
   return (
     <>
@@ -62,6 +79,8 @@ function App() {
         <SectionDivider />
         <Experience />
         <SectionDivider />
+        <Resume />
+        <SectionDivider />
         <Contact />
       </main>
 
@@ -69,7 +88,12 @@ function App() {
 
       <AnimatePresence>
         {project && (
-          <ProjectDetail key={project.id} project={project} onClose={closeProject} />
+          <ProjectDetail
+            key={project.id}
+            project={project}
+            onClose={closeProject}
+            onNavigate={openProject}
+          />
         )}
       </AnimatePresence>
     </>
