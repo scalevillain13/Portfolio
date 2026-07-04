@@ -23,8 +23,17 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
+  line-height: 1.15;
+  padding-bottom: 0.06em;
 }
 
 .split-word {
   display: inline-block;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .split-word {
+    will-change: auto;
+  }
 }

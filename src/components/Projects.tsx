@@ -1,10 +1,18 @@
-import { useRef, useState, type MouseEvent, type CSSProperties, type KeyboardEvent } from 'react'
-import { motion } from 'framer-motion'
+import { useRef, type MouseEvent, type CSSProperties, type KeyboardEvent } from 'react'
+import { motion, useMotionValue, useSpring } from 'framer-motion'
 import type { Project } from '../data/content'
 import { projects } from '../data/content'
+import { useIsMobile } from '../hooks/useMedia'
 import { SectionHeading } from './SectionHeading'
 import { SectionAmbience } from './SectionAmbience'
 import './Projects.css'
+
+const TILT_SPRING = { stiffness: 260, damping: 32, mass: 0.35 }
+const MAX_TILT = 7
+
+function clamp(value: number, max: number) {
+  return Math.max(-max, Math.min(max, value))
+}
 
 function ProjectCard({
   project,
@@ -15,18 +23,29 @@ function ProjectCard({
   index: number
   onOpen: (id: string) => void
 }) {
-  const ref = useRef<HTMLElement>(null)
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const hitRef = useRef<HTMLDivElement>(null)
+  const mobile = useIsMobile()
+  const rotateXRaw = useMotionValue(0)
+  const rotateYRaw = useMotionValue(0)
+  const rotateX = useSpring(rotateXRaw, TILT_SPRING)
+  const rotateY = useSpring(rotateYRaw, TILT_SPRING)
 
   const handleMove = (e: MouseEvent) => {
-    if (!ref.current) return
-    const rect = ref.current.getBoundingClientRect()
+    if (mobile || !hitRef.current) return
+    const rect = hitRef.current.getBoundingClientRect()
+    if (rect.width === 0 || rect.height === 0) return
+
     const x = (e.clientX - rect.left) / rect.width - 0.5
     const y = (e.clientY - rect.top) / rect.height - 0.5
-    setTilt({ x: y * -8, y: x * 8 })
+
+    rotateXRaw.set(clamp(y * -MAX_TILT * 2, MAX_TILT))
+    rotateYRaw.set(clamp(x * MAX_TILT * 2, MAX_TILT))
   }
 
-  const handleLeave = () => setTilt({ x: 0, y: 0 })
+  const handleLeave = () => {
+    rotateXRaw.set(0)
+    rotateYRaw.set(0)
+  }
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -36,61 +55,66 @@ function ProjectCard({
   }
 
   return (
-    <motion.article
-      ref={ref}
-      className="project-card"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ delay: index * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+    <div
+      ref={hitRef}
+      className="project-card-hit"
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      onClick={() => onOpen(project.id)}
-      onKeyDown={handleKeyDown}
-      role="link"
-      tabIndex={0}
-      aria-label={`Открыть проект ${project.title}`}
-      style={{
-        rotateX: tilt.x,
-        rotateY: tilt.y,
-        transformPerspective: 800,
-      }}
-      data-cursor="View"
-      whileHover={{ scale: 1.02, transition: { duration: 0.35 } }}
-      whileTap={{ scale: 0.98 }}
     >
-      <div className="project-card__visual" style={{ '--project-color': project.color } as CSSProperties}>
-        <div className="project-card__image-wrap">
-          <img
-            src={project.image}
-            alt=""
-            className="project-card__image"
-            loading="lazy"
-          />
+      <motion.article
+        className="project-card"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ delay: index * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        onClick={() => onOpen(project.id)}
+        onKeyDown={handleKeyDown}
+        role="link"
+        tabIndex={0}
+        aria-label={`Открыть проект ${project.title}`}
+        style={{
+          rotateX: mobile ? 0 : rotateX,
+          rotateY: mobile ? 0 : rotateY,
+          transformPerspective: 900,
+          transformOrigin: 'center center',
+        }}
+        data-cursor="View"
+        whileHover={{ scale: 1.02, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] } }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <div className="project-card__visual" style={{ '--project-color': project.color } as CSSProperties}>
+          <div className="project-card__image-wrap">
+            <img
+              src={project.image}
+              alt=""
+              className="project-card__image"
+              loading="lazy"
+            />
+          </div>
+          <span className="project-card__number">{project.id}</span>
+          <div className="project-card__glow" />
+          <div className="project-card__pattern" />
         </div>
-        <span className="project-card__number">{project.id}</span>
-        <div className="project-card__glow" />
-        <div className="project-card__pattern" />
-      </div>
 
-      <div className="project-card__content">
-        <div className="project-card__header">
-          <h3 className="project-card__title">{project.title}</h3>
-          <span className="project-card__year">{project.year}</span>
+        <div className="project-card__content">
+          <div className="project-card__header">
+            <h3 className="project-card__title">{project.title}</h3>
+            <span className="project-card__year">{project.year}</span>
+          </div>
+          <p className="project-card__desc">{project.description}</p>
+          <div className="project-card__tags">
+            {project.tags.map((tag) => (
+              <span key={tag} className="project-card__tag">{tag}</span>
+            ))}
+          </div>
         </div>
-        <p className="project-card__desc">{project.description}</p>
-        <div className="project-card__tags">
-          {project.tags.map((tag) => (
-            <span key={tag} className="project-card__tag">{tag}</span>
-          ))}
-        </div>
-      </div>
 
-      <div className="project-card__overlay">
-        <span className="project-card__overlay-label">View Project</span>
-        <span className="project-card__overlay-arrow">→</span>
-      </div>
-    </motion.article>
+        <div className="project-card__overlay" aria-hidden="true">
+          <span className="project-card__overlay-label">View Project</span>
+          <span className="project-card__overlay-arrow">→</span>
+        </div>
+      </motion.article>
+    </div>
   )
 }
 

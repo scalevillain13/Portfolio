@@ -4,15 +4,21 @@
   gap: clamp(1.25rem, 2.5vw, 2rem);
 }
 
+.project-card-hit {
+  position: relative;
+  height: 100%;
+}
+
 .project-card {
   position: relative;
+  height: 100%;
   border-radius: 22px;
   background: var(--surface);
   border: 1px solid var(--border);
   overflow: hidden;
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
-  will-change: transform;
   transform-style: preserve-3d;
+  transform-origin: center center;
   cursor: pointer;
 }
 
@@ -21,7 +27,7 @@
   outline-offset: 3px;
 }
 
-.project-card:hover {
+.project-card-hit:hover .project-card {
   border-color: var(--border-hover);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38), 0 0 48px var(--accent-glow);
 }
@@ -53,7 +59,7 @@
   transition: transform 0.65s var(--ease-out-expo);
 }
 
-.project-card:hover .project-card__image {
+.project-card-hit:hover .project-card__image {
   transform: scale(1.02);
 }
 
@@ -88,7 +94,7 @@
   pointer-events: none;
 }
 
-.project-card:hover .project-card__glow {
+.project-card-hit:hover .project-card__glow {
   opacity: 0.35;
   transform: translate(-50%, -50%) scale(1.25);
 }
@@ -103,7 +109,7 @@
   pointer-events: none;
 }
 
-.project-card:hover .project-card__pattern {
+.project-card-hit:hover .project-card__pattern {
   transform: scale(1.05);
 }
 
@@ -172,6 +178,7 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
+  pointer-events: none;
 }
 
 .project-card__overlay-label {
@@ -185,11 +192,11 @@
   transition: transform 0.4s var(--ease-out-expo), opacity 0.4s ease;
 }
 
-.project-card:hover .project-card__overlay {
+.project-card-hit:hover .project-card__overlay {
   opacity: 1;
 }
 
-.project-card:hover .project-card__overlay-arrow {
+.project-card-hit:hover .project-card__overlay-arrow {
   transform: translateY(0);
   opacity: 1;
 }
