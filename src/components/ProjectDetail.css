@@ -362,22 +362,19 @@
 
 .project-detail__gallery-item {
   margin: 0;
+  aspect-ratio: 16 / 10;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.04), transparent 50%),
-    var(--bg-elevated);
+  background: var(--bg-elevated);
 }
 
 .project-detail__gallery-item img {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: clamp(220px, 28vw, 320px);
-  max-height: 520px;
-  object-fit: contain;
-  object-position: center top;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 .project-detail__footer-nav {
