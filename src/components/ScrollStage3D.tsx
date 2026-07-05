@@ -7,25 +7,8 @@ import {
   useTransform,
 } from 'framer-motion'
 import { useIsDesktop, useReducedMotion } from '../hooks/useMedia'
+import { EASE_CURVE, STAGE_SPRING } from '../motion/constants'
 import './ScrollStage3D.css'
-
-const EASE_CURVE = [0.16, 1, 0.3, 1] as const
-
-/** Main section transforms — soft follow, no mechanical snap */
-const STAGE_SPRING = {
-  stiffness: 175,
-  damping: 34,
-  mass: 0.48,
-  restDelta: 0.0004,
-}
-
-/** Parallax / decorative layers — slightly slower for depth separation */
-const DEPTH_SPRING = {
-  stiffness: 140,
-  damping: 30,
-  mass: 0.55,
-  restDelta: 0.0004,
-}
 
 type ScrollStage3DProps = {
   children: ReactNode
@@ -85,10 +68,6 @@ function ScrollStageDesktop({ children, index }: ScrollStage3DProps) {
   const z = useSpring(zRaw, STAGE_SPRING)
   const scale = useSpring(scaleRaw, STAGE_SPRING)
   const opacity = useSpring(opacityRaw, STAGE_SPRING)
-  const shadowOpacity = useSpring(shadowOpacityRaw, DEPTH_SPRING)
-  const backY = useSpring(backYRaw, DEPTH_SPRING)
-  const frontY = useSpring(frontYRaw, DEPTH_SPRING)
-  const edgeGlow = useSpring(edgeGlowRaw, DEPTH_SPRING)
 
   const willChange = isNear ? 'transform, opacity' : 'auto'
 
@@ -96,13 +75,13 @@ function ScrollStageDesktop({ children, index }: ScrollStage3DProps) {
     <div ref={ref} className="scroll-stage-3d">
       <motion.div
         className="scroll-stage-3d__shadow"
-        style={{ opacity: shadowOpacity, willChange }}
+        style={{ opacity: shadowOpacityRaw, willChange }}
         aria-hidden="true"
       />
 
       <motion.div
         className="scroll-stage-3d__depth scroll-stage-3d__depth--far"
-        style={{ y: backY, z: -60, rotateX, opacity: edgeGlow, willChange }}
+        style={{ y: backYRaw, z: -60, rotateX, opacity: edgeGlowRaw, willChange }}
         aria-hidden="true"
       >
         <span className="scroll-stage-3d__grid" />
@@ -119,14 +98,14 @@ function ScrollStageDesktop({ children, index }: ScrollStage3DProps) {
           willChange,
         }}
       >
-        <motion.div className="scroll-stage-3d__content" style={{ y: frontY, willChange }}>
+        <motion.div className="scroll-stage-3d__content" style={{ y: frontYRaw, willChange }}>
           {children}
         </motion.div>
       </motion.div>
 
       <motion.div
         className="scroll-stage-3d__depth scroll-stage-3d__depth--near"
-        style={{ y: frontY, z: 30, opacity: edgeGlow, willChange }}
+        style={{ y: frontYRaw, z: 30, opacity: edgeGlowRaw, willChange }}
         aria-hidden="true"
       />
     </div>

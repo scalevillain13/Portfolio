@@ -151,7 +151,7 @@ export function Contact() {
                 <span className="contact__form-badge-dot" />
                 Напишите мне
               </span>
-              <span className="contact__form-index">/ 05</span>
+              <span className="contact__form-index">/ 06</span>
             </div>
 
             {submitted ? (

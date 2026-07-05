@@ -1,7 +1,8 @@
-import type { CSSProperties, ComponentType } from 'react'
-import { motion } from 'framer-motion'
-import { useNormalizedMouse } from '../hooks/useMousePosition'
-import { useIsMobile } from '../hooks/useMedia'
+import { type ComponentType } from 'react'
+import { motion, useTransform, type MotionStyle, type MotionValue } from 'framer-motion'
+import { personal } from '../data/content'
+import { useNormalizedMouseMotion } from '../hooks/useMousePosition'
+import { useIsMobile, useReducedMotion } from '../hooks/useMedia'
 import {
   ReactIcon, TypeScriptIcon, JavaScriptIcon, PhpIcon, LaravelIcon, GitIcon,
   FigmaIcon, CssIcon, HtmlIcon, DockerIcon,
@@ -40,9 +41,76 @@ const orbitItems: OrbitItem[] = [
   { Icon: RedisIcon, name: 'Redis', angle: 155, radius: 215, size: 20, depth: 0.5, duration: 12, delay: 1.4, color: '#DC382D' },
 ]
 
+function OrbitIcon({
+  item,
+  index,
+  mouseX,
+  mouseY,
+  parallax,
+}: {
+  item: OrbitItem
+  index: number
+  mouseX: MotionValue<number>
+  mouseY: MotionValue<number>
+  parallax: boolean
+}) {
+  const rad = (item.angle * Math.PI) / 180
+  const baseX = Math.cos(rad) * item.radius
+  const baseY = Math.sin(rad) * item.radius
+  const depthFactor = item.depth * 12
+
+  const x = useTransform(mouseX, (value) => (parallax ? baseX + value * depthFactor : baseX))
+  const y = useTransform(mouseY, (value) => (parallax ? baseY + value * depthFactor : baseY))
+
+  return (
+    <motion.div
+      className="hero-orbit__icon"
+      style={{
+        x,
+        y,
+        zIndex: Math.round(item.depth * 10),
+        '--icon-size': `${item.size}px`,
+        '--icon-color': item.color,
+        '--icon-blur': `${(1 - item.depth) * 2}px`,
+        '--icon-opacity': 0.4 + item.depth * 0.6,
+      } as MotionStyle}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{
+        opacity: 0.4 + item.depth * 0.6,
+        scale: 0.7 + item.depth * 0.3,
+      }}
+      transition={{
+        opacity: { delay: 2.4 + index * 0.05, duration: 0.5 },
+        scale: { delay: 2.4 + index * 0.05, duration: 0.5 },
+      }}
+    >
+      <motion.div
+        className="hero-orbit__icon-inner"
+        animate={parallax ? {
+          y: [0, -8 - item.depth * 6, 4, 0],
+          rotate: [0, item.depth * 5, -item.depth * 3, 0],
+        } : undefined}
+        transition={parallax ? {
+          duration: item.duration,
+          delay: item.delay,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        } : undefined}
+      >
+        <item.Icon className="hero-orbit__icon-svg" />
+      </motion.div>
+    </motion.div>
+  )
+}
+
 export function HeroOrbit() {
-  const mouse = useNormalizedMouse()
+  const { x: mouseX, y: mouseY } = useNormalizedMouseMotion()
   const mobile = useIsMobile()
+  const reducedMotion = useReducedMotion()
+  const parallax = !mobile && !reducedMotion
+
+  const avatarX = useTransform(mouseX, (value) => (parallax ? value * -8 : 0))
+  const avatarY = useTransform(mouseY, (value) => (parallax ? value * -8 : 0))
 
   return (
     <div className="hero-orbit">
@@ -51,74 +119,33 @@ export function HeroOrbit() {
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 2.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        style={
-          mobile
-            ? undefined
-            : {
-                x: mouse.x * -8,
-                y: mouse.y * -8,
-              }
-        }
+        style={{ x: avatarX, y: avatarY }}
       >
         <div className="hero-orbit__ring hero-orbit__ring--1" />
         <div className="hero-orbit__ring hero-orbit__ring--2" />
         <div className="hero-orbit__ring hero-orbit__ring--3" />
         <div className="hero-orbit__avatar">
-          <span className="hero-orbit__initial">А</span>
-          <div className="hero-orbit__avatar-glow" />
+          <img
+            src="./images/avatar.jpg"
+            alt={personal.name}
+            className="hero-orbit__photo"
+            loading="eager"
+            decoding="async"
+          />
+          <div className="hero-orbit__avatar-glow" aria-hidden="true" />
         </div>
       </motion.div>
 
-      {orbitItems.map((item, i) => {
-        const rad = (item.angle * Math.PI) / 180
-        const baseX = Math.cos(rad) * item.radius
-        const baseY = Math.sin(rad) * item.radius
-        const parallaxX = mobile ? 0 : mouse.x * item.depth * 12
-        const parallaxY = mobile ? 0 : mouse.y * item.depth * 12
-
-        return (
-          <motion.div
-            key={item.name}
-            className="hero-orbit__icon"
-            style={{
-              '--icon-size': `${item.size}px`,
-              '--icon-color': item.color,
-              '--icon-blur': `${(1 - item.depth) * 2}px`,
-              '--icon-opacity': 0.4 + item.depth * 0.6,
-              zIndex: Math.round(item.depth * 10),
-            } as CSSProperties}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{
-              opacity: 0.4 + item.depth * 0.6,
-              scale: 0.7 + item.depth * 0.3,
-              x: baseX + parallaxX,
-              y: baseY + parallaxY,
-            }}
-            transition={{
-              opacity: { delay: 2.4 + i * 0.05, duration: 0.5 },
-              scale: { delay: 2.4 + i * 0.05, duration: 0.5 },
-              x: { type: 'spring', stiffness: 80, damping: 20 },
-              y: { type: 'spring', stiffness: 80, damping: 20 },
-            }}
-          >
-            <motion.div
-              className="hero-orbit__icon-inner"
-              animate={{
-                y: [0, -8 - item.depth * 6, 4, 0],
-                rotate: [0, item.depth * 5, -item.depth * 3, 0],
-              }}
-              transition={{
-                duration: item.duration,
-                delay: item.delay,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            >
-              <item.Icon className="hero-orbit__icon-svg" />
-            </motion.div>
-          </motion.div>
-        )
-      })}
+      {orbitItems.map((item, i) => (
+        <OrbitIcon
+          key={item.name}
+          item={item}
+          index={i}
+          mouseX={mouseX}
+          mouseY={mouseY}
+          parallax={parallax}
+        />
+      ))}
     </div>
   )
 }

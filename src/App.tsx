@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Lenis from 'lenis'
 import { Preloader } from './components/Preloader'
@@ -15,9 +15,13 @@ import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { SectionDivider } from './components/SectionDivider'
 import { ScrollStage3D } from './components/ScrollStage3D'
-import { ProjectDetail } from './components/ProjectDetail'
+import { LenisProvider } from './context/LenisContext'
 import { useReducedMotion } from './hooks/useMedia'
 import { useProjectRoute } from './hooks/useProjectRoute'
+
+const ProjectDetail = lazy(() =>
+  import('./components/ProjectDetail').then((module) => ({ default: module.ProjectDetail })),
+)
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -62,8 +66,18 @@ function App() {
     }
   }, [project])
 
+  const lenisControl = useMemo(
+    () => ({
+      stop: () => lenisRef.current?.stop(),
+      start: () => lenisRef.current?.start(),
+      scrollTo: (y: number, options?: { immediate?: boolean }) =>
+        lenisRef.current?.scrollTo(y, options),
+    }),
+    [],
+  )
+
   return (
-    <>
+    <LenisProvider value={lenisControl}>
       <AnimatePresence mode="wait">
         {loading && <Preloader key="preloader" onComplete={() => setLoading(false)} />}
       </AnimatePresence>
@@ -105,15 +119,17 @@ function App() {
 
       <AnimatePresence>
         {project && (
-          <ProjectDetail
-            key={project.id}
-            project={project}
-            onClose={closeProject}
-            onNavigate={openProject}
-          />
+          <Suspense fallback={null}>
+            <ProjectDetail
+              key={project.id}
+              project={project}
+              onClose={closeProject}
+              onNavigate={openProject}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
-    </>
+    </LenisProvider>
   )
 }
 

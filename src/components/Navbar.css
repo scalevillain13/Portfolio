@@ -28,6 +28,8 @@
   gap: 0.6rem;
   font-weight: 700;
   font-size: 0.95rem;
+  position: relative;
+  z-index: 202;
 }
 
 .navbar__logo-mark {
@@ -111,6 +113,8 @@
   gap: 6px;
   width: 28px;
   padding: 4px 0;
+  position: relative;
+  z-index: 202;
 }
 
 .navbar__burger span {
@@ -128,42 +132,76 @@
   transform: translateY(-3.75px) rotate(-45deg);
 }
 
+.navbar__mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 5rem 1.5rem 2rem;
+  background: rgba(10, 9, 8, 0.97);
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  overscroll-behavior: contain;
+}
+
+.navbar__mobile-menu--open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.navbar__mobile-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar__mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.navbar__mobile-link:hover {
+  color: var(--text);
+}
+
+.navbar__mobile-cta {
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--border-hover);
+  color: var(--accent);
+  background: rgba(235, 141, 92, 0.08);
+}
+
 @media (max-width: 768px) {
-  .navbar__nav {
-    position: fixed;
-    inset: 0;
-    top: 0;
-    background: rgba(10, 9, 8, 0.97);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-  }
-
-  .navbar__nav--open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .navbar__links {
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-  }
-
-  .navbar__link {
-    font-size: 1.5rem;
-  }
-
+  .navbar__nav,
   .navbar__cta {
     display: none;
   }
 
   .navbar__burger {
     display: flex;
-    z-index: 101;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar__mobile-menu {
+    display: none;
   }
 }

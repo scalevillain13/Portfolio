@@ -3,11 +3,12 @@ import { motion, useMotionValue, useSpring } from 'framer-motion'
 import type { Project } from '../data/content'
 import { projects } from '../data/content'
 import { useIsMobile } from '../hooks/useMedia'
+import { TILT_SPRING } from '../motion/constants'
+import { OptimizedImage } from './OptimizedImage'
 import { SectionHeading } from './SectionHeading'
 import { SectionAmbience } from './SectionAmbience'
 import './Projects.css'
 
-const TILT_SPRING = { stiffness: 260, damping: 32, mass: 0.35 }
 const MAX_TILT = 7
 
 function clamp(value: number, max: number) {
@@ -84,11 +85,10 @@ function ProjectCard({
       >
         <div className="project-card__visual" style={{ '--project-color': project.color } as CSSProperties}>
           <div className="project-card__image-wrap">
-            <img
+            <OptimizedImage
               src={project.image}
-              alt=""
+              alt={`Превью проекта ${project.title}`}
               className="project-card__image"
-              loading="lazy"
             />
           </div>
           <span className="project-card__number">{project.id}</span>

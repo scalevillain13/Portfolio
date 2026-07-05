@@ -369,6 +369,12 @@
   background: var(--bg-elevated);
 }
 
+.project-detail__gallery-item picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .project-detail__gallery-item img {
   display: block;
   width: 100%;

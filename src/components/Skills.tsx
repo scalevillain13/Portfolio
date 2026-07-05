@@ -3,6 +3,7 @@ import { skills } from '../data/content'
 import { techIconMap } from '../icons/TechIcons'
 import { SectionHeading } from './SectionHeading'
 import { SectionAmbience } from './SectionAmbience'
+import { LanguagesTools } from './LanguagesTools'
 import './Skills.css'
 
 export function Skills() {
@@ -57,6 +58,8 @@ export function Skills() {
             )
           })}
         </div>
+
+        <LanguagesTools />
       </div>
     </section>
   )

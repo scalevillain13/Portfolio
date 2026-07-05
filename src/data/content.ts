@@ -45,14 +45,40 @@ export const about = {
     text: 'Код — это инструмент. Продукт — это впечатление.',
     author: 'Alexander',
   },
-  focusTags: ['React', 'TypeScript', 'PHP', 'Laravel', 'UI Motion', 'Docker'],
+  focusTags: ['React', 'TypeScript', 'Tailwind CSS', 'PHP', 'Laravel', 'Docker'],
   stats: [
     { label: 'Возраст', value: 18, suffix: '' },
     { label: 'Проектов', value: 12, suffix: '+' },
-    { label: 'Стек', value: 15, suffix: '+' },
+    { label: 'Стек', value: 16, suffix: '+' },
     { label: 'Кофе в день', value: 3, suffix: '☕' },
   ],
 }
+
+export const languagesAndAi = {
+  language: {
+    name: 'English',
+    level: 'Confident B1/B2',
+    proficiency: 72,
+    note: 'Уверенно читаю документацию, переписываюсь с командой и обсуждаю задачи на английском.',
+  },
+  aiTools: [
+    {
+      name: 'Cursor',
+      description: 'Основная AI-IDE для быстрой разработки, рефакторинга и code review.',
+      color: '#EDECEC',
+    },
+    {
+      name: 'Claude',
+      description: 'Архитектурные решения, сложная отладка и работа с большим контекстом.',
+      color: '#D97757',
+    },
+    {
+      name: 'Codex',
+      description: 'Генерация и доработка кода, автоматизация рутинных dev-задач.',
+      color: '#10A37F',
+    },
+  ],
+} as const
 
 export const skills = [
   { name: 'React', category: 'frontend' },
@@ -61,6 +87,7 @@ export const skills = [
   { name: 'Next.js', category: 'frontend' },
   { name: 'HTML', category: 'frontend' },
   { name: 'CSS', category: 'frontend' },
+  { name: 'Tailwind CSS', category: 'frontend' },
   { name: 'Figma', category: 'design' },
   { name: 'PHP', category: 'backend' },
   { name: 'Laravel', category: 'backend' },
@@ -85,8 +112,8 @@ export const projects: Project[] = [
       'CyberLearn — первая полноценная русскоязычная платформа для обучения информационной безопасности в формате TryHackMe. Теория, квизы, практика в изолированных контейнерах и прогрессия от script_kiddie до fsociety_member — всё в одном продукте.',
     problem:
       'В Рунете не было качественной русскоязычной платформы с интерактивной практикой в InfoSec. Новичкам приходилось либо учить английский ради TryHackMe, либо читать устаревшие учебники без hands-on опыта.',
-    tags: ['Next.js', 'TypeScript', 'Docker'],
-    stack: ['Next.js', 'TypeScript', 'Docker', 'PostgreSQL', 'Redis', 'Vite'],
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Docker', 'PostgreSQL', 'Redis', 'Vite'],
     color: '#34d399',
     year: '2026',
     liveUrl: 'https://cyberlearn-psi.vercel.app/',

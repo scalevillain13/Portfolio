@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useSpring } from 'framer-motion'
 import { useIsMobile, useIsTouchDevice } from '../hooks/useMedia'
+import { CURSOR_RING_SPRING, CURSOR_SPRING } from '../motion/constants'
 import './CustomCursor.css'
 
 export function CustomCursor() {
@@ -8,19 +9,16 @@ export function CustomCursor() {
   const touch = useIsTouchDevice()
   const [hoverLabel, setHoverLabel] = useState<string | null>(null)
   const [visible, setVisible] = useState(false)
-  const pos = useRef({ x: 0, y: 0 })
 
-  const springConfig = { damping: 28, stiffness: 350, mass: 0.5 }
-  const cursorX = useSpring(0, springConfig)
-  const cursorY = useSpring(0, springConfig)
-  const ringX = useSpring(0, { ...springConfig, damping: 22, stiffness: 200 })
-  const ringY = useSpring(0, { ...springConfig, damping: 22, stiffness: 200 })
+  const cursorX = useSpring(0, CURSOR_SPRING)
+  const cursorY = useSpring(0, CURSOR_SPRING)
+  const ringX = useSpring(0, CURSOR_RING_SPRING)
+  const ringY = useSpring(0, CURSOR_RING_SPRING)
 
   useEffect(() => {
     if (mobile || touch) return
 
     const move = (e: MouseEvent) => {
-      pos.current = { x: e.clientX, y: e.clientY }
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
       ringX.set(e.clientX)
@@ -41,7 +39,7 @@ export function CustomCursor() {
       }
     }
 
-    window.addEventListener('mousemove', move)
+    window.addEventListener('mousemove', move, { passive: true })
     window.addEventListener('mouseover', handleOver)
     document.addEventListener('mouseleave', hide)
     document.addEventListener('mouseenter', show)

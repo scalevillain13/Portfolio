@@ -1,14 +1,10 @@
 import { useRef } from 'react'
 import { motion, useInView, useScroll, useSpring, useTransform } from 'framer-motion'
 import { useIsDesktop, useReducedMotion } from '../hooks/useMedia'
+import { STAGE_SPRING } from '../motion/constants'
 import './SectionDivider.css'
 
-const DIVIDER_SPRING = {
-  stiffness: 175,
-  damping: 34,
-  mass: 0.48,
-  restDelta: 0.0004,
-}
+const DIVIDER_SPRING = STAGE_SPRING
 
 function DividerContent() {
   return (

@@ -8,6 +8,7 @@ import {
 } from '../data/content'
 import { techIconMap } from '../icons/TechIcons'
 import { MagneticButton } from './MagneticButton'
+import { OptimizedImage } from './OptimizedImage'
 import { ProjectDetailAmbience } from './ProjectDetailAmbience'
 import './ProjectDetail.css'
 
@@ -236,7 +237,10 @@ export function ProjectDetail({ project, onClose, onNavigate }: ProjectDetailPro
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.65, ease }}
                   >
-                    <img src={src} alt={`${project.title} screenshot ${i + 1}`} loading="lazy" />
+                    <OptimizedImage
+                      src={src}
+                      alt={`${project.title} — скриншот ${i + 1}`}
+                    />
                   </motion.figure>
                 ))}
               </div>
