@@ -152,6 +152,32 @@ export const projects: Project[] = [
       'SEO-оптимизация под локальные запросы',
     ],
   },
+  {
+    id: '03',
+    slug: 'resume-builder',
+    title: 'CV Builder',
+    tagline: 'Редактор резюме с live-preview и структурированными секциями',
+    description:
+      'Веб-приложение для создания резюме: форма редактирования, мгновенный предпросмотр и гибкие секции под опыт, навыки и проекты.',
+    longDescription:
+      'CV Builder — pet-проект для быстрого составления аккуратного резюме прямо в браузере. Режимы «Редактирование» и «Просмотр», секции с drag-and-drop, группы навыков, опциональные блоки и live-preview без перезагрузки страницы.',
+    problem:
+      'Готовые шаблоны в Word и PDF сложно править, а конструкторы резюме часто перегружены paywall или плохим UX. Нужен простой редактор с понятной структурой и мгновенным результатом.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS'],
+    stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    color: '#818cf8',
+    year: '2026',
+    liveUrl: 'https://scalevillain13.github.io/resume-builder/',
+    repoUrl: 'https://github.com/scalevillain13/resume-builder',
+    image: './images/resum.png',
+    gallery: ['./images/resum.png', './images/resu-1.png'],
+    highlights: [
+      'Редактирование и просмотр в одном интерфейсе',
+      'Секции: опыт, образование, навыки, проекты',
+      'Переупорядочивание блоков и групп навыков',
+      'Опциональные секции и загрузка фото',
+    ],
+  },
 ]
 
 export const experience = [
