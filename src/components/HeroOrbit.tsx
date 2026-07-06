@@ -125,13 +125,16 @@ export function HeroOrbit() {
         <div className="hero-orbit__ring hero-orbit__ring--2" />
         <div className="hero-orbit__ring hero-orbit__ring--3" />
         <div className="hero-orbit__avatar">
-          <img
-            src="./images/avatar.jpg"
-            alt={personal.name}
-            className="hero-orbit__photo"
-            loading="eager"
-            decoding="async"
-          />
+          <picture>
+            <source srcSet="./images/avatar.webp" type="image/webp" />
+            <img
+              src="./images/avatar.jpg"
+              alt={personal.name}
+              className="hero-orbit__photo"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
           <div className="hero-orbit__avatar-glow" aria-hidden="true" />
         </div>
       </motion.div>

@@ -132,9 +132,11 @@ export function ProjectDetail({ project, onClose, onNavigate }: ProjectDetailPro
               </div>
 
               <div className="project-detail__header-actions">
-                <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
-                  Live Demo
-                </MagneticButton>
+                {project.liveUrl && (
+                  <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
+                    Live Demo
+                  </MagneticButton>
+                )}
                 {project.repoUrl && (
                   <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
                     GitHub Repo

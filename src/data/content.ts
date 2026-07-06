@@ -10,7 +10,7 @@ export type Project = {
   stack: string[]
   color: string
   year: string
-  liveUrl: string
+  liveUrl?: string
   repoUrl?: string
   image: string
   gallery: string[]
@@ -105,26 +105,32 @@ export const projects: Project[] = [
     id: '01',
     slug: 'cyberlearn',
     title: 'CyberLearn',
-    tagline: 'Интерактивная платформа по кибербезопасности на русском языке',
+    tagline: 'Первая русскоязычная интерактивная платформа по кибербезопасности — аналог TryHackMe',
     description:
-      'Русскоязычная платформа по кибербезопасности с Docker-лабораториями, CTF-заданиями и системой рангов.',
+      'Обучение InfoSec с нуля: 5 треков, 38 комнат с теорией на русском, мини-игры, Docker-лаборатории и прогрессия рангов от script_kiddie до fsociety_member.',
     longDescription:
-      'CyberLearn — первая полноценная русскоязычная платформа для обучения информационной безопасности в формате TryHackMe. Теория, квизы, практика в изолированных контейнерах и прогрессия от script_kiddie до fsociety_member — всё в одном продукте.',
+      'CyberLearn — fullstack edtech на Next.js 16 и PostgreSQL (Supabase): MDX-контент в базе через Prisma, NextAuth v5, 5 Docker-лабораторий с флагами CYBER{...}, 4 мини-игры (SQLi, XSS, Caesar, Linux), лидерборд, premium-треки и админ-панель. Тарифы FREE/PREMIUM с gating из БД, 4 темы оформления, сброс пароля через Resend. Деплой на Vercel с ISR и security audit.',
     problem:
-      'В Рунете не было качественной русскоязычной платформы с интерактивной практикой в InfoSec. Новичкам приходилось либо учить английский ради TryHackMe, либо читать устаревшие учебники без hands-on опыта.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Docker', 'PostgreSQL', 'Redis', 'Vite'],
+      'В Рунете не было качественной русскоязычной платформы с интерактивной практикой в InfoSec. Новичкам приходилось либо учить английский ради TryHackMe, либо читать теорию без hands-on опыта, лабораторий и прогрессии.',
+    tags: ['Next.js', 'TypeScript', 'Docker'],
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Docker', 'PostgreSQL', 'React'],
     color: '#34d399',
     year: '2026',
     liveUrl: 'https://cyberlearn-psi.vercel.app/',
-    repoUrl: 'https://github.com/scalevillain13/cyberlearn',
     image: './images/cyberlearn.png',
-    gallery: ['./images/cyberlearn.png', './images/cy-1.png'],
+    gallery: [
+      './images/cyberlearn.png',
+      './images/cy-1.png',
+      './images/cy-4.png',
+      './images/cy-5.png',
+      './images/cy-6.png',
+      './images/cy-7.png',
+    ],
     highlights: [
-      'Docker-лаборатории прямо в браузере',
-      '38+ комнат и 5 треков обучения',
-      'Система рангов, XP и CTF-флаги',
-      'FREE tier и Premium-подписка',
+      '5 треков и 38 комнат — free и premium-контент',
+      '5 Docker-лабораторий с CTF-флагами и 4 мини-игры',
+      'NextAuth, XP-ранги, лидерборд и 4 темы UI',
+      'Vercel + Supabase, tier gating и rate limits',
     ],
   },
   {
@@ -176,6 +182,31 @@ export const projects: Project[] = [
       'Секции: опыт, образование, навыки, проекты',
       'Переупорядочивание блоков и групп навыков',
       'Опциональные секции и загрузка фото',
+    ],
+  },
+  {
+    id: '04',
+    slug: 'laravel-url-shortener',
+    title: 'Сокращатель ссылок',
+    tagline: 'Laravel-приложение для коротких ссылок, аналитики переходов и кабинета на Filament v3',
+    description:
+      'Сервис сокращения URL с редиректом, записью статистики (IP, геолокация, UTM) и управлением ссылками через Filament admin.',
+    longDescription:
+      'Полноценный Laravel 13 pet-проект: публичный лендинг для создания ссылок, редирект GET /{code} без блокировки БД, личный кабинет на Filament v3, REST API на Sanctum, QR-коды, Docker Compose и CI на GitHub Actions. Клики пишутся асинхронно через очередь, боты фильтруются, URL валидируются на безопасность.',
+    problem:
+      'Публичные сокращатели не дают контроля над данными и аналитикой, а простые pet-проекты редко покрывают production-сценарии: очереди, policy, rate limit, API и admin panel в одном продукте.',
+    tags: ['Laravel', 'PHP', 'Docker'],
+    stack: ['Laravel', 'PHP', 'Docker', 'Git', 'Redis'],
+    color: '#f43f5e',
+    year: '2026',
+    repoUrl: 'https://github.com/scalevillain13/laravel-url-shortener',
+    image: './images/url.png',
+    gallery: ['./images/url.png', './images/url-1.png', './images/url-2.png'],
+    highlights: [
+      'Filament v3 — список ссылок, фильтры и статистика',
+      'REST API (Sanctum) + асинхронная запись кликов',
+      'Docker Compose, очереди и GitHub Actions CI',
+      'UTM-метки, срок жизни ссылок и защита от ботов',
     ],
   },
 ]

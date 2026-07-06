@@ -5,8 +5,12 @@ type OptimizedImageProps = {
   loading?: 'lazy' | 'eager'
 }
 
+function toWebpSrc(src: string) {
+  return src.replace(/\.(png|jpe?g)$/i, '.webp')
+}
+
 export function OptimizedImage({ src, alt, className, loading = 'lazy' }: OptimizedImageProps) {
-  const webpSrc = src.replace(/\.png$/i, '.webp')
+  const webpSrc = toWebpSrc(src)
 
   return (
     <picture>
