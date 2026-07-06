@@ -116,7 +116,7 @@ export const projects: Project[] = [
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Docker', 'PostgreSQL', 'React'],
     color: '#34d399',
     year: '2026',
-    liveUrl: 'https://cyberlearn-psi.vercel.app/',
+    liveUrl: 'https://cyberlearn-psi.vercel.app/profile',
     image: './images/cyberlearn.png',
     gallery: [
       './images/cyberlearn.png',
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     stack: ['Laravel', 'PHP', 'React', 'TypeScript', 'PostgreSQL'],
     color: '#c9a66b',
     year: '2025',
-    liveUrl: 'https://yoom.pro',
+    liveUrl: 'https://yoom.pro/',
     image: './images/yoom.png',
     gallery: ['./images/yoom.png', './images/y-1.png'],
     highlights: [
@@ -199,6 +199,7 @@ export const projects: Project[] = [
     stack: ['Laravel', 'PHP', 'Docker', 'Git', 'Redis'],
     color: '#f43f5e',
     year: '2026',
+    liveUrl: 'https://scalevillain13.github.io/laravel-url-shortener/',
     repoUrl: 'https://github.com/scalevillain13/laravel-url-shortener',
     image: './images/url.png',
     gallery: ['./images/url.png', './images/url-1.png', './images/url-2.png'],

@@ -107,10 +107,38 @@ function ProjectCard({
               <span key={tag} className="project-card__tag">{tag}</span>
             ))}
           </div>
+
+          <div className="project-card__links">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                className="project-card__live"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => e.stopPropagation()}
+              >
+                Открыть сайт
+                <span aria-hidden="true">↗</span>
+              </a>
+            )}
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                className="project-card__repo"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => e.stopPropagation()}
+              >
+                GitHub
+              </a>
+            )}
+          </div>
         </div>
 
         <div className="project-card__overlay" aria-hidden="true">
-          <span className="project-card__overlay-label">View Project</span>
+          <span className="project-card__overlay-label">Подробнее</span>
           <span className="project-card__overlay-arrow">→</span>
         </div>
       </motion.article>

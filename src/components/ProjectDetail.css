@@ -218,6 +218,22 @@
   gap: 1rem;
 }
 
+.project-detail__live-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  transition: color 0.3s ease;
+}
+
+.project-detail__live-link:hover {
+  color: var(--accent);
+}
+
 .project-detail__section {
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }

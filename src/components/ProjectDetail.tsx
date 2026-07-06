@@ -134,15 +134,26 @@ export function ProjectDetail({ project, onClose, onNavigate }: ProjectDetailPro
               <div className="project-detail__header-actions">
                 {project.liveUrl && (
                   <MagneticButton href={project.liveUrl} cursorLabel="Live" external>
-                    Live Demo
+                    Открыть сайт
                   </MagneticButton>
                 )}
                 {project.repoUrl && (
                   <MagneticButton href={project.repoUrl} variant="ghost" cursorLabel="Code" external>
-                    GitHub Repo
+                    GitHub
                   </MagneticButton>
                 )}
               </div>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  className="project-detail__live-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {project.liveUrl.replace(/^https?:\/\//, '')}
+                  <span aria-hidden="true"> ↗</span>
+                </a>
+              )}
             </div>
           </motion.section>
 
